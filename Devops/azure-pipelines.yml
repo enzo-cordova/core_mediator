@@ -22,7 +22,7 @@ resources:
     - repository: pipelinesTemplates
       type: github
       name:  enzo-cordova/support-innovation-gedge-pipelines-templates
-      endpoint: enzo-cordova
+      endpoint: github.com_enzo-cordova
       ref: 'main'
 
 
