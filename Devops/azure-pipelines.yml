@@ -21,8 +21,8 @@ resources:
   repositories:
     - repository: pipelinesTemplates
       type: github
-      name:  prosegur/support-innovation-gedge-pipelines-templates
-      endpoint: Gedge
+      name:  enzo-cordova/support-innovation-gedge-pipelines-templates
+      endpoint: enzo-cordova
       ref: 'feature/g-499'
 
 
