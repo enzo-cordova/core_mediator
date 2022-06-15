@@ -13,11 +13,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: GitVersion@4
-  displayName: 'GitVersion'
-  inputs:
-    updateAssemblyInfo: true
-    preferBundledVersion: false
+- script: 'choco install gitversion.portable'
 
 - script: echo %Action%%BuildVersion%
   displayName: 'Set build version'
