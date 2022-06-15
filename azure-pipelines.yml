@@ -14,6 +14,10 @@ variables:
 
 steps:
 - script: 'choco install gitversion.portable'
+- task: AzurePowerShell@5
+  inputs:
+    ScriptType: 'InlineScript'
+    azurePowerShellVersion: 'LatestVersion'
 
 - script: echo %Action%%BuildVersion%
   displayName: 'Set build version'
