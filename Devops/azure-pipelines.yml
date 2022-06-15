@@ -23,7 +23,7 @@ resources:
       type: github
       name:  enzo-cordova/support-innovation-gedge-pipelines-templates
       endpoint: enzo-cordova
-      ref: 'feature/g-499'
+      ref: 'main'
 
 
 
