@@ -1,0 +1,1093 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Genzai.Core.Tests</name>
+    </assembly>
+    <members>
+        <member name="T:Genzai.Core.Tests.DomainTest.EntityTest">
+            <summary>
+            Entity test class for testing domain base class
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.DomainTest.EntityTest"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Dispose">
+            <summary>
+            Dispose Method.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_Create_Entity">
+            <summary>
+            Create Entity Test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_Create_AuditableEntity_With_Context">
+            <summary>
+            Create Entity Test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_Create_BaseEntity">
+            <summary>
+            Create Entity Test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_Update_AuditableEntity_With_User">
+            <summary>
+            Create Entity Test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_Update_BaseEntity">
+            <summary>
+            Create Entity Test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_No_Transient_Entity">
+            <summary>
+            Test No Transient entity.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_No_Transient_BaseEntity">
+            <summary>
+            Test No Transient entity.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_Compare_Entities(System.String,System.String)">
+            <summary>
+            Compare Entities Test.
+            </summary>
+            <param name="brand">brand text.</param>
+            <param name="model">model text.</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_Compare_AuditableEntities(System.String,System.String)">
+            <summary>
+            Compare Entities Test.
+            </summary>
+            <param name="brand">brand text.</param>
+            <param name="model">model text.</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_Compare_BaseEntities(System.String,System.String)">
+            <summary>
+            Test Base entity
+            </summary>
+            <param name="brand"></param>
+            <param name="model"></param>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_Entity_Equals">
+            <summary>
+            Test Entity Equals
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_AuditableEntity_Equals">
+            <summary>
+            Test Entity Equals
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_BaseEntity_Equals_Not_True">
+            <summary>
+            Test Entity Equals
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_BaseEntity_Equals_True">
+            <summary>
+            Test Entity Equials
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_BaseEntity_Equals_True_Object">
+            <summary>
+            Test Entity Equials
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_Paged_Elements">
+            <summary>
+            Paged Elements Test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_AuditablePaged_Elements">
+            <summary>
+            Paged Elements Test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Test_BasePaged_Elements">
+            <summary>
+            Paged Elements Test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.EntityTest.Dispose(System.Boolean)">
+            <summary>
+            Dispose method.
+            </summary>
+            <param name="disposing">Disposing param.</param>
+        </member>
+        <member name="T:Genzai.Core.Tests.DomainTest.QueryAdapterTest">
+            <summary>
+            Query Adapter tests.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.QueryAdapterTest.Test_Filter_Query">
+            <summary>
+            Test filter query.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.QueryAdapterTest.Test_Include_Query">
+            <summary>
+            Test include Query.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.QueryAdapterTest.Test_Simple_Order_By">
+            <summary>
+            Test simple order by.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.QueryAdapterTest.Test_Multiple_Order_By">
+            <summary>
+            Test multiple order by.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.DomainTest.ValueObjectTests">
+            <summary>
+            Value object test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.ValueObjectTests.Test_Value_Object_Address_Equals">
+            <summary>
+            Test Value Object Address Equals
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.DomainTest.ValueObjectTests.Test_Value_Object_Atomic_Values">
+            <summary>
+            Test Value Object Atomic Values
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.ExtensionsTest.ExtensionsTests">
+            <summary>
+            Extensions test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ExtensionsTest.ExtensionsTests.#ctor(Genzai.Core.Tests.Fixtures.CarListFixture)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.ExtensionsTest.ExtensionsTests"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ExtensionsTest.ExtensionsTests.Test_Cars_Enum_Members">
+            <summary>
+            Enum test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ExtensionsTest.ExtensionsTests.Test_For_Pagging_IEnumerable">
+            <summary>
+            Test paging for IEnumerable.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ExtensionsTest.ExtensionsTests.Test_For_Paging_IQueryable">
+            <summary>
+            Test paging for IQueryable.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ExtensionsTest.ExtensionsTests.Test_Get_Full_Path_FileName">
+            <summary>
+            Test get full path of filename.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ExtensionsTest.ExtensionsTests.Test_Validator">
+            <summary>
+            Test Validator.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ExtensionsTest.ExtensionsTests.Test_Validator_Not_Passed">
+            <summary>
+            Test Validator.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ExtensionsTest.ExtensionsTests.Test_Security_Extension">
+            <summary>
+            Test Security Extension.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ExtensionsTest.ExtensionsTests.Test_Exception_Context_ArgumentExceptionHandler">
+            <summary>
+            Test Exception Context ArgumentExceptionHandler
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ExtensionsTest.ExtensionsTests.Test_Exception_Context_BadRequestHandler">
+            <summary>
+            Test Exception Context BadRequestHandler
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ExtensionsTest.ExtensionsTests.Test_Exception_Context_ServerErrorHandler">
+            <summary>
+            Test Exception Context ServerErrorHandler
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Fixtures.CarListFixture">
+            <summary>
+            Car list Fixture.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Fixtures.CarListFixture.CarList">
+            <summary>
+            Car list.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Fixtures.CarListFixture.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Fixtures.CarListFixture"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Fixtures.CarListFixture.Dispose">
+            <summary>
+            Dispose Method.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Fixtures.CarListFixture.Dispose(System.Boolean)">
+            <summary>
+            Dispose method.
+            </summary>
+            <param name="disposing">Disposing param.</param>
+        </member>
+        <member name="T:Genzai.Core.Tests.Helpers.DynamicFilterTest">
+            <summary>
+            Test for dynmic filter
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Helpers.DynamicFilterTest.Test">
+            <summary>
+            Test OK Result
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.InflectorTest.InflectorClassTest">
+            <summary>
+            Inflector Test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.InflectorTest.InflectorClassTest.Test_Camelize(System.String,System.String)">
+            <summary>
+            Camelize text.
+            </summary>
+            <param name="value">value to convert.</param>
+            <param name="expected">expected value.</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.InflectorTest.InflectorClassTest.Test_Capitalize(System.String,System.String)">
+            <summary>
+            Capitalize text.
+            </summary>
+            <param name="value">value to convert.</param>
+            <param name="expected">expected value.</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.InflectorTest.InflectorClassTest.Test_Dasherize(System.String,System.String)">
+            <summary>
+            Dasherize text.
+            </summary>
+            <param name="value">value to convert.</param>
+            <param name="expected">expected value.</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.InflectorTest.InflectorClassTest.Test_Humanize(System.String,System.String)">
+            <summary>
+            Dasherize text.
+            </summary>
+            <param name="value">value to convert.</param>
+            <param name="expected">expected value.</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.InflectorTest.InflectorClassTest.Test_Ordinalize(System.String,System.String)">
+            <summary>
+            Ordinalize text.
+            </summary>
+            <param name="value">value to convert.</param>
+            <param name="expected">expected value.</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.InflectorTest.InflectorClassTest.Test_Pascalize(System.String,System.String)">
+            <summary>
+            Pascalize text.
+            </summary>
+            <param name="value">value to convert.</param>
+            <param name="expected">expected value.</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.InflectorTest.InflectorClassTest.Test_Pluralize(System.String,System.String)">
+            <summary>
+            Pluralize text.
+            </summary>
+            <param name="value">value to convert.</param>
+            <param name="expected">expected value.</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.InflectorTest.InflectorClassTest.Test_Singularize(System.String,System.String)">
+            <summary>
+            Singularize text.
+            </summary>
+            <param name="value">value to convert.</param>
+            <param name="expected">expected value.</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.InflectorTest.InflectorClassTest.Test_Titleize(System.String,System.String)">
+            <summary>
+            Titleize text.
+            </summary>
+            <param name="value">value to convert.</param>
+            <param name="expected">expected value.</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.InflectorTest.InflectorClassTest.Test_UnCapitalize(System.String,System.String)">
+            <summary>
+            UnCapitalize text.
+            </summary>
+            <param name="value">value to convert.</param>
+            <param name="expected">expected value.</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.InflectorTest.InflectorClassTest.Test_Underscore(System.String,System.String)">
+            <summary>
+            Underscore text.
+            </summary>
+            <param name="value">value to convert.</param>
+            <param name="expected">expected value.</param>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Adapters.CarTestFilter">
+            <summary>
+            Car test filter.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Adapters.CarTestFilter.#ctor(System.Linq.Expressions.Expression{System.Func{Genzai.Core.Tests.Mock.Entities.CarClassTest,System.Boolean}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.Adapters.CarTestFilter"/> class.
+            </summary>
+            <param name="expression"></param>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Adapters.CarTestOrder">
+            <summary>
+            Car test order by adapter.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Adapters.CarTestOrder.#ctor(System.Collections.Generic.List{Genzai.Core.Domain.QueryAdapters.OrderBy})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.Adapters.CarTestOrder"/> class.
+            </summary>
+            <param name="orderByList">Order list.</param>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Adapters.ClientTestIncludeAdapter">
+            <summary>
+            Client include adapter for testing.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Adapters.ClientTestIncludeAdapter.#ctor(System.Func{System.Linq.IQueryable{Genzai.Core.Tests.Mock.Entities.ClientTest},System.Linq.IQueryable{Genzai.Core.Tests.Mock.Entities.ClientTest}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.Adapters.ClientTestIncludeAdapter"/> class.
+            </summary>
+            <param name="expression"></param>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.BaseClasses.BaseClass">
+            <summary>
+            Base class for testing guards.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.BaseClasses.BaseClass.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.BaseClasses.BaseClass"/> class.
+            </summary>
+            <param name="parentName">parent name string.</param>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.BaseClasses.BaseClass.ParentName">
+            <summary>
+            Gets or sets Parent name member.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.BaseClasses.IBaseInterface">
+            <summary>
+            Base interface for testing guards.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.BaseClasses.IBaseInterface.GetInterfaceProperty">
+            <summary>
+            Get property.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.DbContext.EntityFakeDbContext">
+            <summary>
+            Context class for testing entity base.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.DbContext.EntityFakeDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Genzai.Core.Tests.Mock.DbContext.EntityFakeDbContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.DbContext.EntityFakeDbContext"/> class.
+            </summary>
+            <param name="options">context options.</param>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.DbContext.EntityFakeDbContext.Cars">
+            <summary>
+            Gets or sets cars DbSet.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.DbContext.EntityFakeDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            On model creating method.
+            </summary>
+            <param name="modelBuilder">Model builder.</param>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.DbContext.FakeDbContext">
+            <summary>
+            Fake DbContext for testing purposes.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.DbContext.FakeDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Genzai.Core.Tests.Mock.DbContext.FakeDbContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.DbContext.FakeDbContext"/> class.
+            </summary>
+            <param name="options">context options.</param>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.DbContext.FakeDbContext.Clients">
+            <summary>
+            Gets or Set Clients DbSet.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.DbContext.FakeDbContext.Managers">
+            <summary>
+            Gets or set Managers DbSet.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.CarAuditableTest">
+            <summary>
+            Car Test Entity.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.CarAuditableTest.Brand">
+            <summary>
+            Gets or sets brand Model.
+            </summary>
+            <value>
+            Brand Model.
+            </value>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.CarAuditableTest.Model">
+            <summary>
+            Gets or sets car Model.
+            </summary>
+            <value>
+            Car Model.
+            </value>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.CarAuditableTest.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.CarAuditableTest.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.CarBaseTest">
+            <summary>
+            Entity Without primary key
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.CarBaseTest.Brand">
+            <summary>
+            Gets or sets brand Model.
+            </summary>
+            <value>
+            Brand Model.
+            </value>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.CarBaseTest.Model">
+            <summary>
+            Gets or sets car Model.
+            </summary>
+            <value>
+            Car Model.
+            </value>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.CarBaseTest.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.CarClassTest">
+            <summary>
+            Car class for testing.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.CarClassTest.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.Entities.CarClassTest"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.CarClassTest.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.Entities.CarClassTest"/> class.
+            </summary>
+            <param name="id">New Id.</param>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.CarClassTest.Id">
+            <summary>
+            Gets or sets Id member.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.CarClassTest.Brand">
+            <summary>
+            Gets or sets Brand member.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.CarClassTest.Model">
+            <summary>
+            Gets or sets Model member.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.CarsEnumTest">
+            <summary>
+            Mock for test enum extensions
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Tests.Mock.Entities.CarsEnumTest.HatchBack">
+            <summary>
+            Hatchback option.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Tests.Mock.Entities.CarsEnumTest.CrossOver">
+            <summary>
+            CrossOver option.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Tests.Mock.Entities.CarsEnumTest.Coupe">
+            <summary>
+            Coupe Option (With empty value).
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Tests.Mock.Entities.CarsEnumTest.Sedan">
+            <summary>
+            Sedan option (With null value).
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.CarTest">
+            <summary>
+            Car Test Entity.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.CarTest.Brand">
+            <summary>
+            Gets or sets brand Model.
+            </summary>
+            <value>
+            Brand Model.
+            </value>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.CarTest.Model">
+            <summary>
+            Gets or sets car Model.
+            </summary>
+            <value>
+            Car Model.
+            </value>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.CarTest.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.CarTest.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.CarTestValidator">
+            <summary>
+            Car Test Validator
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.CarTestValidator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.Entities.CarTestValidator"/> class.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.ClientTest">
+            <summary>
+            Client test class for testing purposes.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.ClientTest.#ctor">
+            <summary>
+            Empty constructor.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.ClientTest.#ctor(System.Int32,System.String,System.String,Genzai.Core.Tests.Mock.Entities.ManagerTest)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.Entities.ClientTest"/> class.
+            </summary>
+            <param name="id">Client id.</param>
+            <param name="name">Client name.</param>
+            <param name="lastName">Client LastName.</param>
+            <param name="manager">Client Manager.</param>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.ClientTest.ClientId">
+            <summary>
+            Gets or sets Client Id.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.ClientTest.Name">
+            <summary>
+            Gets or sets Client Name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.ClientTest.LastName">
+            <summary>
+            Gets or sets Last Name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.ClientTest.Manager">
+            <summary>
+            Gets or sets Manager.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.ManagerEnumerableResponse">
+            <summary>
+            Manager enumerable response.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.ManagerEnumerableResponse.#ctor(System.Collections.Generic.IEnumerable{Genzai.Core.Tests.Mock.Entities.ManagerTest})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.Entities.ManagerEnumerableResponse"/> class.
+            </summary>
+            <param name="items">Manager list.</param>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.ManagerOrderRequest">
+            <summary>
+            Manager order request.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.ManagerPagedRequest">
+            <summary>
+            Manager paged request.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.ManagerRequest">
+            <summary>
+            Manager Request testing class
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.ManagerResponse">
+            <summary>
+            Manager response.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.ManagerResponse.#ctor(Genzai.Core.Tests.Mock.Entities.ManagerTest)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.Entities.ManagerResponse"/> class.
+            </summary>
+            <param name="item">Manager test.</param>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.ManagerTest">
+            <summary>
+            Manager test class for testing purposes.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.ManagerTest.#ctor">
+            <summary>
+            Empty Contructor.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.ManagerTest.#ctor(System.Int32,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.Entities.ManagerTest"/> class.
+            </summary>
+            <param name="id">Client id.</param>
+            <param name="name">Client name.</param>
+            <param name="lastName">Client LastName.</param>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.ManagerTest.ManagerId">
+            <summary>
+            Gets or sets Manager Id.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.ManagerTest.Name">
+            <summary>
+            Gets or sets Client Name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.Entities.ManagerTest.LastName">
+            <summary>
+            Gets or sets Last Name.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.Entities.PersonClassTest">
+            <summary>
+            Person classs test for guard testing.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.PersonClassTest.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.BaseClasses.BaseClass"/> class.
+            </summary>
+            <param name="parentName">parent name string.</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.Entities.PersonClassTest.GetInterfaceProperty">
+            <summary>
+            Get true value.
+            </summary>
+            <seealso cref="M:Genzai.Core.Tests.Mock.BaseClasses.IBaseInterface.GetInterfaceProperty" />
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.ObjectsMocks">
+            <summary>
+            Objects class for getting mocks.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.ObjectsMocks.GetHttpContext">
+            <summary>
+            Mocked HttpContext
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.ObjectsMocks.GetCars">
+            <summary>
+            Get Cars.
+            </summary>
+            <returns>List of Cars.</returns>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.ObjectsMocks.GetCarsBase">
+            <summary>
+            Get Cars.
+            </summary>
+            <returns>List of Cars.</returns>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.ObjectsMocks.GetAuditableCars">
+            <summary>
+            Get Cars.
+            </summary>
+            <returns>List of Cars.</returns>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.ObjectsMocks.GetCarListMock">
+            <summary>
+            Get list of cars.
+            </summary>
+            <returns>List of cars</returns>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.ObjectsMocks.GetCarMock">
+            <summary>
+            Get car mock.
+            </summary>
+            <returns>CarClassTest instance.</returns>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.ObjectsMocks.GetPersonMock">
+            <summary>
+            Get person mock.
+            </summary>
+            <returns>PersonClassTest instance.</returns>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.ObjectsMocks.GetClientListMock">
+            <summary>
+            Get Clients List.
+            </summary>
+            <returns>ClientTest list.</returns>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.ObjectsMocks.GetOrders(System.Int32)">
+            <summary>
+            Get Orders mock.
+            </summary>
+            <returns>List of orders.</returns>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.OrderAggregate.Address">
+            <summary>
+            Address value object.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.OrderAggregate.Address.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.OrderAggregate.Address"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.OrderAggregate.Address.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.OrderAggregate.Address"/> class.
+            </summary>
+            <param name="street">Street param.</param>
+            <param name="city">City param.</param>
+            <param name="country">Country param.</param>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.Address.Street">
+            <summary>
+            Street address.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.Address.City">
+            <summary>
+            City address.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.Address.Country">
+            <summary>
+            Country address.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.Address.PropertyList">
+            <summary>
+            PropertyList
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.OrderAggregate.Address.GetAtomicValues">
+            <summary>
+            Get Atomic Values.
+            </summary>
+            <returns>List values.</returns>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.OrderAggregate.Order">
+            <summary>
+            Order entity.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.OrderAggregate.Order.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.OrderAggregate.Order"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.OrderAggregate.Order.#ctor(System.Int32,System.String,Genzai.Core.Tests.Mock.OrderAggregate.Address)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.OrderAggregate.Order"/> class.
+            </summary>
+            <param name="buyerId">Buyer id.</param>
+            <param name="description">Description.</param>
+            <param name="address">Address.</param>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.Order.BuyerId">
+            <summary>
+            Buyer id.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.Order.Description">
+            <summary>
+            Description.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.Order.Address">
+            <summary>
+            Address.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.Order.OrderItems">
+            <summary>
+            Order item collections.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.OrderAggregate.Order.AddOrderItem(System.Int32,System.String,System.Decimal,System.Int32)">
+            <summary>
+            Add order item.
+            </summary>
+            <param name="productId">Product id.</param>
+            <param name="productName">Product name.</param>
+            <param name="unitPrice">Unit price.</param>
+            <param name="units">Units number.</param>
+        </member>
+        <member name="T:Genzai.Core.Tests.Mock.OrderAggregate.OrderItem">
+            <summary>
+            Order Item entity.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.OrderAggregate.OrderItem.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.OrderAggregate.OrderItem"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.OrderAggregate.OrderItem.#ctor(System.Int32,System.String,System.Decimal,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Tests.Mock.OrderAggregate.OrderItem"/> class.
+            </summary>
+            <param name="productId">Product id.</param>
+            <param name="productName">Product name.</param>
+            <param name="unitPrice">Unit price.</param>
+            <param name="units">Unit number.</param>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.OrderItem.ProductId">
+            <summary>
+            Product id.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.OrderItem.ProductName">
+            <summary>
+            Product name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.OrderItem.UnitPrice">
+            <summary>
+            Unit price.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.OrderItem.Units">
+            <summary>
+            Units number.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.OrderItem.Order">
+            <summary>
+            Order navigation.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Tests.Mock.OrderAggregate.OrderItem.OrderId">
+            <summary>
+            Order id.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.OrderAggregate.OrderItem.SetProduct(System.Int32,System.String,System.Decimal)">
+            <summary>
+            Set product.
+            </summary>
+            <param name="productId">Product id.</param>
+            <param name="productName">Product name.</param>
+            <param name="price">product price</param>
+        </member>
+        <member name="M:Genzai.Core.Tests.Mock.OrderAggregate.OrderItem.AddUnits(System.Int32)">
+            <summary>
+            Add units.
+            </summary>
+            <param name="units">Unit price.</param>
+        </member>
+        <member name="T:Genzai.Core.Tests.Models.ModelConfigurationTests">
+            <summary>
+            Model configuration test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Models.ModelConfigurationTests.Test_Api_Manager_Configuration">
+            <summary>
+            Test api manager configuration.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Models.ModelConfigurationTests.Test_Authorization_Configuration">
+            <summary>
+            Test authorization configuration.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Models.ModelConfigurationTests.Test_Cosmos_Configuration">
+            <summary>
+            Test cosmos configuration.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Models.ModelConfigurationTests.Test_Send_Grid_Configuration">
+            <summary>
+            Test send grid configuration.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Models.ModelConfigurationTests.Test_Swagger_Configuration">
+            <summary>
+            Test swagger configuration.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Models.ModelRequestTests">
+            <summary>
+            Model request test.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Models.ModelRequestTests.Test_Request">
+            <summary>
+            Test request.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Models.ModelRequestTests.Test_Paged_Request">
+            <summary>
+            Test paged request.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Models.ModelRequestTests.Test_Ordered_Request">
+            <summary>
+            Tests ordered request.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Models.ModelResponseTests">
+            <summary>
+            Model response tests.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Models.ModelResponseTests.Test_Model_Response">
+            <summary>
+            Test model response.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Models.ModelResponseTests.Test_Enumerable_Response">
+            <summary>
+            Test model list response.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Telemetry.TelemetryProviderTest">
+            <summary>
+            TelemetryProviderTest
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Telemetry.TelemetryProviderTest.#ctor">
+            <summary>
+            TelemetryProvider
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.ValidationTest.GuardTests">
+            <summary>
+            Class for test guards.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ValidationTest.GuardTests.Test_Against_Some_Object_Null">
+            <summary>
+            Test against Argument null exception.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ValidationTest.GuardTests.Test_Against_Some_Object_Null_With_Message_Params">
+            <summary>
+            Test against Argument null exception with messages params.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ValidationTest.GuardTests.Test_Against_Func_Result">
+            <summary>
+            Test against Argument null exception with func.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ValidationTest.GuardTests.Test_The_Object_Implements_Interface">
+            <summary>
+            Test if an object implements an interface.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ValidationTest.GuardTests.Test_The_Object_Implements_Interface_Passing_Type">
+            <summary>
+            Test if an object implements an interface passing Type.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ValidationTest.GuardTests.Test_The_Object_Inherits_Base_Class">
+            <summary>
+            Test if an object inherits base class.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ValidationTest.GuardTests.Test_The_Object_Inherits_Base_Class_Passing_Type">
+            <summary>
+            Test if an object inherits base class passing type.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ValidationTest.GuardTests.Test_Object_IsEqual_To_Another">
+            <summary>
+            Test if an object is equal to an other.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ValidationTest.GuardTests.Test_Object_Is_Not_Null">
+            <summary>
+            Test object is not null.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ValidationTest.GuardTests.Test_String_Is_Not_Null_Or_Empty">
+            <summary>
+            Test string is null or empty.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ValidationTest.GuardTests.Test_String_Is_Not_Null_Or_White_Space">
+            <summary>
+            Test string is not white space.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.ValidationTest.GuardTests.Test_Object_Is_Specified_Type">
+            <summary>
+            Test object is specified type.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Tests.Vault.VaultConfigurationTest">
+            <summary>
+            VaultConfigurationTest
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Vault.VaultConfigurationTest.VaultConfiguration_when_GetConfigurationIsEmpty_throwError">
+            <summary>
+            VaultConfiguration_when_GetConfigurationIsEmpty_throwError
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Vault.VaultConfigurationTest.VaultConfiguration_when_GetValues_is_OK">
+            <summary>
+            VaultConfiguration_when_GetValues_is_OK
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Vault.VaultConfigurationTest.VaultConfiguration_when_Load_is_OK">
+            <summary>
+            VaultConfiguration_when_GetValues_is_OK
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Tests.Vault.VaultConfigurationTest.VaultConfiguration_when_ReadSecretsAsync_is_OK">
+            <summary>
+            VaultConfiguration_when_GetValues_is_OK
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,672 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Genzai.EfCore.Tests</name>
+    </assembly>
+    <members>
+        <member name="T:Genzai.EfCore.Tests.ContextTest.ContextTests">
+            <summary>
+            Context Test.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.ContextTest.ContextTests.#ctor(Genzai.EfCore.Tests.Fixtures.DatabaseFixture)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.ContextTest.ContextTests"/> class.
+            </summary>
+            <param name="fixture">Context fixture.</param>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.ContextTest.ContextTests.Test_Execute_Sql_Script">
+            <summary>
+            Test execute sql script.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.ContextTest.ContextTests.Test_Execute_Sql_Script_Alternative">
+            <summary>
+            Test execute sql script.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.ContextTest.ContextTests.Test_Begin_Transaction">
+            <summary>
+            Test begin transaction.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.ContextTest.ContextTests.Test_Commit_Transaction">
+            <summary>
+            Test commit transaction.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.ContextTest.ContextTests.Test_Rollback_Transaction">
+            <summary>
+            Test rollback transaction.
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.EntityTest.EntityTests">
+            <summary>
+            Entity tests.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.EntityTest.EntityTests.Test_Entity_Map_Configuration_Is_Null">
+            <summary>
+            Test entity map configuration is null.
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Fixtures.DatabaseFixture">
+            <summary>
+            Database fixture.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Fixtures.DatabaseFixture.Context">
+            <summary>
+            Database context.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Fixtures.DatabaseFixture.Repository">
+            <summary>
+            Order repository.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Fixtures.DatabaseFixture.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Fixtures.DatabaseFixture"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Fixtures.DatabaseFixture.Dispose">
+            <summary>
+            Dispose method.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Fixtures.DatabaseFixture.Dispose(System.Boolean)">
+            <summary>
+            Dispose method.
+            </summary>
+            <param name="disposing">disposing.</param>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.BuyerAggregate.Buyer">
+            <summary>
+            Buyer entity.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.BuyerAggregate.Buyer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Mock.BuyerAggregate.Buyer"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.BuyerAggregate.Buyer.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Mock.BuyerAggregate.Buyer"/> class.
+            </summary>
+            <param name="description">Buyer descriptions.</param>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.BuyerAggregate.Buyer.Description">
+            <summary>
+            Buyer Description.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.BuyerAggregate.Buyer.Orders">
+            <summary>
+            Orders list.
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.DbContext.FakeDomainContext">
+            <summary>
+            Fake domain context.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.DbContext.FakeDomainContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Genzai.EfCore.Tests.Mock.DbContext.FakeDomainContext},MediatR.IMediator,System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Mock.DbContext.FakeDomainContext"/> class.
+            </summary>
+            <param name="options">DbContext options.</param>
+            <param name="mediator">Mediator Service.</param>
+            <param name="claimsPrincipal">Current principal.</param>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.DbContext.FakeDomainContext.Buyers">
+            <summary>
+            Buyers.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.DbContext.FakeDomainContext.Orders">
+            <summary>
+            Orders table.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.DbContext.FakeDomainContext.AuditableOrders">
+            <summary>
+            Auditable
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.DbContext.FakeDomainContext.OrderItems">
+            <summary>
+            Order Items table.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.DbContext.FakeDomainContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            On model creating method.
+            </summary>
+            <param name="modelBuilder">Model builder.</param>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.DomainEvents.OrderStartedDomainEvent">
+            <summary>
+            Event when user creates an order.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.DomainEvents.OrderStartedDomainEvent.#ctor(Genzai.EfCore.Tests.Mock.OrderAggregate.Order,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Mock.DomainEvents.OrderStartedDomainEvent"/> class.
+            </summary>
+            <param name="order">Order</param>
+            <param name="userId">User id.</param>
+            <param name="userName">User name.</param>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.DomainEvents.OrderStartedDomainEvent.UserId">
+            <summary>
+            User id.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.DomainEvents.OrderStartedDomainEvent.UserName">
+            <summary>
+            User Name.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.DomainEvents.OrderStartedDomainEvent.Order">
+            <summary>
+            Order entity.
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.Entities.AuditableProduct">
+            <summary>
+            Auditable Product
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.Entities.AuditableProduct.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.Entities.Product">
+            <summary>
+            Product entity.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.Entities.Product.Description">
+            <summary>
+            Product description.
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.Mappings.AuditableOrderMap">
+            <summary>
+            Auditable map
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.Mappings.AuditableOrderMap.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Genzai.EfCore.Tests.Mock.OrderAggregate.AuditableOrder})">
+            <summary>
+            Configure method.
+            </summary>
+            <param name="builder">Builder param.</param>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.Mappings.BuyerMap">
+            <summary>
+            Buyer map.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.Mappings.BuyerMap.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Genzai.EfCore.Tests.Mock.BuyerAggregate.Buyer})">
+            <summary>
+            Configure method.
+            </summary>
+            <param name="builder">Builder param.</param>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.Mappings.OrderItemMap">
+            <summary>
+            Order item mapping.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.Mappings.OrderItemMap.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem})">
+            <summary>
+            Configure method.
+            </summary>
+            <param name="builder">Builder param.</param>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.Mappings.OrderMap">
+            <summary>
+            Order mapping.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.Mappings.OrderMap.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Genzai.EfCore.Tests.Mock.OrderAggregate.Order})">
+            <summary>
+            Configure method.
+            </summary>
+            <param name="builder">Builder param.</param>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.Mappings.ProductMap">
+            <summary>
+            Product mapping.
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.ObjectMock">
+            <summary>
+            Object Mocking.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.ObjectMock.GetHttpContext">
+            <summary>
+            Mocked HttpContext
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.ObjectMock.GetBuyers">
+            <summary>
+            Get buyers fake.
+            </summary>
+            <returns>Buyers list</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.ObjectMock.GetOrders(System.Int32)">
+            <summary>
+            Get Orders mock.
+            </summary>
+            <returns>List of orders.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.ObjectMock.GetOrder(System.Int32)">
+            <summary>
+            Get mock order.
+            </summary>
+            <returns>Order mock.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.ObjectMock.GetAuditableOrder(System.Int32)">
+            <summary>
+            Get mock order.
+            </summary>
+            <returns>Order mock.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.ObjectMock.GetOrderItem">
+            <summary>
+            Get order item.
+            </summary>
+            <returns>OrderItem mock.</returns>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.OrderAggregate.Address">
+            <summary>
+            Address value object.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.Address.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Mock.OrderAggregate.Address"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.Address.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Mock.OrderAggregate.Address"/> class.
+            </summary>
+            <param name="street">Street param.</param>
+            <param name="city">City param.</param>
+            <param name="country">Country param.</param>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.Address.Street">
+            <summary>
+            Street address.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.Address.City">
+            <summary>
+            City address.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.Address.Country">
+            <summary>
+            Country address.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.Address.GetAtomicValues">
+            <summary>
+            Get Atomic Values.
+            </summary>
+            <returns>List values.</returns>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.OrderAggregate.AuditableOrder">
+            <summary>
+            Auditable
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.AuditableOrder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Mock.OrderAggregate.Order"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.AuditableOrder.#ctor(System.Int32,System.String,Genzai.EfCore.Tests.Mock.OrderAggregate.Address,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Mock.OrderAggregate.Order"/> class.
+            </summary>
+            <param name="buyerId">Buyer id.</param>
+            <param name="description">Description.</param>
+            <param name="address">Address.</param>
+            <param name="userId">User id.</param>
+            <param name="userName">User name.</param>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.AuditableOrder.BuyerId">
+            <summary>
+            Buyer id.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.AuditableOrder.Description">
+            <summary>
+            Description.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.AuditableOrder.Address">
+            <summary>
+            Address.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.AuditableOrder.Buyer">
+            <summary>
+            Buyer class.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.AuditableOrder.OrderItems">
+            <summary>
+            Order item collections.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.AuditableOrder.AddOrderItem(System.Int32,System.String,System.Decimal,System.Int32)">
+            <summary>
+            Add order item.
+            </summary>
+            <param name="productId">Product id.</param>
+            <param name="productName">Product name.</param>
+            <param name="unitPrice">Unit price.</param>
+            <param name="units">Units number.</param>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.OrderAggregate.Order">
+            <summary>
+            Order entity.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.Order.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Mock.OrderAggregate.Order"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.Order.#ctor(System.Int32,System.String,Genzai.EfCore.Tests.Mock.OrderAggregate.Address,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Mock.OrderAggregate.Order"/> class.
+            </summary>
+            <param name="buyerId">Buyer id.</param>
+            <param name="description">Description.</param>
+            <param name="address">Address.</param>
+            <param name="userId">User id.</param>
+            <param name="userName">User name.</param>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.Order.BuyerId">
+            <summary>
+            Buyer id.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.Order.Description">
+            <summary>
+            Description.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.Order.Address">
+            <summary>
+            Address.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.Order.Buyer">
+            <summary>
+            Buyer class.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.Order.OrderItems">
+            <summary>
+            Order item collections.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.Order.AddOrderItem(System.Int32,System.String,System.Decimal,System.Int32)">
+            <summary>
+            Add order item.
+            </summary>
+            <param name="productId">Product id.</param>
+            <param name="productName">Product name.</param>
+            <param name="unitPrice">Unit price.</param>
+            <param name="units">Units number.</param>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.Order.AddOrderStartedDomainEvent(System.Int32,System.String)">
+            <summary>
+            Add order started event.
+            </summary>
+            <param name="userId">User id.</param>
+            <param name="userName">User name.</param>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem">
+            <summary>
+            Order Item entity.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem.#ctor(System.Int32,System.String,System.Decimal,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem"/> class.
+            </summary>
+            <param name="productId">Product id.</param>
+            <param name="productName">Product name.</param>
+            <param name="unitPrice">Unit price.</param>
+            <param name="units">Unit number.</param>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem.ProductId">
+            <summary>
+            Product id.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem.ProductName">
+            <summary>
+            Product name.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem.UnitPrice">
+            <summary>
+            Unit price.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem.Units">
+            <summary>
+            Units number.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem.Order">
+            <summary>
+            Order navigation.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem.OrderId">
+            <summary>
+            Order id.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem.SetProduct(System.Int32,System.String,System.Decimal)">
+            <summary>
+            Set product.
+            </summary>
+            <param name="productId">Product id.</param>
+            <param name="productName">Product name.</param>
+            <param name="price">product price</param>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.OrderAggregate.OrderItem.AddUnits(System.Int32)">
+            <summary>
+            Add units.
+            </summary>
+            <param name="units">Unit price.</param>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.Repository.AuditableOrderRepository">
+            <summary>
+            Auditable Repository
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.Repository.AuditableOrderRepository.#ctor(Genzai.EfCore.Tests.Mock.DbContext.FakeDomainContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.Repository.IAuditableOrderRepository">
+            <summary>
+            Autable Repository
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.Repository.IOrderRepository">
+            <summary>
+            Order repository contract.
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.Mock.Repository.OrderRepository">
+            <summary>
+            Order repository.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.Mock.Repository.OrderRepository.#ctor(Genzai.EfCore.Tests.Mock.DbContext.FakeDomainContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.Mock.Repository.OrderRepository"/> class.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests">
+            <summary>
+            Repository tests.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.#ctor(Genzai.EfCore.Tests.Fixtures.DatabaseFixture)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests"/> class.
+            </summary>
+            <param name="fixture">Context fixture.</param>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Add_New_Item">
+            <summary>
+            Test new item.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Add_New_AuditableItem">
+            <summary>
+            Test new item.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Save_New_AuditableItem_Witch_Claims">
+            <summary>
+            Test save auditable whith claims
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Update_New_AuditableItem_With_Claims">
+            <summary>
+            Test save auditable whith claims
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Add_New_Item_Async">
+            <summary>
+            Test new item async.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Delete_Item">
+            <summary>
+            Test delete item.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Get_All_Items">
+            <summary>
+            Test get all items.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Get_All_Items_Async">
+            <summary>
+            Test get all items async.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Get_by_Id">
+            <summary>
+            Test get element by id.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Get_by_Id_Async">
+            <summary>
+            Test get element by id async.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Get_Filtered_Items">
+            <summary>
+            Test get filtered items.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Get_Filtered_Items_Async">
+            <summary>
+            Test get filtered items async.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Check_Order_By">
+            <summary>
+            Test check order by.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Get_Paged_Items(System.Int32,System.Int32)">
+            <summary>
+            Test get paged items.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Get_Paged_Items_Async(System.Int32,System.Int32)">
+            <summary>
+            Test get paged items async.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Update_Item">
+            <summary>
+            Test update item.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Get_By_Id_With_OrderItem">
+            <summary>
+            Test get by id with order item.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_New_Order_Check_Domain_Events">
+            <summary>
+            Test new order check domain events.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.RepositoryTest.RepositoryTests.Test_Add_Order_Events_Dispatched">
+            <summary>
+            Test add order events dispatched.
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.XunitHelper.PriorityOrderer">
+            <summary>
+            Priority orderer class for Xunit.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.XunitHelper.PriorityOrderer.OrderTestCases``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Method for ordering test cases.
+            </summary>
+            <typeparam name="TTestCase">Test case type.</typeparam>
+            <param name="testCases">Test case list.</param>
+            <returns>Ordered test cases.</returns>
+        </member>
+        <member name="T:Genzai.EfCore.Tests.XunitHelper.TestPriorityAttribute">
+            <summary>
+            Attribute for set execution test priority.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Tests.XunitHelper.TestPriorityAttribute.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Tests.XunitHelper.TestPriorityAttribute"/> class.
+            </summary>
+            <param name="priority">Set priority.</param>
+        </member>
+        <member name="P:Genzai.EfCore.Tests.XunitHelper.TestPriorityAttribute.Priority">
+            <summary>
+            Gets priority.
+            </summary>
+        </member>
+    </members>
+</doc>

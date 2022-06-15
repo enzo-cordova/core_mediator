@@ -1,0 +1,2216 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Genzai.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Genzai.Core.Attributes.SearchableAttribute">
+            <summary>
+            Searchable Attributes for domain class
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Attributes.SearchableAttribute.Searchable">
+            <summary>
+            Condition searchable
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Attributes.SearchableAttribute.Condition">
+            <summary>
+            And-OR
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Attributes.SearchableAttribute.Operation">
+            <summary>
+            Operation
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Caching.CachePipelineBehavior`2">
+            <summary>
+            CachePipelineBehavior
+            </summary>
+            <typeparam name="TRequest"></typeparam>
+            <typeparam name="TResponse"></typeparam>
+        </member>
+        <member name="M:Genzai.Core.Caching.CachePipelineBehavior`2.#ctor(Genzai.Core.Caching.IResponseCacheService)">
+            <summary>
+            constructor
+            </summary>
+            <param name="cache"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Genzai.Core.Caching.CachePipelineBehavior`2.Handle(`0,System.Threading.CancellationToken,MediatR.RequestHandlerDelegate{`1})">
+            <summary>
+            Handle
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <param name="next"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Genzai.Core.Caching.ICacheableRequest`1">
+            <summary>
+            ICacheableRequest
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Caching.ICacheableRequest`1.CacheKey">
+            <summary>
+            CacheKey
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Caching.ICacheInvalidatorRequest">
+            <summary>
+            ICacheInvalidatorRequest
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Caching.ICacheInvalidatorRequest.CacheKey">
+            <summary>
+            CacheKey
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Caching.IResponseCacheService">
+            <summary>
+            IResponseCacheService
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Caching.IResponseCacheService.CachedResponseAsync(System.String,System.Object,System.TimeSpan)">
+            <summary>
+            CachedResponseAsync
+            </summary>
+            <param name="cacheKey"></param>
+            <param name="response"></param>
+            <param name="timeToLive"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Caching.IResponseCacheService.GetCachedResponseAsync(System.String)">
+            <summary>
+            GetCachedResponseAsync
+            </summary>
+            <param name="cacheKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Caching.IResponseCacheService.GetCachedResponseAsync``1(System.String)">
+            <summary>
+            GetCachedResponseAsync
+            </summary>
+            <param name="cacheKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Caching.IResponseCacheService.RemoveCachedResponseAsync(System.String)">
+            <summary>
+            RemoveCachedResponseAsync
+            </summary>
+            <param name="cacheKey"></param>
+        </member>
+        <member name="T:Genzai.Core.Caching.ResponseCacheService">
+            <summary>
+            Service for Redis cache. Maybe better in Core since it is used in several projects
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Caching.ResponseCacheService.#ctor(Microsoft.Extensions.Caching.Distributed.IDistributedCache)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="distributedCache"></param>
+        </member>
+        <member name="M:Genzai.Core.Caching.ResponseCacheService.CachedResponseAsync(System.String,System.Object,System.TimeSpan)">
+            <summary>
+            Cached Response values
+            </summary>
+            <param name="cacheKey"></param>
+            <param name="response"></param>
+            <param name="timeToLive"></param>
+        </member>
+        <member name="M:Genzai.Core.Caching.ResponseCacheService.GetCachedResponseAsync``1(System.String)">
+            <summary>
+            Get CachedResponses Values
+            </summary>
+            <param name="cacheKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Caching.ResponseCacheService.GetCachedResponseAsync(System.String)">
+            <summary>
+            Get CachedResponses Values
+            </summary>
+            <param name="cacheKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Caching.ResponseCacheService.RemoveCachedResponseAsync(System.String)">
+            <summary>
+            Remove key
+            </summary>
+            <param name="cacheKey"></param>
+        </member>
+        <member name="T:Genzai.Core.Controller.BaseController">
+            <summary>
+            BaseController
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Controller.BaseController.#ctor(MediatR.IMediator,System.String)">
+            <summary>
+            constructor
+            </summary>
+            <param name="mediator"></param>
+            <param name="tag"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Genzai.Core.Controller.BaseController.QueryAsync``1(MediatR.IRequest{``0})">
+            <summary>
+            QueryAsync
+            </summary>
+            <param name="query"></param>
+            <typeparam name="TResult"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Controller.BaseController.Single``1(``0)">
+            <summary>
+            Single
+            </summary>
+            <param name="data"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Controller.BaseController.CommandNoContentAsync``1(MediatR.IRequest{``0})">
+            <summary>
+            TResult
+            </summary>
+            <param name="command"></param>
+            <typeparam name="TResult"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Controller.BaseController.CommandCreatedAsync``1(MediatR.IRequest{``0})">
+            <summary>
+            TResult
+            </summary>
+            <param name="command"></param>
+            <typeparam name="TResult"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Genzai.Core.Domain.Model.IAuditable">
+            <summary>
+            IAuditable MarkUp Interface
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.IAuditable.CreatedInformation(System.String)">
+            <summary>
+            Audit creation information
+            </summary>
+            <param name="userName"></param>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.IAuditable.UpdateInformation(System.String)">
+            <summary>
+            Audit update information
+            </summary>
+            <param name="userName"></param>
+        </member>
+        <member name="T:Genzai.Core.Domain.Model.AuditableEntity`2">
+            <summary>
+            Base Entity.
+            </summary>
+            <typeparam name="TEntity">Entity Type.</typeparam>
+            <typeparam name="TKey">Key Type.</typeparam>
+        </member>
+        <member name="P:Genzai.Core.Domain.Model.AuditableEntity`2.Id">
+            <summary>
+            Gets or sets entity Key.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Domain.Model.AuditableEntity`2.CreatedAt">
+            <summary>
+            DateTime Creation
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Domain.Model.AuditableEntity`2.UpdatedAt">
+            <summary>
+            DateTime Update
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Domain.Model.AuditableEntity`2.CreatedBy">
+            <summary>
+            How create it
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Domain.Model.AuditableEntity`2.UpdatedBy">
+            <summary>
+            How update it
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.AuditableEntity`2.op_Equality(Genzai.Core.Domain.Model.AuditableEntity{`0,`1},Genzai.Core.Domain.Model.AuditableEntity{`0,`1})">
+            <summary>
+            Operator == to compare entities.
+            </summary>
+            <param name="left">left entity.</param>
+            <param name="right">right entity.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.AuditableEntity`2.op_Inequality(Genzai.Core.Domain.Model.AuditableEntity{`0,`1},Genzai.Core.Domain.Model.AuditableEntity{`0,`1})">
+            <summary>
+            Operator != to compare entities.
+            </summary>
+            <param name="left">left entity.</param>
+            <param name="right">right entity.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.AuditableEntity`2.Equals(`0)">
+            <summary>
+            Check if is equals to other entity with the same type.
+            </summary>
+            <param name="other">TEntity other class.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.AuditableEntity`2.Equals(System.Object)">
+            <summary>
+            Check if is equals to other entity with the same type.
+            </summary>
+            <param name="obj">Object class.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.AuditableEntity`2.GetHashCode">
+            <summary>
+            Method for returning Hash code.
+            </summary>
+            <returns>Hash code int.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.AuditableEntity`2.HasSameNonDefaultIdAs(Genzai.Core.Domain.Model.AuditableEntity{`0,`1})">
+            <summary>
+            Returns true if self and provided class has the same non default id.
+            </summary>
+            <param name="compareTo">provided class.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.AuditableEntity`2.IsTransient">
+            <summary>
+            Check if its not associated yet in database id=0.
+            </summary>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.AuditableEntity`2.CreatedInformation(System.String)">
+            <summary>
+            Audit creation information
+            </summary>
+            <param name="userName"></param>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.AuditableEntity`2.UpdateInformation(System.String)">
+            <summary>
+            Audit update information
+            </summary>
+            <param name="userName"></param>
+        </member>
+        <member name="T:Genzai.Core.Domain.Model.Entity`2">
+            <summary>
+            Base Entity.
+            </summary>
+            <typeparam name="TEntity">Entity Type.</typeparam>
+            <typeparam name="TKey">Key Type.</typeparam>
+        </member>
+        <member name="P:Genzai.Core.Domain.Model.Entity`2.Id">
+            <summary>
+            Gets or sets entity Key.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.Entity`2.op_Equality(Genzai.Core.Domain.Model.Entity{`0,`1},Genzai.Core.Domain.Model.Entity{`0,`1})">
+            <summary>
+            Operator == to compare entities.
+            </summary>
+            <param name="left">left entity.</param>
+            <param name="right">right entity.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.Entity`2.op_Inequality(Genzai.Core.Domain.Model.Entity{`0,`1},Genzai.Core.Domain.Model.Entity{`0,`1})">
+            <summary>
+            Operator != to compare entities.
+            </summary>
+            <param name="left">left entity.</param>
+            <param name="right">right entity.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.Entity`2.Equals(`0)">
+            <summary>
+            Check if is equals to other entity with the same type.
+            </summary>
+            <param name="other">TEntity other class.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.Entity`2.Equals(System.Object)">
+            <summary>
+            Check if is equals to other entity with the same type.
+            </summary>
+            <param name="obj">Object class.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.Entity`2.GetHashCode">
+            <summary>
+            Method for returning Hash code.
+            </summary>
+            <returns>Hash code int.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.Entity`2.HasSameNonDefaultIdAs(Genzai.Core.Domain.Model.Entity{`0,`1})">
+            <summary>
+            Returns true if self and provided class has the same non default id.
+            </summary>
+            <param name="compareTo">provided class.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.Entity`2.IsTransient">
+            <summary>
+            Check if its not associated yet in database id=0.
+            </summary>
+            <returns>true or false.</returns>
+        </member>
+        <member name="T:Genzai.Core.Domain.Model.EntityWithEvents`2">
+            <summary>
+            Entity with events.
+            </summary>
+            <typeparam name="TEntity">Entity Type.</typeparam>
+            <typeparam name="TKey">Key Type.</typeparam>
+        </member>
+        <member name="P:Genzai.Core.Domain.Model.EntityWithEvents`2.DomainEvents">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.EntityWithEvents`2.AddDomainEvent(MediatR.INotification)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.EntityWithEvents`2.ClearDomainEvents">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.EntityWithEvents`2.RemoveDomainEvent(MediatR.INotification)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Genzai.Core.Domain.Model.IDomainEvent">
+            <summary>
+            Domain Event contract.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Domain.Model.IDomainEvent.DomainEvents">
+            <summary>W
+            Domain events.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.IDomainEvent.AddDomainEvent(MediatR.INotification)">
+            <summary>
+            Add domain event.
+            </summary>
+            <param name="eventItem">Event item.</param>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.IDomainEvent.ClearDomainEvents">
+            <summary>
+            Clear domain events.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.IDomainEvent.RemoveDomainEvent(MediatR.INotification)">
+            <summary>
+            Remove domain event.
+            </summary>
+            <param name="eventItem">Event item.</param>
+        </member>
+        <member name="T:Genzai.Core.Domain.Model.IEntity`1">
+            <summary>
+            Entity contract.
+            </summary>
+            <typeparam name="TKey">Type of key.</typeparam>
+        </member>
+        <member name="P:Genzai.Core.Domain.Model.IEntity`1.Id">
+            <summary>
+            Gets entity Key.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Domain.Model.KeyLess.EntityBase`1">
+            <summary>
+            Entity Base
+            </summary>
+            <typeparam name="TEntity">Entity Type.</typeparam>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.KeyLess.EntityBase`1.op_Equality(Genzai.Core.Domain.Model.KeyLess.EntityBase{`0},Genzai.Core.Domain.Model.KeyLess.EntityBase{`0})">
+            <summary>
+            Operator == to compare entities.
+            </summary>
+            <param name="left">left entity.</param>
+            <param name="right">right entity.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.KeyLess.EntityBase`1.op_Inequality(Genzai.Core.Domain.Model.KeyLess.EntityBase{`0},Genzai.Core.Domain.Model.KeyLess.EntityBase{`0})">
+            <summary>
+            Operator != to compare entities.
+            </summary>
+            <param name="left">left entity.</param>
+            <param name="right">right entity.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.KeyLess.EntityBase`1.Equals(`0)">
+            <summary>
+            Check if is equals to other entity with the same type.
+            </summary>
+            <param name="other">TEntity other class.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.KeyLess.EntityBase`1.Equals(System.Object)">
+            <summary>
+            Check if is equals to other entity with the same type.
+            </summary>
+            <param name="obj">Object class.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.KeyLess.EntityBase`1.GetHashCode">
+            <summary>
+            GetHashCode
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:Genzai.Core.Domain.Model.PagedElements`1">
+            <summary>
+            Base Class for paging results.
+            </summary>
+            <typeparam name="TEntity">Entity param.</typeparam>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.PagedElements`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Domain.Model.PagedElements`1"/> class.
+            </summary>
+            <param name="elements">List of entities.</param>
+            <param name="totalElements">total elements.</param>
+        </member>
+        <member name="P:Genzai.Core.Domain.Model.PagedElements`1.Elements">
+            <summary>
+            Gets elements property.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Domain.Model.PagedElements`1.TotalElements">
+            <summary>
+            Gets total elements property.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.PagedElements`1.FirstDefaultPage">
+            <summary>
+            Default first page with 10 elements
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.PagedElements`1.AnyPage(System.Int32,System.Int32)">
+            <summary>
+            Any page of this collection
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.PagedElements`1.TotalPages(System.Int32)">
+            <summary>
+            Calculate total pages.
+            </summary>
+            <param name="pageSize">Size of page.</param>
+            <returns>total pages.</returns>
+        </member>
+        <member name="T:Genzai.Core.Domain.Model.ValueObject`1">
+            <summary>
+            Standard base class for comparison values.
+            </summary>
+            <typeparam name="T">type of class.</typeparam>
+        </member>
+        <member name="F:Genzai.Core.Domain.Model.ValueObject`1.HasMultiplier">
+            <summary>
+            For Hash codes uniqueness.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.ValueObject`1.op_Equality(Genzai.Core.Domain.Model.ValueObject{`0},Genzai.Core.Domain.Model.ValueObject{`0})">
+            <summary>
+            Operator == to compare entities.
+            </summary>
+            <param name="left">left entity.</param>
+            <param name="right">right entity.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.ValueObject`1.op_Inequality(Genzai.Core.Domain.Model.ValueObject{`0},Genzai.Core.Domain.Model.ValueObject{`0})">
+            <summary>
+            Operator != to compare entities.
+            </summary>
+            <param name="left">left entity.</param>
+            <param name="right">right entity.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.ValueObject`1.Equals(`0)">
+            <summary>
+            Current object is equal to other.
+            </summary>
+            <param name="other">other object to be compared.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.ValueObject`1.Equals(System.Object)">
+            <summary>
+            Current object is equal to other.
+            </summary>
+            <param name="obj">object to be compared.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.ValueObject`1.GetHashCode">
+            <summary>
+            Method for returning Hash code.
+            </summary>
+            <returns>Hash code int.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.Model.ValueObject`1.GetAtomicValues">
+            <summary>
+            Get values of object.
+            </summary>
+            <returns>Colection of values.</returns>
+        </member>
+        <member name="T:Genzai.Core.Domain.QueryAdapters.FilterAdapter`1">
+            <summary>
+            FilterAdapter class
+            For building filters.
+            </summary>
+            <typeparam name="TEntity">Entity type.</typeparam>
+        </member>
+        <member name="M:Genzai.Core.Domain.QueryAdapters.FilterAdapter`1.#ctor(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Domain.QueryAdapters.FilterAdapter`1"/> class.
+            </summary>
+            <param name="expression">Expression filter.</param>
+        </member>
+        <member name="P:Genzai.Core.Domain.QueryAdapters.FilterAdapter`1.InnerExpression">
+            <summary>
+            Gets Expression filter.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Domain.QueryAdapters.FilterOperation">
+            <summary>
+            Filter operation.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Domain.QueryAdapters.FilterOperation.Equals">
+            <summary>
+            Equals
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Domain.QueryAdapters.FilterOperation.NotEquals">
+            <summary>
+            Not Equals
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Domain.QueryAdapters.FilterOperation.Contains">
+            <summary>
+            Contains
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Domain.QueryAdapters.FilterOperation.StartsWith">
+            <summary>
+            Starts With
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Domain.QueryAdapters.FilterOperation.EndsWith">
+            <summary>
+            Ends With
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Domain.QueryAdapters.FilterOperation.GreaterThan">
+            <summary>
+            Greater than
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Domain.QueryAdapters.FilterOperation.GreaterThanOrEqual">
+            <summary>
+            Greater than or equals
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Domain.QueryAdapters.FilterOperation.LessThan">
+            <summary>
+            Less than
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Domain.QueryAdapters.FilterOperation.LessThanOrEqual">
+            <summary>
+            Less than or Equals
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Domain.QueryAdapters.FilterOperation.ConstaisString">
+            <summary>
+            Contains for string expresssions
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Domain.QueryAdapters.IncludesAdapter`1">
+            <summary>
+            ExpressionAdapter class
+            For building lambda expressions for Includes.
+            </summary>
+            <typeparam name="TEntity">Entity type.</typeparam>
+        </member>
+        <member name="M:Genzai.Core.Domain.QueryAdapters.IncludesAdapter`1.#ctor(System.Func{System.Linq.IQueryable{`0},System.Linq.IQueryable{`0}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Domain.QueryAdapters.IncludesAdapter`1"/> class.
+            </summary>
+            <param name="expression">Expression param.</param>
+        </member>
+        <member name="P:Genzai.Core.Domain.QueryAdapters.IncludesAdapter`1.Expression">
+            <summary>
+            Gets expression func.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Domain.QueryAdapters.NewFilterAdapter`2">
+            <summary>
+            FilterAdapter class
+            For building filters.
+            </summary>
+            <typeparam name="TEntity">Entity type.</typeparam>
+            <typeparam name="TModel">Model type</typeparam>
+        </member>
+        <member name="P:Genzai.Core.Domain.QueryAdapters.NewFilterAdapter`2.FinalExpression">
+            <summary>
+            Final Expression
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Domain.QueryAdapters.NewFilterAdapter`2.FilterModel">
+            <summary>
+            Filter model
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Domain.QueryAdapters.NewFilterAdapter`2.QueryParameter">
+            <summary>
+            Query Parameter
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Domain.QueryAdapters.NewFilterAdapter`2.#ctor(`1)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Domain.QueryAdapters.NewFilterAdapter`2"/> class.
+            </summary>
+            <param name="filterModel">Filter Model</param>
+        </member>
+        <member name="M:Genzai.Core.Domain.QueryAdapters.NewFilterAdapter`2.AddAndAlso(System.Linq.Expressions.Expression)">
+            <summary>
+            Add and Also exression
+            </summary>
+            <param name="expression">Expression to be added</param>
+        </member>
+        <member name="M:Genzai.Core.Domain.QueryAdapters.NewFilterAdapter`2.AddOrElse(System.Linq.Expressions.Expression)">
+            <summary>
+            Add or else
+            </summary>
+            <param name="expression">Expression to be added</param>
+        </member>
+        <member name="M:Genzai.Core.Domain.QueryAdapters.NewFilterAdapter`2.GetExpression(System.String,System.Object,Genzai.Core.Domain.QueryAdapters.FilterOperation)">
+            <summary>
+            Get expression lambda
+            </summary>
+            <param name="parameterName">Paramater name</param>
+            <param name="parameterValue">Parameter value</param>
+            <param name="filterOperation">Filter operation</param>
+            <returns>Lambda Expression</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.QueryAdapters.NewFilterAdapter`2.GetFinalLambda">
+            <summary>
+            Get final lambda.
+            </summary>
+            <returns>Filter satisfied</returns>
+        </member>
+        <member name="T:Genzai.Core.Domain.QueryAdapters.OrderBy">
+            <summary>
+            Order by class.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Domain.QueryAdapters.OrderBy.FieldName">
+            <summary>
+            Gets or sets field Name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Domain.QueryAdapters.OrderBy.Direction">
+            <summary>
+            Gets or sets direction.
+            </summary>
+            <example>-1 Desc : 1 Asc.</example>
+        </member>
+        <member name="T:Genzai.Core.Domain.QueryAdapters.OrderByAdapter`1">
+            <summary>
+            OrderByAdapter class
+            For building lambda expressions for order by.
+            </summary>
+            <typeparam name="TEntity">Entity type.</typeparam>
+        </member>
+        <member name="F:Genzai.Core.Domain.QueryAdapters.OrderByAdapter`1.QueryableTypeName">
+            <summary>
+            Lambda parameter.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Domain.QueryAdapters.OrderByAdapter`1.OrderParamName">
+            <summary>
+            Lambda order param.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Domain.QueryAdapters.OrderByAdapter`1.#ctor(System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Domain.QueryAdapters.OrderByAdapter`1"/> class.
+            </summary>
+            <param name="expression">Expression param.</param>
+        </member>
+        <member name="M:Genzai.Core.Domain.QueryAdapters.OrderByAdapter`1.#ctor(System.Collections.Generic.List{Genzai.Core.Domain.QueryAdapters.OrderBy})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Domain.QueryAdapters.OrderByAdapter`1"/> class.
+            </summary>
+            <param name="orderByList">OrderBy list.</param>
+        </member>
+        <member name="P:Genzai.Core.Domain.QueryAdapters.OrderByAdapter`1.InnerExpression">
+            <summary>
+            Gets Expression.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Domain.QueryAdapters.OrderByAdapter`1.GetEntityOrderBy(System.Collections.Generic.List{Genzai.Core.Domain.QueryAdapters.OrderBy})">
+            <summary>
+            Get entity orderby.
+            </summary>
+            <param name="orderByList">OrderBy list.</param>
+            <returns>Order Expression.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.QueryAdapters.OrderByAdapter`1.GetOrderByMethod(System.Int32)">
+            <summary>
+            Get order by method.
+            </summary>
+            <param name="direction">Direction -1 Desc : 1 Asc.</param>
+            <returns>Lambda Method string.</returns>
+        </member>
+        <member name="M:Genzai.Core.Domain.QueryAdapters.OrderByAdapter`1.GetThenOrderByMethod(System.Int32)">
+            <summary>
+            Get then by method.
+            </summary>
+            <param name="direction">Direction -1 Desc : 1 Asc.</param>
+            <returns>Lambda Method string.</returns>
+        </member>
+        <member name="T:Genzai.Core.Extensions.EnumExtensions">
+            <summary>
+            Enum extensions class.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Extensions.EnumExtensions.GetEnumMemberAttributeValue(System.Enum)">
+            <summary>
+            Get enum member attribute value.
+            </summary>
+            <param name="value">Enum type.</param>
+            <returns>string value.</returns>
+        </member>
+        <member name="T:Genzai.Core.Extensions.ExceptionContextExtensions">
+            <summary>
+            Exception context extensions.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Extensions.ExceptionContextExtensions.ArgumentExceptionHandler(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            ArgumentExceptionHandler.
+            </summary>
+            <param name="context">ExceptionContext</param>
+        </member>
+        <member name="M:Genzai.Core.Extensions.ExceptionContextExtensions.BadRequestHandler(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,System.String)">
+            <summary>
+            BadRequestHandler.
+            </summary>
+            <param name="context">ExceptionContext</param>
+            <param name="environment">Environment</param>
+            <param name="nonDevelopMessage">Non develop message.</param>
+        </member>
+        <member name="M:Genzai.Core.Extensions.ExceptionContextExtensions.ServerErrorHandler(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            ServerErrorHandler.
+            </summary>
+            <param name="context">ExceptionContext</param>
+            <param name="environment">Environment.</param>
+        </member>
+        <member name="T:Genzai.Core.Extensions.FluentValidationExtensions">
+            <summary>
+            Extensions for Fluent Validations.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Extensions.FluentValidationExtensions.ValidateCommand``1(FluentValidation.IValidator{``0},``0)">
+            <summary>
+            Validate mediatr command.
+            </summary>
+            <typeparam name="TCommand">Mediatr Command</typeparam>
+            <param name="validator">Command validator.</param>
+            <param name="request">Mediatr Command</param>
+        </member>
+        <member name="T:Genzai.Core.Extensions.LoggingExtensions">
+            <summary>
+            Logging extensions enrichment.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Extensions.LoggingExtensions.Debug(Microsoft.Extensions.Logging.ILogger,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Log debug.
+            </summary>
+            <param name="logger">Generic logger.</param>
+            <param name="message">String message.</param>
+            <param name="memberName">Caller member name.</param>
+            <param name="sourceFilePath">Source File path.</param>
+            <param name="sourceLineNumber">Line Number.</param>
+        </member>
+        <member name="M:Genzai.Core.Extensions.LoggingExtensions.Debug(Microsoft.Extensions.Logging.ILogger,System.String,System.Exception,System.String,System.String,System.Int32)">
+            <summary>
+            Exception log debug.
+            </summary>
+            <param name="logger">Generic logger.</param>
+            <param name="message">String message.</param>
+            <param name="exception">Generic Exception.</param>
+            <param name="memberName">Caller member name.</param>
+            <param name="sourceFilePath">Source File path.</param>
+            <param name="sourceLineNumber">Line Number.</param>
+        </member>
+        <member name="M:Genzai.Core.Extensions.LoggingExtensions.Error(Microsoft.Extensions.Logging.ILogger,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Log Error.
+            </summary>
+            <param name="logger">Generic logger.</param>
+            <param name="message">String message.</param>
+            <param name="memberName">Caller member name.</param>
+            <param name="sourceFilePath">Source File path.</param>
+            <param name="sourceLineNumber">Line Number.</param>
+        </member>
+        <member name="M:Genzai.Core.Extensions.LoggingExtensions.Error(Microsoft.Extensions.Logging.ILogger,System.String,System.Exception,System.String,System.String,System.Int32)">
+            <summary>
+            Exception Log error with message.
+            </summary>
+            <param name="logger">Generic logger.</param>
+            <param name="message">String message.</param>
+            <param name="exception">Generic Exception.</param>
+            <param name="memberName">Caller member name.</param>
+            <param name="sourceFilePath">Source File path.</param>
+            <param name="sourceLineNumber">Line Number.</param>
+        </member>
+        <member name="M:Genzai.Core.Extensions.LoggingExtensions.Error(Microsoft.Extensions.Logging.ILogger,System.Exception,System.String,System.String,System.Int32)">
+            <summary>
+            Exception Log error.
+            </summary>
+            <param name="logger">Generic logger.</param>
+            <param name="exception">Generic Exception.</param>
+            <param name="memberName">Caller member name.</param>
+            <param name="sourceFilePath">Source File path.</param>
+            <param name="sourceLineNumber">Line Number.</param>
+        </member>
+        <member name="M:Genzai.Core.Extensions.LoggingExtensions.Info(Microsoft.Extensions.Logging.ILogger,System.String,System.String,System.String)">
+            <summary>
+            Log information.
+            </summary>
+            <param name="logger">Generic logger.</param>
+            <param name="message">String message.</param>
+            <param name="memberName">Caller member name.</param>
+            <param name="sourceFilePath">Source File path.</param>
+        </member>
+        <member name="M:Genzai.Core.Extensions.LoggingExtensions.Info(Microsoft.Extensions.Logging.ILogger,System.String,System.Exception,System.String,System.String,System.Int32)">
+            <summary>
+            Exception log information.
+            </summary>
+            <param name="logger">Generic logger.</param>
+            <param name="message">String message.</param>
+            <param name="exception">Generic Exception.</param>
+            <param name="memberName">Caller member name.</param>
+            <param name="sourceFilePath">Source File path.</param>
+            <param name="sourceLineNumber">Line Number.</param>
+        </member>
+        <member name="M:Genzai.Core.Extensions.LoggingExtensions.Warn(Microsoft.Extensions.Logging.ILogger,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Log Warn.
+            </summary>
+            <param name="logger">Generic logger.</param>
+            <param name="message">String message.</param>
+            <param name="memberName">Caller member name.</param>
+            <param name="sourceFilePath">Source File path.</param>
+            <param name="sourceLineNumber">Line Number.</param>
+        </member>
+        <member name="M:Genzai.Core.Extensions.LoggingExtensions.Warn(Microsoft.Extensions.Logging.ILogger,System.String,System.Exception,System.String,System.String,System.Int32)">
+            <summary>
+            Exception Log Warn.
+            </summary>
+            <param name="logger">Generic logger.</param>
+            <param name="message">String message.</param>
+            <param name="exception">Generic Exception.</param>
+            <param name="memberName">Caller member name.</param>
+            <param name="sourceFilePath">Source File path.</param>
+            <param name="sourceLineNumber">Line Number.</param>
+        </member>
+        <member name="M:Genzai.Core.Extensions.LoggingExtensions.FormatForInfo(System.String,System.String,System.String)">
+            <summary>
+            Format for info.
+            </summary>
+            <param name="message">String message.</param>
+            <param name="memberName">Caller member name.</param>
+            <param name="sourceFilePath">Source File path.</param>
+            <returns>String message result.</returns>
+        </member>
+        <member name="M:Genzai.Core.Extensions.LoggingExtensions.FormatForContext(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Format for context.
+            </summary>
+            <param name="message">String message.</param>
+            <param name="memberName">Caller member name.</param>
+            <param name="sourceFilePath">Source File path.</param>
+            <param name="sourceLineNumber">Line Number.</param>
+            <returns>String message result.</returns>
+        </member>
+        <member name="M:Genzai.Core.Extensions.LoggingExtensions.FormatForException(System.String,System.Exception)">
+            <summary>
+            Format for exception.
+            </summary>
+            <param name="message">String message.</param>
+            <param name="exception">Generic Exception.</param>
+            <returns>String message result.</returns>
+        </member>
+        <member name="T:Genzai.Core.Extensions.PagingExtensions">
+            <summary>
+            Paging extensions for colections.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Extensions.PagingExtensions.Page``1(System.Linq.IQueryable{``0},System.Int32,System.Int32)">
+            <summary>
+            IQueryable page extension.
+            </summary>
+            <typeparam name="T">Object Type.</typeparam>
+            <param name="query">Query.</param>
+            <param name="pageIndex">Page index.</param>
+            <param name="pageSize">Page size.</param>
+            <returns>Paged query.</returns>
+        </member>
+        <member name="M:Genzai.Core.Extensions.PagingExtensions.Page``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+            <summary>
+            IEnumerable page extension.
+            </summary>
+            <typeparam name="T">Object type.</typeparam>
+            <param name="query">IEnumerable.</param>
+            <param name="pageIndex">Page index.</param>
+            <param name="pageSize">Page size.</param>
+            <returns>Paged enumerable.</returns>
+        </member>
+        <member name="T:Genzai.Core.Extensions.PathExtensions">
+            <summary>
+            Path Extensions class.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Extensions.PathExtensions.GetFilePathFromBasePath(System.String)">
+            <summary>
+            Get file path from application environment base path.
+            </summary>
+            <param name="fileName">File name string.</param>
+            <returns>Phisical path.</returns>
+        </member>
+        <member name="T:Genzai.Core.Extensions.SecurityExtensions">
+            <summary>
+            Security extensions.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Extensions.SecurityExtensions.AddGenzaiAuthenticationBearer(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Add TCM JWT Authetication Bearer.
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="T:Genzai.Core.Helpers.IDynamicFilter`1">
+            <summary>
+            Interface for dynamic filtering
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Genzai.Core.Helpers.IDynamicFilter`1.GetFilterExpression(System.String,System.Collections.Generic.Dictionary{System.String,System.Int64})">
+            <summary>
+            Expression construction
+            </summary>
+            <param name="searchFilter"></param>
+            <param name="numericValues"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Genzai.Core.Helpers.ISortHelper`1">
+            <summary>
+            Interface for sorting expressions
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Genzai.Core.Helpers.ISortHelper`1.ApplySort(System.Linq.IQueryable{`0},System.String)">
+            <summary>
+            Sort query to be used
+            </summary>
+            <param name="entities"></param>
+            <param name="orderByQueryString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Helpers.ISortHelper`1.ApplySort(System.String,System.String)">
+            <summary>
+            To sort method
+            </summary>
+            <param name="orderByQueryString"></param>
+            <param name="orderCriteriaString"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Genzai.Core.Helpers.SortHelper`1">
+            <summary>
+            Interface implementation
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Genzai.Core.Helpers.SortHelper`1.ApplySort(System.Linq.IQueryable{`0},System.String)">
+            <summary>
+            ApplySort
+            </summary>
+            <param name="entities"></param>
+            <param name="orderByQueryString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Helpers.SortHelper`1.ApplySort(System.String,System.String)">
+            <summary>
+            Method for implementations
+            </summary>
+            <param name="orderByQueryString"></param>
+            <param name="orderCriteriaString"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Genzai.Core.Inflector.Inflector">
+            <summary>
+            String Transformations.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Inflector.Inflector.Plurals">
+            <summary>
+            List of plurals.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Inflector.Inflector.Singulars">
+            <summary>
+            list of Singulars.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Inflector.Inflector.Uncountables">
+            <summary>
+            List of uncountables.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Genzai.Core.Inflector.Inflector"/> class.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.Camelize(System.String)">
+            <summary>
+            Formats the string in Camel case.
+            </summary>
+            <param name="lowercaseAndUnderscoredWord">string. The word to format in Camel case.</param>
+            <returns>string. The word in Camel case.</returns>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.Capitalize(System.String)">
+            <summary>
+            Capitalizes the word.
+            </summary>
+            <param name="word">string. The word to capitalize.</param>
+            <returns>The Capitalized word.</returns>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.Dasherize(System.String)">
+            <summary>
+            Replaces underscores with dashes in the string.
+            </summary>
+            <param name="underscoredWord">string. The word to dasherize.</param>
+            <returns>The word with dashes instead of underscores.</returns>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.Humanize(System.String)">
+            <summary>
+            Capitalizes the first word and turns underscores into spaces and strips _id. Formats the word into
+            human readable string.
+            </summary>
+            <param name="lowercaseAndUnderscoredWord">string. The word to humanize.</param>
+            <returns>The humanized word.</returns>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.Ordinalize(System.String)">
+            <summary>
+            Ordinalize turns a number into an ordinal string used to denote the position in an ordered
+            sequence such as 1st, 2nd, 3rd, 4th.
+            </summary>
+            <param name="number">string. The number to ordinalize.</param>
+            <returns>string. The ordinalized number.</returns>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.Pascalize(System.String)">
+            <summary>
+            Formats the string in pascal case.
+            </summary>
+            <param name="lowercaseAndUnderscoredWord">string. The word to Pascal case.</param>
+            <returns>The word in Pascal case.</returns>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.Pluralize(System.String)">
+            <summary>
+            Returns the plural form of the word in the string.
+            </summary>
+            <param name="word">string. The word to pluralize.</param>
+            <returns>The pluralized word.</returns>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.Singularize(System.String)">
+            <summary>
+            The reverse of <see cref="M:Genzai.Core.Inflector.Inflector.Pluralize(System.String)"/>, returns the singular form of a word in a string.
+            </summary>
+            <param name="word">string. The word to singularize.</param>
+            <returns>The singluralized word.</returns>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.Titleize(System.String)">
+            <summary>
+            Capitalizes all the words and replaces some characters in the string to create a nicer looking title.
+            </summary>
+            <param name="word">string. The word to titleize.</param>
+            <returns>The titlized word.</returns>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.Uncapitalize(System.String)">
+            <summary>
+            Revers of <see cref="M:Genzai.Core.Inflector.Inflector.Capitalize(System.String)"/>.
+            </summary>
+            <param name="word">string. The word to un-capitalize.</param>
+            <returns>Uncapitalized string.</returns>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.Underscore(System.String)">
+            <summary>
+            Makes an underscored form from the expression in the string.
+            </summary>
+            <param name="pascalCasedWord">string. The word to underscore.</param>
+            <returns>string. The word with underscore seperators.</returns>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.AddIrregular(System.String,System.String)">
+            <summary>
+            Add irregular method.
+            </summary>
+            <param name="singular">word in singular.</param>
+            <param name="plural">word in plural.</param>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.AddPlural(System.String,System.String)">
+            <summary>
+            Add plural in list.
+            </summary>
+            <param name="rule">string regex rule.</param>
+            <param name="replacement">string replacement.</param>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.AddSingular(System.String,System.String)">
+            <summary>
+            Add singular in list.
+            </summary>
+            <param name="rule">string regex rule.</param>
+            <param name="replacement">string replacement.</param>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.AddUncountable(System.String)">
+            <summary>
+            Add uncountable words.
+            </summary>
+            <param name="word">string word.</param>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Inflector.ApplyRules(System.Collections.Generic.List{Genzai.Core.Inflector.Rule},System.String)">
+            <summary>
+            Apply rules.
+            </summary>
+            <param name="rules">Rules list.</param>
+            <param name="word">Word to find.</param>
+            <returns>string result.</returns>
+        </member>
+        <member name="T:Genzai.Core.Inflector.Rule">
+            <summary>
+            Class for apply regular expressions in inflector class.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Inflector.Rule.regex">
+            <summary>
+            Regular Expression.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Inflector.Rule.replacement">
+            <summary>
+            Replacement String.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Rule.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Inflector.Rule"/> class.
+            </summary>
+            <param name="pattern">String pattern.</param>
+            <param name="replacement">String Replacement.</param>
+        </member>
+        <member name="M:Genzai.Core.Inflector.Rule.Apply(System.String)">
+            <summary>
+            Method tha apply regular expression.
+            </summary>
+            <param name="word">string to analyze.</param>
+            <returns>Returns string.</returns>
+        </member>
+        <member name="T:Genzai.Core.Integration.BaseMessage">
+            <summary>
+            Base Message for ServiceBus
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Integration.BaseMessage.Guid">
+            <summary>
+            Message Identifier
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Integration.BaseMessage.MessageCreated">
+            <summary>
+            Creation information
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Integration.BaseMessage.#ctor">
+            <summary>
+            Constructor without parameters
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Integration.BaseMessage.#ctor(System.Guid,System.DateTime)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="id"></param>
+            <param name="createDate"></param>
+        </member>
+        <member name="T:Genzai.Core.Integration.BaseMessageEventHandler`1">
+            <summary>
+            BaseMessageEventHandler
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Genzai.Core.Integration.BaseMessageEventHandler`1.Handle(`0)">
+            <summary>
+            Handle
+            </summary>
+            <param name="event"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Genzai.Core.Integration.BaseMessageEventHandler">
+            <summary>
+            BaseMessageEventHandler
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Integration.EventBusServiceBus">
+            <summary>
+            EventBusServiceBus
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Integration.EventBusServiceBus.#ctor(Genzai.Core.Integration.ServiceBusConnection)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="serviceBusConnection"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Genzai.Core.Integration.EventBusServiceBus.Publish(Genzai.Core.Integration.BaseMessage)">
+            <summary>
+            Publish
+            </summary>
+            <param name="baseMessage"></param>
+        </member>
+        <member name="M:Genzai.Core.Integration.EventBusServiceBus.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Genzai.Core.Integration.EventBusServiceBus.Dispose(System.Boolean)">
+            <summary>
+            Dispose
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:Genzai.Core.Integration.IEntryPointSettings">
+            <summary>
+            IEntryPointSettings
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Integration.IEventBus">
+            <summary>
+            IEventBus
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Integration.IEventBus.Publish(Genzai.Core.Integration.BaseMessage)">
+            <summary>
+            Publish message to ServiceBus
+            </summary>
+            <param name="baseMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Genzai.Core.Integration.IMessageBus">
+            <summary>
+            Interface for ServiceBus
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Integration.IMessageBus.PublishMessage(System.String,Genzai.Core.Integration.BaseMessage,System.String)">
+            <summary>
+            Publish message to ServiceBus
+            </summary>
+            <param name="connectionString"></param>
+            <param name="baseMessage"></param>
+            <param name="topicName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Genzai.Core.Integration.ServiceBusConnection">
+            <summary>
+            IServiceBusConnection
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Integration.ServiceBusConnection.EndpointSb">
+            <summary>
+            EndpointSb
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Integration.ServiceBusConnection.TopicName">
+            <summary>
+            TopicName
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Integration.ServiceBusConnection.AutoComplete">
+            <summary>
+            AutoComplete
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Integration.ServiceBusConnection.MaxConcurrentCalls">
+            <summary>
+            MaxConcurrentCalls
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Integration.ServiceBusMessageBus">
+            <summary>
+            Implementation messaging
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Integration.ServiceBusMessageBus.PublishMessage(System.String,Genzai.Core.Integration.BaseMessage,System.String)">
+            <summary>
+            Publish Message Implementation
+            </summary>
+            <param name="connectionString"></param>
+            <param name="baseMessage"></param>
+            <param name="topicName"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Genzai.Core.Locales.LocalStrings">
+            <summary>
+              Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Locales.LocalStrings.ResourceManager">
+            <summary>
+              Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Locales.LocalStrings.Culture">
+            <summary>
+              Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+              búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Locales.LocalStrings.ArgumentExceptionMessage">
+            <summary>
+              Busca una cadena traducida similar a There was an error in your request, please review the details..
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Locales.LocalStrings.ErrorMessageTitle">
+            <summary>
+              Busca una cadena traducida similar a Remote Error..
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Locales.LocalStrings.ParamEqualOrMoreThanZero">
+            <summary>
+              Busca una cadena traducida similar a Parameter {0} must be equal or greater than zero..
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Locales.LocalStrings.ParameterIsNull">
+            <summary>
+              Busca una cadena traducida similar a Parameter {0} can not be null..
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Locales.LocalStrings.ParamMoreThanZero">
+            <summary>
+              Busca una cadena traducida similar a Parameter {0} must be greater than zero..
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Locales.LocalStrings.PatternVault">
+            <summary>
+              Busca una cadena traducida similar a (.*)\$vault\((.*)\)(.*).
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Locales.LocalStrings.ServerErrorMessage">
+            <summary>
+              Busca una cadena traducida similar a There was an error in your request, please contact to your system administrator..
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Locales.LocalStrings.OperationExceptionMessage">
+            <summary>
+              Looks up a localized string similar to There was an error in your request, please contact to your system administrator..
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Configuration.Entity.ApiManagerEndpoint">
+            <summary>
+            Api manager endpoints configuration.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Entity.ApiManagerEndpoint.ApiName">
+            <summary>
+            Api name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Entity.ApiManagerEndpoint.ApiUrl">
+            <summary>
+            Api url.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Entity.ApiManagerEndpoint.OcpApimSubscriptionKey">
+            <summary>
+            Api subscription key.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Entity.ApiManagerEndpoint.Endpoints">
+            <summary>
+            Endpoints.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Configuration.Entity.ApiSwaggerInfo">
+            <summary>
+            Api swagger Info class, corresponds to Swagger Section.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Entity.ApiSwaggerInfo.Title">
+            <summary>
+            Gets or sets swagger Title.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Entity.ApiSwaggerInfo.Description">
+            <summary>
+            Gets or sets swagger Description.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Entity.ApiSwaggerInfo.Version">
+            <summary>
+            Gets or sets swagger Version.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Configuration.Entity.Endpoint">
+            <summary>
+            Endpoint name and method to call in Api manager.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Entity.Endpoint.Name">
+            <summary>
+            Name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Entity.Endpoint.Method">
+            <summary>
+            Method.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Configuration.Entity.SwaggerOauth">
+            <summary>
+            Swagger oauth section.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Entity.SwaggerOauth.AppNamePrompt">
+            <summary>
+            App Name Prompt.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Entity.SwaggerOauth.ClientId">
+            <summary>
+            Client ID.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Entity.SwaggerOauth.ClientSecret">
+            <summary>
+            Client secret.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Entity.SwaggerOauth.ReturnUrl">
+            <summary>
+            Return url.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Configuration.Mapping.AesConfiguration">
+            <summary>
+            Aes.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Model.Configuration.Mapping.AesConfiguration.Section">
+            <summary>
+            Config Section name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.AesConfiguration.Key">
+            <summary>
+            Key
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.AesConfiguration.IV">
+            <summary>
+            Iv
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Configuration.Mapping.ApiManagerConfiguration">
+            <summary>
+            Api manager configuration.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Model.Configuration.Mapping.ApiManagerConfiguration.Section">
+            <summary>
+            Config Section name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.ApiManagerConfiguration.ApiList">
+            <summary>
+            Api manager endpoint list.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Configuration.Mapping.AuthorizationConfiguration">
+            <summary>
+            Authorization configuration.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Model.Configuration.Mapping.AuthorizationConfiguration.Section">
+            <summary>
+            Config Section name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.AuthorizationConfiguration.ResourceId">
+            <summary>
+            Gets or sets resource id.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.AuthorizationConfiguration.Instance">
+            <summary>
+            Gets or sets instance.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.AuthorizationConfiguration.TenantId">
+            <summary>
+            Gets or sets tenant id.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.AuthorizationConfiguration.Oauth2Url">
+            <summary>
+            Oauth 2 url.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Configuration.Mapping.CosmosConfiguration">
+            <summary>
+            Helper cosmos configuration.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Model.Configuration.Mapping.CosmosConfiguration.Section">
+            <summary>
+            Config Section name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.CosmosConfiguration.Endpoint">
+            <summary>
+            Gets or sets cosmos endpoint.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.CosmosConfiguration.ApiKey">
+            <summary>
+            Gets or sets cosmos api key.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.CosmosConfiguration.DatabaseName">
+            <summary>
+            Gets or sets cosmos Database Name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.CosmosConfiguration.ApplicationName">
+            <summary>
+            Gets or sets cosmos Application Name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.CosmosConfiguration.Collection">
+            <summary>
+            Gets or sets collection name.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Configuration.Mapping.JwtBearerConfiguration">
+            <summary>
+            Jwt bearer configuration.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Model.Configuration.Mapping.JwtBearerConfiguration.Section">
+            <summary>
+            Config Section name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.JwtBearerConfiguration.Key">
+            <summary>
+            Key.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.JwtBearerConfiguration.Issuer">
+            <summary>
+            Valid issuer.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.JwtBearerConfiguration.Audience">
+            <summary>
+            Valid audience.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Configuration.Mapping.SendGridConfiguration">
+            <summary>
+            Send grid configuration map.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Model.Configuration.Mapping.SendGridConfiguration.Section">
+            <summary>
+            Config Section name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.SendGridConfiguration.ApiKey">
+            <summary>
+            Api key.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Configuration.Mapping.ServiceBusConfiguration">
+            <summary>
+            Configuration for a ServiceBus
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Configuration.Mapping.SqlConnectionConfiguration">
+            <summary>
+            Sql connection string.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Model.Configuration.Mapping.SqlConnectionConfiguration.Section">
+            <summary>
+            Config Section name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.SqlConnectionConfiguration.AppConnection">
+            <summary>
+            Gets or sets app Connection.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.SqlConnectionConfiguration.Redis">
+            <summary>
+            Redis connection string
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Configuration.Mapping.SwaggerConfiguration">
+            <summary>
+            Swagger config.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Model.Configuration.Mapping.SwaggerConfiguration.Section">
+            <summary>
+            Config Section name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.SwaggerConfiguration.Environment">
+            <summary>
+            Gets or sets environment.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.SwaggerConfiguration.Name">
+            <summary>
+            Gets or sets name.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.SwaggerConfiguration.ApiInfo">
+            <summary>
+            Gets or sets apiInfo.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.SwaggerConfiguration.Endpoint">
+            <summary>
+            Gets or sets endpoint.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Configuration.Mapping.SwaggerConfiguration.Oauth">
+            <summary>
+            Oauth parameters.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Enums.OrderingDirections">
+            <summary>
+            Ordering directions enum.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Model.Enums.OrderingDirections.Asc">
+            <summary>
+            Asdending value.
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Model.Enums.OrderingDirections.Desc">
+            <summary>
+            Descending Value.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Request.Base.ApiResult">
+            <summary>
+            Api error result model.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Model.Request.Base.ApiResult.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Model.Request.Base.ApiResult"/> class.
+            </summary>
+            <param name="resultCode">Result Code</param>
+            <param name="message">Message</param>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.Base.ApiResult.ResultCode">
+            <summary>
+            Gets or sets ResultCode.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.Base.ApiResult.Message">
+            <summary>
+            Gets or sets message to respond.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Request.Base.FilterRequest`1">
+            <summary>
+            Filter request base.
+            </summary>
+            <typeparam name="TEntity">Entity to Filter.</typeparam>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.Base.FilterRequest`1.Filter">
+            <summary>
+            Gets or sets filter class.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Request.FilterRangeOrderedRequest`1">
+            <summary>
+            Filter Range ordered request.
+            </summary>
+            <typeparam name="TEntity">Entity to Filter.</typeparam>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.FilterRangeOrderedRequest`1.OrderBy">
+            <summary>
+            Gets or sets orderBy.
+            </summary>
+            <value>
+            OrderBy.
+            </value>
+        </member>
+        <member name="T:Genzai.Core.Model.Request.FilterRangeRequest`1">
+            <summary>
+            FilterRequest
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.FilterRangeRequest`1.Start">
+            <summary>
+            Gets or sets start.
+            </summary>
+            <value>
+            Start.
+            </value>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.FilterRangeRequest`1.Size">
+            <summary>
+            Gets or sets size.
+            </summary>
+            <value>
+            Size.
+            </value>
+        </member>
+        <member name="T:Genzai.Core.Model.Request.OrderedRequest`1">
+            <summary>
+            Ordered Request.
+            </summary>
+            <typeparam name="TEntity">Entity Type.</typeparam>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.OrderedRequest`1.OrderingList">
+            <summary>
+            List of ordering fields and directions.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Request.PagedRequest`1">
+            <summary>
+            Request class for pagination request.
+            </summary>
+            <typeparam name="TEntity">Entity type.</typeparam>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.PagedRequest`1.Page">
+            <summary>
+            Start point.
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.PagedRequest`1.PageSize">
+            <summary>
+            Fetch Size.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Request.QueryStringParameters">
+            <summary>
+             Parameters
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.QueryStringParameters.OrderBy">
+            <summary>
+            Order by
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.QueryStringParameters.OrderCriteria">
+            <summary>
+            Order Criteria
+            </summary>
+        </member>
+        <member name="F:Genzai.Core.Model.Request.QueryStringParameters.MaxPageSize">
+            <summary>
+            Order by default 50
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.QueryStringParameters.PageNumber">
+            <summary>
+            Page Number
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.QueryStringParameters.PageSize">
+            <summary>
+            Page Size default 10
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Request.Request`1">
+            <summary>
+            Base class for requests.
+            </summary>
+            <typeparam name="TEntity">Entity type.</typeparam>
+        </member>
+        <member name="P:Genzai.Core.Model.Request.Request`1.Model">
+            <summary>
+            Filtering model class.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Response.ApiAsyncEnumerableResult`1">
+            <summary>
+            Api Async enumerable result
+            </summary>
+            <typeparam name="TEntity">Entity Type</typeparam>
+        </member>
+        <member name="M:Genzai.Core.Model.Response.ApiAsyncEnumerableResult`1.#ctor(System.Int32,System.String,System.Collections.Generic.IAsyncEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Model.Response.ApiEnumerableResult`1"/> class.
+            </summary>
+            <param name="resultCode">Result Code</param>
+            <param name="message">Message</param>
+            <param name="resultList">Result List</param>
+        </member>
+        <member name="P:Genzai.Core.Model.Response.ApiAsyncEnumerableResult`1.Items">
+            <summary>
+            List of entities.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Response.ApiEnumerableResult`1">
+            <summary>
+            Api List Result.
+            </summary>
+            <typeparam name="TEntity">Entity Type.</typeparam>
+        </member>
+        <member name="M:Genzai.Core.Model.Response.ApiEnumerableResult`1.#ctor(System.Int32,System.String,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Model.Response.ApiEnumerableResult`1"/> class.
+            </summary>
+            <param name="resultCode">Result Code</param>
+            <param name="message">Message</param>
+            <param name="resultList">Result List</param>
+        </member>
+        <member name="P:Genzai.Core.Model.Response.ApiEnumerableResult`1.ResultList">
+            <summary>
+            Gets or sets resultList.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Response.ApiModelResult`1">
+            <summary>
+            Api model result.
+            </summary>
+            <typeparam name="TEntity">Entity Model.</typeparam>
+        </member>
+        <member name="M:Genzai.Core.Model.Response.ApiModelResult`1.#ctor(System.Int32,System.String,`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Model.Response.ApiModelResult`1"/> class.
+            </summary>
+            <param name="resultCode">Result Code</param>
+            <param name="message">Message</param>
+            <param name="result">Result</param>
+        </member>
+        <member name="P:Genzai.Core.Model.Response.ApiModelResult`1.Result">
+            <summary>
+            Gets or sets entity result.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Response.ApiPagedEnumerableResult`1">
+            <summary>
+            Api paged result.
+            </summary>
+            <typeparam name="TEntity">Entity type.</typeparam>
+        </member>
+        <member name="M:Genzai.Core.Model.Response.ApiPagedEnumerableResult`1.#ctor(System.Int32,System.String,Genzai.Core.Domain.Model.PagedElements{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Model.Response.ApiPagedEnumerableResult`1"/> class.
+            </summary>
+            <param name="resultCode">Result Code</param>
+            <param name="message">Message</param>
+            <param name="pagedResult">Result</param>
+        </member>
+        <member name="P:Genzai.Core.Model.Response.ApiPagedEnumerableResult`1.PagedResult">
+            <summary>
+            Gets or sets pagedResult.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Response.AsyncEnumerableResponse`1">
+            <summary>
+            Async enumerable response.
+            </summary>
+            <typeparam name="TEntity">Entity type.</typeparam>
+        </member>
+        <member name="M:Genzai.Core.Model.Response.AsyncEnumerableResponse`1.#ctor(System.Collections.Generic.IAsyncEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Model.Response.AsyncEnumerableResponse`1"/> class.
+            </summary>
+            <param name="items">Item list.</param>
+        </member>
+        <member name="P:Genzai.Core.Model.Response.AsyncEnumerableResponse`1.Items">
+            <summary>
+            List of entities.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Response.EnumerableResponse`1">
+            <summary>
+            Enumerable response.
+            </summary>
+            <typeparam name="TEntity">Entity type.</typeparam>
+        </member>
+        <member name="M:Genzai.Core.Model.Response.EnumerableResponse`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Model.Response.AsyncEnumerableResponse`1"/> class.
+            </summary>
+            <param name="items">Item list.</param>
+        </member>
+        <member name="P:Genzai.Core.Model.Response.EnumerableResponse`1.Items">
+            <summary>
+            List of entities.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Response.ModelResponse`1">
+            <summary>
+            Base model response.
+            </summary>
+            <typeparam name="TEntity">Entity type.</typeparam>
+        </member>
+        <member name="M:Genzai.Core.Model.Response.ModelResponse`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Model.Response.ModelResponse`1"/> class.
+            </summary>
+            <param name="Item">Item instance.</param>
+        </member>
+        <member name="P:Genzai.Core.Model.Response.ModelResponse`1.Item">
+            <summary>
+            Entity model.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Model.Response.PagedEnumerableResponse`1">
+            <summary>
+            Response for pagedElements
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Model.Response.PagedEnumerableResponse`1.#ctor(Genzai.Core.Domain.Model.PagedElements{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.Core.Model.Response.PagedEnumerableResponse`1"/> class.
+            </summary>
+            <param name="pagedResult">Result</param>
+        </member>
+        <member name="P:Genzai.Core.Model.Response.PagedEnumerableResponse`1.PagedResult">
+            <summary>
+            Gets or sets pagedResult.
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Telemetry.ITelemetryProvider">
+            <summary>
+            ITelemetryProvider
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Telemetry.ITelemetryProvider.AddEventProperty(System.String,System.String)">
+            <summary>
+            AddTelemetryEventProperty
+            </summary>
+            <param name="property"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Genzai.Core.Telemetry.ITelemetryProvider.TrackEvent(System.String)">
+            <summary>
+            TrackEvent
+            </summary>
+            <param name="eventName"></param>
+        </member>
+        <member name="T:Genzai.Core.Telemetry.TelemetryProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:Genzai.Core.Telemetry.TelemetryProvider.#ctor(Microsoft.ApplicationInsights.TelemetryClient)">
+            <summary>
+            TelemetryProvider
+            </summary>
+            <param name="telemetryClient"></param>
+        </member>
+        <member name="M:Genzai.Core.Telemetry.TelemetryProvider.AddEventProperty(System.String,System.String)">
+            <summary>
+            AddTelemetryEventProperty
+            </summary>
+            <param name="property"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Genzai.Core.Telemetry.TelemetryProvider.TrackEvent(System.String)">
+            <summary>
+            TrackEvent
+            </summary>
+            <param name="eventName"></param>
+        </member>
+        <member name="T:Genzai.Core.Validation.Guard">
+            <summary>
+            Guard parameters and local variables.
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Validation.Guard.Against``1(System.Boolean,System.String)">
+            <summary>
+            Throws an exception when assertion is true.
+            </summary>
+            <typeparam name="TException">Type of exception.</typeparam>
+            <param name="assertion">The assertion to evaluate.</param>
+            <param name="message">Message to throw.</param>
+        </member>
+        <member name="M:Genzai.Core.Validation.Guard.Against``1(System.Boolean,System.String,System.Object[])">
+            <summary>
+            Throws an exception when assertion is true with params.
+            </summary>
+            <typeparam name="TException">Type of exception.</typeparam>
+            <param name="assertion">The assertion to evaluate.</param>
+            <param name="message">Message template to show.</param>
+            <param name="args">Params to show in message.</param>
+        </member>
+        <member name="M:Genzai.Core.Validation.Guard.Against``1(System.Func{System.Boolean},System.String)">
+            <summary>
+            Throws an exception when assertion delegate returns true.
+            </summary>
+            <typeparam name="TException">Type of exception.</typeparam>
+            <param name="assertion">Assertion delegate.</param>
+            <param name="message">Message to throw.</param>
+        </member>
+        <member name="M:Genzai.Core.Validation.Guard.Implements``1(System.Object,System.String)">
+            <summary>
+            Throws an InvalidOperationException when object instance not implements TInterface.
+            </summary>
+            <typeparam name="TInterface">Interface type.</typeparam>
+            <param name="instance">Object Instance.</param>
+            <param name="message">Message to throw.</param>
+        </member>
+        <member name="M:Genzai.Core.Validation.Guard.Implements``1(System.Type,System.String)">
+            <summary>
+            Throws an InvalidOperationException when object instance not implements TInterface.
+            </summary>
+            <typeparam name="TInterface">Interface type.</typeparam>
+            <param name="type">Instance type.</param>
+            <param name="message">Message to throw.</param>
+        </member>
+        <member name="M:Genzai.Core.Validation.Guard.InheritsFrom``1(System.Object,System.String)">
+            <summary>
+            Throws an InvalidOperationException when object instance not inherits TBase.
+            </summary>
+            <typeparam name="TBase">Base Type object.</typeparam>
+            <param name="instance">Object Instance.</param>
+            <param name="message">Message to throw.</param>
+        </member>
+        <member name="M:Genzai.Core.Validation.Guard.InheritsFrom``1(System.Type,System.String)">
+            <summary>
+            Throws an InvalidOperationException when object instance not inherits TBase.
+            </summary>
+            <typeparam name="TBase">Base Type object.</typeparam>
+            <param name="type">Instance type.</param>
+            <param name="message">Message to throw.</param>
+        </member>
+        <member name="M:Genzai.Core.Validation.Guard.IsEqual``1(System.Object,System.Object,System.String)">
+            <summary>
+            Throws an exception when the objects are not the same.
+            </summary>
+            <typeparam name="TException">Type of exception.</typeparam>
+            <param name="compare">Object instance to compare.</param>
+            <param name="instance">Object Instance.</param>
+            <param name="message">Message to throw.</param>
+        </member>
+        <member name="M:Genzai.Core.Validation.Guard.IsNotNull(System.Object,System.String)">
+            <summary>
+            Throws ArgumentNullException when instance is null.
+            </summary>
+            <param name="instance">Object Instance.</param>
+            <param name="message">Message to throw.</param>
+        </member>
+        <member name="M:Genzai.Core.Validation.Guard.IsNotNullNorEmpty(System.String,System.String)">
+            <summary>
+            Throws ArgumentNullException when string is null or empty.
+            </summary>
+            <param name="instance">String to evaluate.</param>
+            <param name="message">Message to throw.</param>
+        </member>
+        <member name="M:Genzai.Core.Validation.Guard.IsNotNullNorWhiteSpace(System.String,System.String)">
+            <summary>
+            Throws ArgumentNullException when string is null or white space.
+            </summary>
+            <param name="instance">String to evaluate.</param>
+            <param name="message">Message to throw.</param>
+        </member>
+        <member name="M:Genzai.Core.Validation.Guard.TypeOf``1(System.Object,System.String)">
+            <summary>
+            Throws InvalidOperationException when instance is not TType.
+            </summary>
+            <typeparam name="TType">Object Type.</typeparam>
+            <param name="instance">Object Instance.</param>
+            <param name="message">Message to throw.</param>
+        </member>
+        <member name="T:Genzai.Core.Vault.VaultAuthenticationInfo">
+            <summary>
+            Bean with authentication information
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Vault.VaultAuthenticationInfo.Address">
+            <summary>
+            Hostname of vault server
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Vault.VaultAuthenticationInfo.Token">
+            <summary>
+            Token for access vault server
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Vault.VaultAuthenticationInfo.Path">
+            <summary>
+            Path of secrets
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Vault.VaultAuthenticationInfo.MountPoint">
+            <summary>
+            Mount point of secrets
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Vault.VaultAuthenticationInfo.RenewTokenInDays">
+            <summary>
+            Expired days token
+            </summary>
+        </member>
+        <member name="P:Genzai.Core.Vault.VaultAuthenticationInfo.RetryRenewTokenInHours">
+            <summary>
+            Retry tome to renew token
+            </summary>
+        </member>
+        <member name="T:Genzai.Core.Vault.VaultConfiguration">
+            <summary>
+            Provider for vault configuration
+            </summary>
+        </member>
+        <member name="M:Genzai.Core.Vault.VaultConfiguration.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">configuration</param>
+        </member>
+        <member name="M:Genzai.Core.Vault.VaultConfiguration.GetVaultClient(Genzai.Core.Vault.VaultAuthenticationInfo)">
+            <summary>
+            GetVaultClient
+            </summary>
+            <param name="aInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.Core.Vault.VaultConfiguration.Load">
+            <summary>
+            Load vault configuration
+            </summary>
+        </member>
+        <member name="T:Genzai.Auxiliar.Client.Infrastructure.Data.Services.DynamicFilter`1">
+            <summary>
+            Implementation
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Genzai.Auxiliar.Client.Infrastructure.Data.Services.DynamicFilter`1.GetFilterExpression(System.String,System.Collections.Generic.Dictionary{System.String,System.Int64})">
+            <summary>
+            Expression filter for customer overview
+            </summary>
+            <param name="searchFilter"></param>
+            <param name="numericValues"></param>
+            <returns>Expression result</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,86 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+	<ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <CodeAnalysisRuleSet>../../Genzai.ruleset</CodeAnalysisRuleSet>
+    <NeutralLanguage>en</NeutralLanguage>
+    <IsPackable>false</IsPackable>
+	  <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;RCS1090</NoWarn>
+    <DocumentationFile>.\Genzai.Core.Tests.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="34.0.1" />
+    <PackageReference Include="coverlet.msbuild" Version="3.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="FluentAssertions" Version="6.5.1" />
+    <PackageReference Include="Microsoft.DotNet.PlatformAbstractions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageReference Include="Moq" Version="4.18.1" />
+    <PackageReference Include="Roslynator.Analyzers" Version="4.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="3.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Genzai.Core\Genzai.Core.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+	<Using Include="Xunit" />
+	<Using Include="Moq" />
+	<Using Include="Bogus" />
+	<Using Include="Bogus.DataSets" />
+	<Using Include="Microsoft.EntityFrameworkCore" />
+	<Using Include="Microsoft.AspNetCore.Hosting" />
+	<Using Include="Microsoft.AspNetCore.Mvc" />
+	<Using Include="Microsoft.AspNetCore.Mvc.Abstractions" />
+	<Using Include="Microsoft.AspNetCore.Mvc.Filters" />
+	<Using Include="Microsoft.AspNetCore.Routing" />
+	<Using Include="Microsoft.DotNet.PlatformAbstractions" />
+	<Using Include="Microsoft.Extensions.Configuration" />
+	<Using Include="Microsoft.Extensions.DependencyInjection" />
+	<Using Include="System.Linq.Expressions" />
+	<Using Include="System.Runtime.Serialization" />
+	<Using Include="System.ComponentModel.DataAnnotations" />
+	<Using Include="Genzai.Core.Tests.Mock.Entities" />
+	<Using Include="Genzai.Core.Tests.Mock.DbContext" />
+	<Using Include="Genzai.Core.Tests.Mock" />
+	<Using Include="Genzai.Core.Domain.Model" />
+	<Using Include="Genzai.Core.Domain.QueryAdapters" />
+	<Using Include="Genzai.Core.Tests.Mock.Adapters" />
+	<Using Include="Genzai.Core.Extensions" />
+	<Using Include="Genzai.Core.Tests.Fixtures" />
+	<Using Include="Genzai.Core.Model.Response" />
+	<Using Include="Genzai.Core.Model.Request" />
+	<Using Include="Genzai.Core.Tests.Mock.BaseClasses" />
+	<Using Include="Genzai.Core.Tests.Mock.OrderAggregate" />
+	<Using Include="Genzai.Core.Model.Configuration.Entity" />
+	<Using Include="Genzai.Core.Model.Configuration.Mapping" />
+	<Using Include="Genzai.Core.Model.Enums" />
+	<Using Include="Genzai.Core.Validation" />
+	<Using Include="FluentAssertions" />
+	<Using Include="FluentValidation" />
+  </ItemGroup>
+
+</Project>

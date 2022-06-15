@@ -1,0 +1,95 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<SonarQubeExclude>true</SonarQubeExclude>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Mock\Api\appsettings.IntegrationTesting.json" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<Content Include="Mock\Api\appsettings.IntegrationTesting.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+		  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="resources\InitialData\data.sql">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+		<PackageReference Include="Polly" Version="7.1.1" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+		<PackageReference Include="TestContainers.Container.Database.MySql" Version="1.5.2" />
+		<PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
+		<PackageReference Include="SpecFlow.xUnit" Version="3.9.40" />
+		<PackageReference Include="xunit" Version="2.4.1" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="coverlet.msbuild" Version="3.1.0">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="coverlet.collector" Version="3.0.2">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+
+		
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Genzai.WebCore\Genzai.WebCore.csproj" />
+		<ProjectReference Include="..\Genzai.WebCore.Test\Genzai.WebCore.Test.csproj" />
+	</ItemGroup>
+
+
+
+	<ItemGroup>
+		<None Update="xunit.runner.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+
+
+	<ItemGroup>
+		<using Include="System" />
+		<using Include="System.Linq" />
+		<using Include="System.Collections.Generic" />
+		<using Include="AutoMapper" />
+		<using Include="Serilog" />
+		<using Include="Serilog.Core" />
+		<using Include="Serilog.Events" />
+		<using Include="FluentValidation" />
+		<using Include="System.Text.RegularExpressions" />
+		<using Include="Swashbuckle.AspNetCore.Annotations" />
+		<using Include="Microsoft.AspNetCore.Authentication" />
+		<using Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+		<using Include="Microsoft.Extensions.Configuration" />
+		<using Include="Microsoft.Extensions.DependencyInjection" />
+		<using Include="Microsoft.AspNetCore.Authorization" />
+		<using Include="Microsoft.AspNetCore.Http" />
+		<using Include="Microsoft.AspNetCore.Mvc" />
+		<using Include="Microsoft.Extensions.Logging" />
+		<using Include="System.Security.Claims" />
+		<using Include="System.Linq.Expressions" />
+		<using Include="Microsoft.EntityFrameworkCore" />
+		<using Include="Microsoft.AspNetCore.Mvc.Filters" />
+		<using Include="System.ComponentModel" />
+		<using Include="System.ComponentModel.DataAnnotations" />
+	</ItemGroup>
+
+</Project>

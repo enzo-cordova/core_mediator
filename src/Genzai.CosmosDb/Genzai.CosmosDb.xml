@@ -1,0 +1,319 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Genzai.CosmosDb</name>
+    </assembly>
+    <members>
+        <member name="T:Genzai.CosmosDb.Context.CosmosDbContext">
+            <summary>
+            Service to wrap cosmos client and database.
+            </summary>
+        </member>
+        <member name="P:Genzai.CosmosDb.Context.CosmosDbContext.Database">
+            <summary>
+            Cosmos Db Database.
+            </summary>
+        </member>
+        <member name="M:Genzai.CosmosDb.Context.CosmosDbContext.#ctor(MongoDB.Driver.MongoClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.CosmosDb.Context.CosmosDbContext"/> class.
+            Only with cosmos Client, don´t forget to call "EnsureDatabaseCreatedAsync".
+            </summary>
+            <param name="client">Cosmos Client</param>
+        </member>
+        <member name="M:Genzai.CosmosDb.Context.CosmosDbContext.#ctor(MongoDB.Driver.MongoClient,MongoDB.Driver.IMongoDatabase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.CosmosDb.Context.CosmosDbContext"/> class.
+            </summary>
+            <param name="client">Cosmos Client.</param>
+            <param name="database">Cosmos Database.</param>
+        </member>
+        <member name="M:Genzai.CosmosDb.Context.CosmosDbContext.DeleteDatabaseAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.CosmosDb.Context.CosmosDbContext.EnsureDatabaseCreatedAsync(System.String,MongoDB.Driver.MongoDatabaseSettings)">
+            <summary>
+            Create new Database if DB is null
+            </summary>
+            <param name="databaseName"></param>
+            <param name="Databasesettings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.CosmosDb.Context.CosmosDbContext.GetCollectionByName(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Genzai.CosmosDb.Context.ICosmosDbContext">
+            <summary>
+            Service to wrap cosmos client and database.
+            </summary>
+        </member>
+        <member name="M:Genzai.CosmosDb.Context.ICosmosDbContext.CreateMongoCollectionAsync(System.String,System.String,MongoDB.Driver.MongoDatabaseSettings,MongoDB.Driver.CreateCollectionOptions,System.Threading.CancellationToken)">
+            <summary>
+            Method for create new container in CosmosDb database.
+            Maintenance and testing purpose.
+            </summary>
+            <param name="databaseId">Database Id or Name.</param>
+            <param name="containerId">Container Id or Name.</param>
+            <param name="partitionKey">Partition key.</param>
+            <param name="options">Request options.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>CosmosDb container.</returns>
+        </member>
+        <member name="M:Genzai.CosmosDb.Context.ICosmosDbContext.DeleteDatabaseAsync(System.Threading.CancellationToken)">
+            <summary>
+            Method for delete database in CosmosDb.
+            For Testing purposes.
+            </summary>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>Response</returns>
+        </member>
+        <member name="M:Genzai.CosmosDb.Context.ICosmosDbContext.EnsureDatabaseCreatedAsync(System.String,MongoDB.Driver.MongoDatabaseSettings)">
+            <summary>
+            Method for create database in CosmosDb Service.
+            Maintenance and testing purpose.
+            </summary>
+            <param name="databaseId">Database Id or Name.</param>
+            <param name="options">Request options.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>Response</returns>
+        </member>
+        <member name="M:Genzai.CosmosDb.Context.ICosmosDbContext.GetCollectionByName(System.String)">
+            <summary>
+            Get cosmos container.
+            </summary>
+            <param name="containerName"></param>
+            <returns>Cosmos container.</returns>
+        </member>
+        <member name="T:Genzai.CosmosDb.Extensions.MediatorExtensions">
+            <summary>
+            Mediator Extensions.
+            </summary>
+        </member>
+        <member name="M:Genzai.CosmosDb.Extensions.MediatorExtensions.DispatchDomainEventsAsync``1(MediatR.IMediator,``0,System.Threading.CancellationToken)">
+            <summary>
+            Dispatch Domain events.
+            </summary>
+            <typeparam name="TEntity">Cosmos Entity.</typeparam>
+            <param name="mediator">Mediator object.</param>
+            <param name="entity">Cosmos Entity.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+        </member>
+        <member name="T:Genzai.CosmosDb.Extensions.ServiceCollectionExtensions">
+            <summary>
+            Service collection extensions.
+            </summary>
+        </member>
+        <member name="M:Genzai.CosmosDb.Extensions.ServiceCollectionExtensions.AddCosmosDb(Microsoft.Extensions.DependencyInjection.IServiceCollection,Genzai.CosmosDb.Model.ClientConfiguration)">
+            <summary>
+            Add CosmosDb wrapper.
+            </summary>
+            <param name="services">Services collection.</param>
+            <param name="configuration">Configuration client.</param>
+        </member>
+        <member name="M:Genzai.CosmosDb.Extensions.ServiceCollectionExtensions.GetCosmosDbContext(Genzai.CosmosDb.Model.ClientConfiguration)">
+            <summary>
+            Get CosmosDb context.
+            </summary>
+            <param name="configuration">Cosmos client configuration.</param>
+            <returns>Cosmos context wrapper.</returns>
+        </member>
+        <member name="T:Genzai.CosmosDb.Locales.LocalStrings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Genzai.CosmosDb.Locales.LocalStrings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Genzai.CosmosDb.Locales.LocalStrings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Genzai.CosmosDb.Locales.LocalStrings.CommandValidationMessage">
+            <summary>
+              Looks up a localized string similar to Please specify a value for {0}..
+            </summary>
+        </member>
+        <member name="P:Genzai.CosmosDb.Locales.LocalStrings.ObjectIsNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to {0} can not be null or empty..
+            </summary>
+        </member>
+        <member name="P:Genzai.CosmosDb.Locales.LocalStrings.ParameterIsNull">
+            <summary>
+              Looks up a localized string similar to Parameter {0} can not be null..
+            </summary>
+        </member>
+        <member name="P:Genzai.CosmosDb.Locales.LocalStrings.ParameterIsNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to Parameter {0} can not be null or empty..
+            </summary>
+        </member>
+        <member name="T:Genzai.CosmosDb.Model.ClientConfiguration">
+            <summary>
+            Cosmos client configuration.
+            </summary>
+        </member>
+        <member name="P:Genzai.CosmosDb.Model.ClientConfiguration.CollectionName">
+            <summary>
+            Gets or sets cosmos endpoint.
+            </summary>
+        </member>
+        <member name="P:Genzai.CosmosDb.Model.ClientConfiguration.ConnectionString">
+            <summary>
+            Gets or sets cosmos api key.
+            </summary>
+        </member>
+        <member name="P:Genzai.CosmosDb.Model.ClientConfiguration.DatabaseName">
+            <summary>
+            Gets or sets cosmos Database Name.
+            </summary>
+        </member>
+        <member name="P:Genzai.CosmosDb.Model.ClientConfiguration.Options">
+            <summary>
+            Gets or sets cosmos client options.
+            </summary>
+        </member>
+        <member name="T:Genzai.CosmosDb.Model.CosmosCommand">
+            <summary>
+            Command base, provides id and partitionKey for CosmosDb access.
+            </summary>
+        </member>
+        <member name="M:Genzai.CosmosDb.Model.CosmosCommand.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.CosmosDb.Model.CosmosCommand"/> class.
+            </summary>
+            <param name="id">Entity Id.</param>
+            <param name="partitionKey">Partition key.</param>
+        </member>
+        <member name="P:Genzai.CosmosDb.Model.CosmosCommand.Id">
+            <summary>
+            Cosmos Entity ID.
+            </summary>
+        </member>
+        <member name="P:Genzai.CosmosDb.Model.CosmosCommand.PartitionKey">
+            <summary>
+            Cosmos Entity partition key.
+            </summary>
+        </member>
+        <member name="T:Genzai.CosmosDb.Model.CosmosCommandValidator`1">
+            <summary>
+            Generic cosmos command validator.
+            </summary>
+            <typeparam name="TCommand"></typeparam>
+        </member>
+        <member name="M:Genzai.CosmosDb.Model.CosmosCommandValidator`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.CosmosDb.Model.CosmosCommandValidator`1"/> class.
+            </summary>
+        </member>
+        <member name="T:Genzai.CosmosDb.Model.CosmosEntityDomain">
+            <summary>
+            Entity for Cosmos with domain events.
+            </summary>
+        </member>
+        <member name="P:Genzai.CosmosDb.Model.CosmosEntityDomain.DomainEvents">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.CosmosDb.Model.CosmosEntityDomain.AddDomainEvent(MediatR.INotification)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.CosmosDb.Model.CosmosEntityDomain.ClearDomainEvents">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.CosmosDb.Model.CosmosEntityDomain.RemoveDomainEvent(MediatR.INotification)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.CosmosDb.Model.CosmosEntityDomain.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Genzai.CosmosDb.Model.CosmosResponse`1">
+            <summary>
+            Cosmos response.
+            </summary>
+            <typeparam name="TEntity">Entity Tyep.</typeparam>
+        </member>
+        <member name="M:Genzai.CosmosDb.Model.CosmosResponse`1.#ctor(System.Collections.Generic.IAsyncEnumerable{`0},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.CosmosDb.Model.CosmosResponse`1"/> class.
+            </summary>
+            <param name="items">Item list.</param>
+            <param name="continuationToken">Continuation token.</param>
+        </member>
+        <member name="P:Genzai.CosmosDb.Model.CosmosResponse`1.ContinuationToken">
+            <summary>
+            Continuation token.
+            </summary>
+        </member>
+        <member name="T:Genzai.CosmosDb.Repository.IRepository`1">
+            <summary>
+            Cosmos repository contract.
+            </summary>
+            <typeparam name="TEntity">Type entity.</typeparam>
+        </member>
+        <member name="T:Genzai.CosmosDb.Repository.Repository`1">
+            <summary>
+            Cosmos repository implementation.
+            </summary>
+            <typeparam name="TEntity">Type entity.</typeparam>
+        </member>
+        <member name="F:Genzai.CosmosDb.Repository.Repository`1.Mediator">
+            <summary>
+            Mediator instance
+            </summary>
+        </member>
+        <member name="F:Genzai.CosmosDb.Repository.Repository`1.Context">
+            <summary>
+            Cosmos DB Context
+            </summary>
+        </member>
+        <member name="F:Genzai.CosmosDb.Repository.Repository`1.Collection">
+            <summary>
+            Cosmos DB Container
+            </summary>
+        </member>
+        <member name="M:Genzai.CosmosDb.Repository.Repository`1.#ctor(MediatR.IMediator,MongoDB.Driver.IMongoCollection{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.CosmosDb.Repository.Repository`1"/> class.
+            </summary>
+            <param name="mediator">Mediator service.</param>
+            <param name="container">Cosmos container.</param>
+        </member>
+        <member name="M:Genzai.CosmosDb.Repository.Repository`1.#ctor(MediatR.IMediator,Genzai.CosmosDb.Context.ICosmosDbContext,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.CosmosDb.Repository.Repository`1"/> class.
+            </summary>
+            <param name="mediator">Mediator service.</param>
+            <param name="context">Cosmos db context wrapper.</param>
+            <param name="containerId">Container name / id.</param>
+        </member>
+        <member name="M:Genzai.CosmosDb.Repository.Repository`1.AddItemAsync(`0,MongoDB.Driver.InsertOneOptions,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.CosmosDb.Repository.Repository`1.DeleteItemAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.CosmosDb.Repository.Repository`1.GetItemAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.CosmosDb.Repository.Repository`1.GetItemsAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.CosmosDb.Repository.Repository`1.UpdateOneAsync(`0,MongoDB.Driver.FilterDefinition{`0},MongoDB.Driver.UpdateDefinition{`0},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.CosmosDb.Repository.Repository`1.UpsertItemAsync(`0,MongoDB.Driver.FilterDefinition{`0},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.CosmosDb.Repository.Repository`1.NotifyDomainEvents(`0)">
+            <summary>
+            Notify domain events.
+            </summary>
+            <param name="entity"></param>
+        </member>
+    </members>
+</doc>

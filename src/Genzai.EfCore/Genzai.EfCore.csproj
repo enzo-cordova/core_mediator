@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+	<ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <CodeAnalysisRuleSet>../../Genzai.ruleset</CodeAnalysisRuleSet>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Version>1.0.11</Version>
+    <Authors>Genzai Team</Authors>
+    <Product>Genzai.EfCore Library</Product>
+    <Description>Common library for Genzai projects. Contains helpers and base classes about Entity Framework Core.</Description>
+    <Copyright>Genzai Team</Copyright>
+    <PackageIcon>icon.png</PackageIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;RCS1090</NoWarn>
+    <DocumentationFile>.\Genzai.EfCore.xml</DocumentationFile>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;RCS1090</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LinqKit" Version="1.2.2" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.3" />
+    <PackageReference Include="EntityFrameworkCore.DataEncryption" Version="3.0.1" />
+    <PackageReference Include="Roslynator.Analyzers" Version="4.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Genzai.Core\Genzai.Core.csproj" />
+    <None Include="images\icon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Locales\LocalStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LocalStrings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Locales\LocalStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+<ItemGroup>
+	<Using Include="Microsoft.Extensions.DependencyInjection" />
+	<Using Include="Microsoft.EntityFrameworkCore" />
+	<Using Include="Microsoft.EntityFrameworkCore.Storage" />
+	<Using Include="Microsoft.EntityFrameworkCore.Query.Internal" />
+	<Using Include="Microsoft.EntityFrameworkCore.Metadata.Builders" />
+	<Using Include="Microsoft.EntityFrameworkCore.ChangeTracking" />
+	<Using Include="System.Globalization" />
+	<Using Include="System.Runtime.CompilerServices" />
+	<Using Include="System.Collections.Generic" />
+	<Using Include="System.Linq.Expressions" />
+	<Using Include="System.Data" />
+	<Using Include="System.Diagnostics.CodeAnalysis" />
+	<Using Include="Genzai.Core.Domain.Model" />
+	<Using Include="Genzai.Core.Model.Response" />
+	<Using Include="Genzai.Core.Validation" />
+	<Using Include="Genzai.EfCore.Locales" />
+	<Using Include="Genzai.Core.Extensions" />
+	<Using Include="MediatR;" />
+	<Using Include="FluentValidation;" />
+  </ItemGroup>
+</Project>

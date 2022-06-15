@@ -1,0 +1,858 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Genzai.EfCore</name>
+    </assembly>
+    <members>
+        <member name="T:Genzai.EfCore.Constants.EncryptionConstants">
+            <summary>
+            EncryptionConstants
+            </summary>
+        </member>
+        <member name="F:Genzai.EfCore.Constants.EncryptionConstants.AesProvideKey">
+            <summary>
+            Encryption: AESPROVIDE_KEY
+            </summary>
+        </member>
+        <member name="F:Genzai.EfCore.Constants.EncryptionConstants.AesProvideIv">
+            <summary>
+            Encryption: AESPROVIDE_IV
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Context.ContextDataBase`1">
+            <summary>
+            Context Database.
+            </summary>
+        </member>
+        <member name="F:Genzai.EfCore.Context.ContextDataBase`1.mediator">
+            <summary>
+            Mediator service.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Context.ContextDataBase`1.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{`0},MediatR.IMediator,System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Context.ContextDataBase`1"/> class.
+            </summary>
+            <param name="options">Context options.</param>
+            <param name="mediator">Mediator service.</param>
+            <param name="claimsPrincipal">Current principal user.</param>
+        </member>
+        <member name="P:Genzai.EfCore.Context.ContextDataBase`1.CurrentTransaction">
+            <summary>
+            Current transaction.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Context.ContextDataBase`1.HasActiveTransaction">
+            <summary>
+            Has active transaction.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Context.ContextDataBase`1.BeginTransactionAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Context.ContextDataBase`1.CommitTransactionAsync(Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Context.ContextDataBase`1.ExecuteSqlCommand(System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Context.ContextDataBase`1.ExecuteSqlCommandAsync(System.String,System.Collections.Generic.IEnumerable{System.Object},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Context.ContextDataBase`1.RollbackTransaction">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Context.ContextDataBase`1.SaveEntitiesAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Context.ContextDataBase`1.SaveAuditChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+            Save operation for Autidables Entities
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Genzai.EfCore.Context.CoreContextDataBase`1">
+            <summary>
+            Core context database
+            </summary>
+            <typeparam name="TContext">Context</typeparam>
+        </member>
+        <member name="F:Genzai.EfCore.Context.CoreContextDataBase`1._provider">
+            <summary>
+            Encription provider
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Context.CoreContextDataBase`1.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{`0},MediatR.IMediator,System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="options"></param>
+            <param name="mediator"></param>
+            <param name="claimsPrincipal"></param>
+        </member>
+        <member name="T:Genzai.EfCore.Extensions.AsyncQueryable">
+            <summary>
+            AsyncQueryable extensions
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Extensions.AsyncQueryable.AsAsyncQueryable``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns the input typed as IQueryable that can be queried asynchronously
+            </summary>
+            <typeparam name="TEntity">The item type</typeparam>
+            <param name="source">The input</param>
+        </member>
+        <member name="T:Genzai.EfCore.Extensions.AsyncQueryable`1">
+            <summary>
+            AsyncQueryable
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:Genzai.EfCore.Extensions.AsyncQueryable`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Extensions.AsyncQueryable"/> class.
+            </summary>
+            <param name="enumerable">Enumerable</param>
+        </member>
+        <member name="M:Genzai.EfCore.Extensions.AsyncQueryable`1.#ctor(System.Linq.Expressions.Expression)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Extensions.AsyncQueryable"/> class.
+            </summary>
+            <param name="expression">Expression</param>
+        </member>
+        <member name="M:Genzai.EfCore.Extensions.AsyncQueryable`1.GetEnumerator">
+            <summary>
+            Get enumerator
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Extensions.AsyncQueryable`1.GetAsyncEnumerator(System.Threading.CancellationToken)">
+            <summary>
+            GetAsyncEnumerator
+            </summary>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="T:Genzai.EfCore.Extensions.MediatorExtensions">
+            <summary>
+            Mediator Extensions.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Extensions.MediatorExtensions.DispatchDomainEventsAsync``1(MediatR.IMediator,``0,System.Threading.CancellationToken)">
+            <summary>
+            Dispatch Domain events.
+            </summary>
+            <typeparam name="TContext">Database Context.</typeparam>
+            <param name="mediator">Mediator object.</param>
+            <param name="dbContext">Database Context.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+        </member>
+        <member name="T:Genzai.EfCore.Locales.LocalStrings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Locales.LocalStrings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Locales.LocalStrings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Locales.LocalStrings.EntityNotFound">
+            <summary>
+              Looks up a localized string similar to Entity {0} not found..
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Locales.LocalStrings.ExpressionNotBeNull">
+            <summary>
+              Looks up a localized string similar to Expression {0} can not be null..
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Locales.LocalStrings.ObjectIsNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to {0} can not be null or empty..
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Locales.LocalStrings.ParamEqualOrMoreThanZero">
+            <summary>
+              Looks up a localized string similar to Parameter {0} must be equal or greater than zero..
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Locales.LocalStrings.ParameterIsNull">
+            <summary>
+              Looks up a localized string similar to Parameter {0} can not be null..
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Locales.LocalStrings.ParameterIsNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to Parameter {0} can not be null or empty..
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Locales.LocalStrings.ParamMoreThanZero">
+            <summary>
+              Looks up a localized string similar to Parameter {0} must be greater than zero..
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Locales.LocalStrings.TransactionNotCurrent">
+            <summary>
+              Looks up a localized string similar to Transaction {0} is not current.
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Locales.LocalStrings.UnitOfWorkDisposed">
+            <summary>
+              Looks up a localized string similar to The UnitOfWork is already disposed and cannot be used anymore..
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Map.AuditableEntityMap`2">
+            <summary>
+            Entity base map.
+            </summary>
+            <typeparam name="TEntity">Entity.</typeparam>
+            <typeparam name="TKey">Entity Key.</typeparam>
+        </member>
+        <member name="M:Genzai.EfCore.Map.AuditableEntityMap`2.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})">
+            <summary>
+            Configure map.
+            </summary>
+            <param name="builder">Entity builder.</param>
+        </member>
+        <member name="T:Genzai.EfCore.Map.EntityMap`2">
+            <summary>
+            Entity base map.
+            </summary>
+            <typeparam name="TEntity">Entity.</typeparam>
+            <typeparam name="TKey">Entity Key.</typeparam>
+        </member>
+        <member name="M:Genzai.EfCore.Map.EntityMap`2.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})">
+            <summary>
+            Configure map.
+            </summary>
+            <param name="builder">Entity builder.</param>
+        </member>
+        <member name="T:Genzai.EfCore.Map.EntityWithEventsMap`2">
+            <summary>
+            Entity with events map.
+            </summary>
+            <typeparam name="TEntity">Entity Type.</typeparam>
+            <typeparam name="TKey">Key Type.</typeparam>
+        </member>
+        <member name="M:Genzai.EfCore.Map.EntityWithEventsMap`2.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})">
+            <summary>
+            Configure map.
+            </summary>
+            <param name="builder">Entity builder.</param>
+        </member>
+        <member name="T:Genzai.EfCore.Repository.IPartialSearchRepository`4">
+            <summary>
+            It controls partial searches
+            </summary>
+            <typeparam name="TEntity">Entity</typeparam>
+            <typeparam name="TKey">Enity key</typeparam>
+            <typeparam name="TEntitySearch">Entity search</typeparam>
+            <typeparam name="TEntitySearchResult">Entity search result</typeparam>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IPartialSearchRepository`4.Search(`2)">
+            <summary>
+            It performs searches by querying the database
+            </summary>
+            <param name="search">Search</param>
+            <returns>Search results</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IPartialSearchRepository`4.SearchSize(`2)">
+            <summary>
+            It performs searches by querying the database
+            </summary>
+            <param name="search">Search</param>
+            <returns>Search count</returns>
+        </member>
+        <member name="T:Genzai.EfCore.Repository.IRepository`2">
+            <summary>
+            Repository contract for database operations.
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TKey"></typeparam>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.Add(`0)">
+            <summary>
+            Add Entity.
+            </summary>
+            <param name="entity">Entity type.</param>
+            <returns>TEntity.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.AddAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            AddAsync Entity.
+            </summary>
+            <param name="entity">Entity type.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>TEntity.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.Delete(`0)">
+            <summary>
+            Delete Entity.
+            </summary>
+            <param name="entity">Entity.</param>
+            <returns>TEntity.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.GetAll(System.Func{System.Linq.IQueryable{`0},System.Linq.IQueryable{`0}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Boolean)">
+            <summary>
+            GetAll Entities.
+            </summary>
+            <param name="includes">Includes children.</param>
+            <param name="orderBy">Order By Expression.</param>
+            <param name="disableTracking">For readonly queries.</param>
+            <returns>List of entities.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.GetAllAsync(System.Func{System.Linq.IQueryable{`0},System.Linq.IQueryable{`0}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            GetAllAsync Entities.
+            </summary>
+            <param name="includes">Includes children.</param>
+            <param name="orderBy">Order By Expression.</param>
+            <param name="disableTracking">For readonly queries.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>List of entities.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.GetById(`1)">
+            <summary>
+            GetById Method.
+            </summary>
+            <param name="id">Entity Id.</param>
+            <returns>Entity.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.GetByIdAsync(`1,System.Threading.CancellationToken)">
+            <summary>
+            GetByIdAsync Method.
+            </summary>
+            <param name="id">Entity Id.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>Entity.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.GetFiltered(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IQueryable{`0}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Boolean)">
+            <summary>
+            GetFiltered Method.
+            </summary>
+            <param name="predicate">Filter Expresison.</param>
+            <param name="includes">Includes children.</param>
+            <param name="orderBy">Order By Expression.</param>
+            <param name="disableTracking">For readonly queries.</param>
+            <returns>List of entities.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.GetFilteredAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IQueryable{`0}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            GetFilteredAsync Method.
+            </summary>
+            <param name="predicate">Filter Expresison.</param>
+            <param name="includes">Includes children.</param>
+            <param name="orderBy">Order By Expression.</param>
+            <param name="disableTracking">For readonly queries.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>List of entities.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.GetPaged(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IQueryable{`0}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Boolean)">
+            <summary>
+            GetPaged method.
+            </summary>
+            <param name="pageIndex">Page index.</param>
+            <param name="pageSize">Page Size.</param>
+            <param name="predicate">Filter Expresison.</param>
+            <param name="includes">Includes children.</param>
+            <param name="orderBy">Order By Expression.</param>
+            <param name="disableTracking">For readonly queries.</param>
+            <returns>List of entities.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.GetPagedAsync(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IQueryable{`0}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            GetPagedAsync method.
+            </summary>
+            <param name="pageIndex">Page index.</param>
+            <param name="pageSize">Page Size.</param>
+            <param name="predicate">Filter Expresison.</param>
+            <param name="includes">Includes children.</param>
+            <param name="orderBy">Order By Expression.</param>
+            <param name="disableTracking">For readonly queries.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>List of entities.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.Update(`0)">
+            <summary>
+            Update Entity.
+            </summary>
+            <param name="entity">Entity.</param>
+            <returns>TEntity.</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.SaveAsync(System.Threading.CancellationToken)">
+            <summary>
+            Saves the asynchronous.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.UpdateEntityIntoDbSet(`0)">
+            <summary>
+            Update Entity
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.ExistObject(`1)">
+            <summary>
+            If exists object
+            </summary>
+            <param name="id">Exist object</param>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IRepository`2.GetEntityDbSet">
+            <summary>
+            It returns entity db set
+            </summary>
+            <returns>Enitty db set</returns>
+        </member>
+        <member name="T:Genzai.EfCore.Repository.PartialSearchRepository`5">
+            <summary>
+            Repository for partial search
+            </summary>
+            <typeparam name="TContext">Context</typeparam>
+            <typeparam name="TEntity">Entity</typeparam>
+            <typeparam name="TKey">Key</typeparam>
+            <typeparam name="TEntitySearch">EntitySearch</typeparam>
+            <typeparam name="TEntitySearchResult">EntitySearchResult</typeparam>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.PartialSearchRepository`5.#ctor(`0)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.PartialSearchRepository`5.Search(`3)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.PartialSearchRepository`5.SearchSize(`3)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.PartialSearchRepository`5.Where(System.Linq.IQueryable{`4},`3)">
+            <inheritdoc />
+        </member>
+        <member name="M:Genzai.EfCore.Repository.PartialSearchRepository`5.OrderBy``2(System.Linq.IQueryable{``0},``1,System.String)">
+            <summary>
+            It appends orderby to query
+            </summary>
+            <param name="query">Query</param>
+            <param name="search">Search</param>
+            <param name="orderColumns">Order Columns</param>
+            <returns>Query with orderby</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.PartialSearchRepository`5.Paginate``2(System.Linq.IQueryable{``1},``0)">
+            <summary>
+            It appends pagination to query
+            </summary>
+            <param name="query">Qiuery</param>
+            <param name="search">Search</param>
+            <returns>Query with pagination</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.PartialSearchRepository`5.InitQuery(`3)">
+            <summary>
+            It inits query
+            </summary>
+            <param name="search">Search</param>
+            <returns>Query</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.PartialSearchRepository`5.AppendConditions(LinqKit.ExpressionStarter{`4}@,`3)">
+            <summary>
+            It appends conditions to expression query
+            </summary>
+            <param name="queryExpression">Query</param>
+            <param name="search">Search</param>
+            <returns>Expression query with conditions</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.PartialSearchRepository`5.AppendFilterConditions``2(LinqKit.ExpressionStarter{``0}@,``1,System.Collections.Generic.List{System.String})">
+            <summary>
+            This method will append filtering conditions: Any of the defined fields must containg the filter.
+            </summary>
+            <param name="queryExpression"></param>
+            <param name="search"></param>
+            <param name="fields"></param>
+        </member>
+        <member name="T:Genzai.EfCore.Repository.Repository`3">
+            <summary>
+            Repository class for EfCore.
+            </summary>
+            <typeparam name="TContext">DbContext.</typeparam>
+            <typeparam name="TEntity">Entity type.</typeparam>
+            <typeparam name="TKey">Key type.</typeparam>
+        </member>
+        <member name="F:Genzai.EfCore.Repository.Repository`3.context">
+            <summary>
+            Database Context.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genzai.EfCore.Repository.Repository`3"/> class.
+            </summary>
+            <param name="context">Database Context.</param>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.Add(`1)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.AddAsync(`1,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.Delete(`1)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.GetAll(System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Func{System.Linq.IQueryable{`1},System.Linq.IOrderedQueryable{`1}},System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.GetAllAsync(System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Func{System.Linq.IQueryable{`1},System.Linq.IOrderedQueryable{`1}},System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.GetById(`2)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.GetByIdAsync(`2,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.GetFiltered(System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Func{System.Linq.IQueryable{`1},System.Linq.IOrderedQueryable{`1}},System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.GetFilteredAsync(System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Func{System.Linq.IQueryable{`1},System.Linq.IOrderedQueryable{`1}},System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.GetPaged(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Func{System.Linq.IQueryable{`1},System.Linq.IOrderedQueryable{`1}},System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.GetPagedAsync(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Func{System.Linq.IQueryable{`1},System.Linq.IOrderedQueryable{`1}},System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.Update(`1)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.SaveAsync(System.Threading.CancellationToken)">
+            <summary>
+            Save operations
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.UpdateEntityIntoDbSet(`1)">
+            <summary>
+            Update Entity
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.ExistObject(`2)">
+            <summary>
+            If exists object
+            </summary>
+            <param name="id">Exist object</param>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.GetEntityDbSet">
+            <summary>
+            It returns entity DbSet
+            </summary>
+            <returns>Entity DbSet</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.Repository`3.ConstructQuery(System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Func{System.Linq.IQueryable{`1},System.Linq.IOrderedQueryable{`1}},System.Boolean)">
+            <summary>
+            Construct Query Method.
+            </summary>
+            <param name="predicate">Filter Expresison.</param>
+            <param name="includes">Includes children.</param>
+            <param name="orderBy">Order By Expression.</param>
+            <param name="disableTracking">For readonly queries.</param>
+            <returns>Query.</returns>
+        </member>
+        <member name="T:Genzai.EfCore.Search.EntityIdLongSearchResult">
+            <summary>
+            Entity search result with long key
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Search.EntitySearch">
+            <summary>
+            Entity search
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Search.EntitySearch.SearchFilter">
+            <summary>
+            Search filter
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Search.EntitySearch.OrderBy">
+            <summary>
+            Order by
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Search.EntitySearch.OrderCriteria">
+            <summary>
+            Order Criteria
+            </summary>
+        </member>
+        <member name="F:Genzai.EfCore.Search.EntitySearch.MaxPageSize">
+            <summary>
+            Order by default 50
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Search.EntitySearch.PageNumber">
+            <summary>
+            Page Number
+            </summary>
+        </member>
+        <member name="P:Genzai.EfCore.Search.EntitySearch.PageSize">
+            <summary>
+            Page Size default 10
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Search.EntitySearch.FirstResult">
+            <summary>
+            Devuelve el primer resultado de la paginación.
+            </summary>
+            <returns>El primer resultado de los elementos buscados.</returns>
+        </member>
+        <member name="T:Genzai.EfCore.Search.EntitySearchResult`1">
+            <summary>
+            Entity search result
+            </summary>
+            <typeparam name="TKey"></typeparam>
+        </member>
+        <member name="P:Genzai.EfCore.Search.EntitySearchResult`1.Id">
+            <summary>
+            Key
+            </summary>
+        </member>
+        <member name="T:Genzai.EfCore.Utils.QueryUtils">
+            <summary>
+            Utility class for queries
+            </summary>
+        </member>
+        <member name="F:Genzai.EfCore.Utils.QueryUtils.And">
+             <summary>
+            And condition
+             </summary>
+        </member>
+        <member name="F:Genzai.EfCore.Utils.QueryUtils.Or">
+             <summary>
+            Or condition
+             </summary>
+        </member>
+        <member name="F:Genzai.EfCore.Utils.QueryUtils.AndNot">
+             <summary>
+            NotAnd  condition
+             </summary>
+        </member>
+        <member name="F:Genzai.EfCore.Utils.QueryUtils.OrNot">
+             <summary>
+            NotOr condition
+             </summary>
+        </member>
+        <member name="F:Genzai.EfCore.Utils.QueryUtils.Asc">
+             <summary>
+            Order criteria asc
+             </summary>
+        </member>
+        <member name="F:Genzai.EfCore.Utils.QueryUtils.Desc">
+             <summary>
+            Order criteria desc
+             </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.InitQueryExpression``1">
+            <summary>
+            It initializes query expression
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.AppendConditionStringContains``1(LinqKit.ExpressionStarter{``0}@,System.String,System.String,System.String)">
+            <summary>
+            It appends "contains" condition to query
+            </summary>
+            <typeparam name="T">Query type</typeparam>
+            <param name="query">Query</param>
+            <param name="propertyName">Condition property</param>
+            <param name="value">Condition value</param>
+            <param name="queryOperator">Query operator</param>
+            <returns>Query with condition</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.AppendFilterConditions``1(LinqKit.ExpressionStarter{``0}@,System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Add a simple filter by many fields (OR between each field)
+            with AND operator to the rest of the query.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <param name="propertyNames"></param>
+            <param name="filter"></param>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.AppendConditionList``1(LinqKit.ExpressionStarter{``0}@,System.String,System.Collections.Generic.ICollection{System.Nullable{System.Int64}},System.String)">
+            <summary>
+            It appends "inList" condition to query
+            </summary>
+            <typeparam name="TS">Query Type</typeparam>
+            <param name="queryExpression">Query</param>
+            <param name="propertyName">Property</param>
+            <param name="list">List</param>
+            <param name="queryOperator">Query operator</param>
+            <returns>Query with condition</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.AppendConditionStringStartsWith``1(LinqKit.ExpressionStarter{``0}@,System.String,System.String,System.String)">
+            <summary>
+            It appends "StartsWith" condition to query
+            </summary>
+            <typeparam name="T">Query type</typeparam>
+            <param name="query">Query</param>
+            <param name="propertyName">Condition property</param>
+            <param name="value">Condition value</param>
+            <param name="queryOperator">Query operator</param>
+            <returns>Query with condition</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.AppendConditionStringEndsWith``1(LinqKit.ExpressionStarter{``0}@,System.String,System.String,System.String)">
+            <summary>
+            It appends "EndsWith" condition to query
+            </summary>
+            <typeparam name="T">Query type</typeparam>
+            <param name="query">Query</param>
+            <param name="propertyName">Condition property</param>
+            <param name="value">Condition value</param>
+            <param name="queryOperator">Query Operator</param>
+            <returns>Query with condition</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.AppendConditionEquals``1(LinqKit.ExpressionStarter{``0}@,System.String,System.Object,System.String)">
+            <summary>
+            It appends "equals" condition to query
+            </summary>
+            <typeparam name="T">Query type</typeparam>
+            <param name="query">Query</param>
+            <param name="propertyName">Condition property</param>
+            <param name="value">value</param>
+            <param name="queryOperator">Query operator</param>
+            <returns>Query with condition</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.AppendConditionNull``1(LinqKit.ExpressionStarter{``0}@,System.String,System.String)">
+            <summary>
+            It appends "null" condition to query
+            </summary>
+            <typeparam name="T">Query type</typeparam>
+            <param name="query">Query</param>
+            <param name="propertyName">Condition property</param>
+            <param name="queryOperator">Query operator</param>
+            <returns>Query with condition</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.AppendConditionNotNull``1(LinqKit.ExpressionStarter{``0}@,System.String,System.String)">
+            <summary>
+            It appends "null" condition to query
+            </summary>
+            <typeparam name="T">Query type</typeparam>
+            <param name="query">Query</param>
+            <param name="propertyName">Condition property</param>
+            <param name="queryOperator">Query operator</param>
+            <returns>Query with condition</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.AppendConditionRange``1(LinqKit.ExpressionStarter{``0}@,System.String,System.Object,System.Object,System.String)">
+            <summary>
+            It appends "range" condition to query
+            </summary>
+            <typeparam name="T">Query type</typeparam>
+            <param name="query">Query</param>
+            <param name="propertyName">Condition property</param>
+            <param name="fromValue">From value</param>
+            <param name="toValue">To Value</param>
+            <param name="queryOperator">Query operator</param>
+            <returns>Query with condition</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.AppendCondition``1(LinqKit.ExpressionStarter{``0}@,System.String,System.Object,System.String,System.String)">
+            <summary>
+            It appends condition to query
+            </summary>
+            <typeparam name="T">Query type</typeparam>
+            <param name="query">Query</param>
+            <param name="propertyName">Condition property</param>
+            <param name="value">Condition value</param>
+            <param name="comparison">Comparison</param>
+            <param name="queryOperator">Query operator</param>
+            <returns>Query with condition</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.AppendCondition``1(LinqKit.ExpressionStarter{``0}@,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.String)">
+            <summary>
+            It appends condition to expression
+            </summary>
+            <typeparam name="T">Expression type</typeparam>
+            <param name="query">Query</param>
+            <param name="expression">Expression</param>
+            <param name="queryOperator">Operator</param>
+            <returns>Expresion with condition</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.Not``1(System.Linq.Expressions.Expression{``0})">
+            <summary>
+            It add "not" to expression
+            </summary>
+            <typeparam name="TFunc">Function</typeparam>
+            <param name="baseExpr">Base expresion</param>
+            <returns>Expression with "not"</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.AppendOrderBy``1(System.Linq.IQueryable{``0},System.String,System.String)">
+            <summary>
+            It appends orderby to query
+            </summary>
+            <typeparam name="TS">Query Type</typeparam>
+            <param name="query">Query</param>
+            <param name="orderCriteria">Order criteria: asc or desc</param>
+            <param name="orderColumn">Column to order</param>
+            <returns>Query with order</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.MakeListContainsExpression``1(System.String,System.Collections.Generic.ICollection{System.Nullable{System.Int64}})">
+            <summary>
+            It builds list.contains(x) expression
+            </summary>
+            <typeparam name="TS">Type</typeparam>
+            <param name="propertyName">Property</param>
+            <param name="list">List</param>
+            <returns>Expression</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.ContainsExpression``3(``2,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Creates lambda expression predicate: (TEntity entity) => collection.Contains(entity.property)
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.BuildPredicate``1(System.String,System.String,System.String)">
+            <summary>
+            It builds expression
+            </summary>
+            <typeparam name="T">Query type</typeparam>
+            <param name="propertyName">Condition property</param>
+            <param name="propertyValue">Condition value</param>
+            <param name="comparison">Comparison</param>
+            <returns>Expression with condition</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.MakeComparison(System.Linq.Expressions.Expression,System.String,System.String)">
+            <summary>
+            It builds expression
+            </summary>
+            <param name="left">Left expression</param>
+            <param name="propertyValue">Property value</param>
+            <param name="comparison">Comparison</param>
+            <returns>Expresion</returns>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.MakeString(System.Linq.Expressions.Expression)">
+            <summary>
+            It builds expresion to invoke toString
+            </summary>
+            <param name="source">Expresion</param>
+            <returns>String expresion</returns>
+        </member>
+        <member name="M:Genzai.EfCore.Utils.QueryUtils.MakeBinary(System.Linq.Expressions.ExpressionType,System.Linq.Expressions.Expression,System.String)">
+            <summary>
+            It builds expression
+            </summary>
+            <param name="type">ExpressionType</param>
+            <param name="left">Left expression</param>
+            <param name="value">Value</param>
+            <returns>Expression</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,70 @@
+
+trigger:
+  branches:
+    include:
+      - master
+      - develop
+      - feature/*
+      - hotfix/*
+      - bugfix/*
+
+pr: none
+
+parameters:
+  - name: isManualArtifacts
+    displayName: Build Artifacts?
+    type: boolean
+    default: false
+
+
+resources:
+  repositories:
+    - repository: pipelinesTemplates
+      type: github
+      name:  prosegur/support-innovation-gedge-pipelines-templates
+      endpoint: Gedge
+      ref: 'feature/g-499'
+
+
+
+variables:
+  repositoryName: 'gedge-nuget-snapshot-local'
+  generateArtifacts: $[eq(variables['Build.SourceBranch'], 'refs/heads/develop')]
+
+stages:
+  - stage: BuildProject
+    pool:
+      vmImage: ubuntu-20.04
+    jobs:
+      - job: BuildProject
+        displayName: Compilar y ejecutar sonar
+        steps:
+          - template: templates/buildDotnetWithSonarVersion.yml@pipelinesTemplates
+            parameters:
+              sonarQubeConnectionName: 'Sonar-Cloud-DevOps-Service-Account'
+              sonarQubeProyectKey: 'gedge-core'
+
+
+  - stage: BuildStage
+    condition: or(eq('${{ parameters.isManualArtifacts }}', 'true'), eq(variables.generateArtifacts, true))
+    pool:
+      vmImage: ubuntu-20.04
+    jobs:
+      - job: BuildStage
+        displayName: Construcción
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - template: templates/veracodeNuget.yml@pipelinesTemplates
+            parameters:
+              veracodeService: 'Veracode-Gedge'
+              veracodeAppProfile: 'A40_GLOBAL'
+              veracodeSandboxName: 'Gedge-core'
+          - script: echo '##vso[task.setvariable variable=repositoryName]gedge-nuget-release-local'
+            displayName: 'Calculate artifactory to publish'
+            condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+          - template: templates/buildNugetVersion.yml@pipelinesTemplates
+            parameters:
+              nugetConnection: 'Jfrog Artifactory'
+              nugetRepo: ${{ variables.repositoryName }}
+

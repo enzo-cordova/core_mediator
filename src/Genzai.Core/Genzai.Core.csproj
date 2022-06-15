@@ -1,0 +1,101 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <CodeAnalysisRuleSet>../../Genzai.ruleset</CodeAnalysisRuleSet>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageIcon>Genzai.png</PackageIcon>
+    <Version>1.0.11</Version>
+    <Authors>Genzai Team</Authors>
+    <Company>Genzai Team</Company>
+    <Product>Genzai.Core Library</Product>
+    <Copyright>Genzai Team</Copyright>
+    <Description>Common library for Genzai projects. Contains helpers and base classes.</Description>
+    <PackageIcon>icon.png</PackageIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>.\Genzai.Core.xml</DocumentationFile>
+    <NoWarn>1701;1702;RCS1090</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;RCS1090</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Model\Request\OrderByRequest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\.editorconfig" Link=".editorconfig" />
+    <None Include="images\icon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.7.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.4.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.20.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
+    <PackageReference Include="Microsoft.DotNet.PlatformAbstractions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Roslynator.Analyzers" Version="4.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="VaultSharp" Version="1.7.0.4" />
+    <PackageReference Include="SendGrid" Version="9.27.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Locales\LocalStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LocalStrings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Locales\LocalStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="MediatR" />
+    <Using Include="Genzai.Core.Validation" />
+    <Using Include="Genzai.Core.Locales" />
+    <Using Include="Genzai.Core.Model.Configuration.Mapping" />
+    <Using Include="Genzai.Core.Model.Configuration.Entity" />
+    <Using Include="Genzai.Core.Model.Enums" />
+	  <Using Include="System.Globalization" />
+    <Using Include="System.Diagnostics.CodeAnalysis;" />
+    <Using Include="System.Linq.Expressions" />
+    <Using Include="System.Reflection" />
+    <Using Include="System.Runtime.Serialization" />
+    <Using Include="System.Net" />
+    <Using Include="System" />
+	  <Using Include="System.Runtime.CompilerServices" />
+    <Using Include="System.Text.RegularExpressions" />    
+    <Using Include="System.Text" />
+    <Using Include="Microsoft.AspNetCore.Hosting" />
+    <Using Include="Microsoft.AspNetCore.Http" />
+    <Using Include="Microsoft.AspNetCore.Mvc" />
+    <Using Include="Microsoft.AspNetCore.Mvc.Filters" />
+    <Using Include="Microsoft.Extensions.Hosting" />
+    <Using Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <Using Include="Microsoft.Extensions.Configuration" />
+    <Using Include="Microsoft.Extensions.DependencyInjection" />
+    <Using Include="Microsoft.IdentityModel.Tokens" />
+	<Using Include="Microsoft.Extensions.Logging" />
+    <Using Include="Microsoft.DotNet.PlatformAbstractions" />
+    <Using Include="FluentValidation" />
+  </ItemGroup>
+
+</Project>
