@@ -28,18 +28,19 @@
             <param name="client">Cosmos Client.</param>
             <param name="database">Cosmos Database.</param>
         </member>
+        <member name="M:Genzai.CosmosDb.Context.CosmosDbContext.CreateMongoCollectionAsync(System.String,System.String,MongoDB.Driver.MongoDatabaseSettings,MongoDB.Driver.CreateCollectionOptions,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
         <member name="M:Genzai.CosmosDb.Context.CosmosDbContext.DeleteDatabaseAsync(System.Threading.CancellationToken)">
             <inheritdoc/>
         </member>
         <member name="M:Genzai.CosmosDb.Context.CosmosDbContext.EnsureDatabaseCreatedAsync(System.String,MongoDB.Driver.MongoDatabaseSettings)">
-            <summary>
-            Create new Database if DB is null
-            </summary>
-            <param name="databaseName"></param>
-            <param name="Databasesettings"></param>
-            <returns></returns>
+            <inheritdoc/>
         </member>
         <member name="M:Genzai.CosmosDb.Context.CosmosDbContext.GetCollectionByName(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Genzai.CosmosDb.Context.CosmosDbContext.GetCollectionByName``1(System.String)">
             <inheritdoc/>
         </member>
         <member name="T:Genzai.CosmosDb.Context.ICosmosDbContext">
@@ -52,10 +53,10 @@
             Method for create new container in CosmosDb database.
             Maintenance and testing purpose.
             </summary>
-            <param name="databaseId">Database Id or Name.</param>
-            <param name="containerId">Container Id or Name.</param>
-            <param name="partitionKey">Partition key.</param>
-            <param name="options">Request options.</param>
+            <param name="databaseName">Database Id or Name.</param>
+            <param name="collectionName">Container Id or Name.</param>
+            <param name="Databasesettings">Partition key.</param>
+            <param name="CollectionOptions">Collection options.</param>
             <param name="cancellationToken">Cancellation token.</param>
             <returns>CosmosDb container.</returns>
         </member>
@@ -72,17 +73,24 @@
             Method for create database in CosmosDb Service.
             Maintenance and testing purpose.
             </summary>
-            <param name="databaseId">Database Id or Name.</param>
-            <param name="options">Request options.</param>
-            <param name="cancellationToken">Cancellation token.</param>
+            <param name="databaseName">Database Id or Name.</param>
+            <param name="Databasesettings">Request options.</param>
             <returns>Response</returns>
         </member>
         <member name="M:Genzai.CosmosDb.Context.ICosmosDbContext.GetCollectionByName(System.String)">
             <summary>
             Get cosmos container.
             </summary>
-            <param name="containerName"></param>
+            <param name="collectionName"></param>
             <returns>Cosmos container.</returns>
+        </member>
+        <member name="M:Genzai.CosmosDb.Context.ICosmosDbContext.GetCollectionByName``1(System.String)">
+            <summary>
+            Return a collection by its name
+            </summary>
+            <typeparam name="TEntity">Type of the Entity</typeparam>
+            <param name="collectionName">Name of the collection</param>
+            <returns></returns>
         </member>
         <member name="T:Genzai.CosmosDb.Extensions.MediatorExtensions">
             <summary>

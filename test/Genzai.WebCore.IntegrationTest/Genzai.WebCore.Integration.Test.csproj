@@ -51,7 +51,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\Genzai.WebCore\Genzai.WebCore.csproj" />
 		<ProjectReference Include="..\Genzai.WebCore.Test\Genzai.WebCore.Test.csproj" />
 	</ItemGroup>
 

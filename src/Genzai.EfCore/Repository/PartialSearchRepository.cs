@@ -1,4 +1,5 @@
-﻿using Genzai.EfCore.Search;
+﻿using Genzai.EfCore.Context;
+using Genzai.EfCore.Search;
 using Genzai.EfCore.Utils;
 using LinqKit;
 
@@ -13,8 +14,8 @@ namespace Genzai.EfCore.Repository;
 /// <typeparam name="TEntitySearch">EntitySearch</typeparam>
 /// <typeparam name="TEntitySearchResult">EntitySearchResult</typeparam>
 public abstract class PartialSearchRepository<TContext, TEntity, TKey, TEntitySearch, TEntitySearchResult> :
-    Repository<TContext, TEntity, TKey>, IPartialSearchRepository<TEntity, TKey, TEntitySearch, TEntitySearchResult>
-    where TContext : DbContext
+    AuditableRepository<TContext, TEntity, TKey>, IPartialSearchRepository<TEntity, TKey, TEntitySearch, TEntitySearchResult>
+    where TContext : ContextDataBase<TContext>
     where TEntity : class, IEntity<TKey>
     where TKey : IEquatable<TKey>
     where TEntitySearch : EntitySearch

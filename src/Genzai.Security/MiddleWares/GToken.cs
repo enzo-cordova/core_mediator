@@ -32,6 +32,11 @@ namespace Genzai.Security.MiddleWares
 
 
         /// <summary>
+        /// ManageCenters
+        /// </summary>
+        public long? ManageCenters { get; set; } = 0;
+
+        /// <summary>
         /// User name
         /// </summary>
         public string? User { get; set; } 

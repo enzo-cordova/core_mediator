@@ -22,7 +22,7 @@ public abstract class BaseUpdateCommandHandler<TEntity, TRepository, TUpdateComm
     IRequestHandler<TUpdateCommand, bool>
     where TEntityUpdateRequest : IEntityUpdateRequest
 
-    where TRepository : IRepository<TEntity, long>
+    where TRepository : IAuditableRepository<TEntity, long>
     where TEntity : class, IEntity<long>
     where TUpdateCommand : BaseUpdateCommand<TEntityUpdateRequest>
 {
@@ -70,7 +70,7 @@ public abstract class BaseUpdateCommandHandler<TEntity, TRepository, TUpdateComm
         CheckErrors(errors);
         //Update entity
         _repository.UpdateEntityIntoDbSet(newEntity);
-        var ret = await _repository.SaveAsync(cancellationToken);
+        var ret = await _repository.SaveAuditableAsync(cancellationToken);
 
         return ret;
     }

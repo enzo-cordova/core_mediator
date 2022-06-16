@@ -5,6 +5,7 @@ using Genzai.Security.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims; 
 using Genzai.Core.Telemetry;
+using Genzai.Security.Enums;
 using Newtonsoft.Json;
 using static Genzai.Security.Domain.User;  
 
@@ -96,7 +97,7 @@ namespace Genzai.Security.Services.Implementations
                 PermissionValue = p.Permission,
                 IsAdmin = p.ListRole.Any(c => c.Code == Constant.Constant.Admin),
                 RoleCode = p.ListRole.Select(c => c.Code),
-                Centers = p.ListCenter?.Where(c => c.Active).Select(c => c.Id),
+                Centers = p.ListCenter?.Where(c => c.Active).Select(c => c.Id) ,
                 User = userCode
             };
             return  oToken ;

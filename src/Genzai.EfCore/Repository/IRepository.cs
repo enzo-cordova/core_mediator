@@ -152,7 +152,7 @@ public interface IRepository<TEntity, TKey>
     /// </summary>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns></returns>
-    Task<bool> SaveAsync(CancellationToken cancellationToken);
+    Task<bool> SaveAsync(CancellationToken cancellationToken); 
 
     /// <summary>
     /// Update Entity

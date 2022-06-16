@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup Label="CommonProperties"> 
+	<GenzaiCore>1.0.12</GenzaiCore>  
+  </PropertyGroup>
+</Project>

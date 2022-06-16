@@ -3,6 +3,6 @@
 /// <summary>
 /// Autable Repository
 /// </summary>
-public interface IAuditableOrderRepository : IRepository<AuditableOrder, int>
+public interface IAuditableOrderRepository : IAuditableRepository<AuditableOrder, int>
 {
 }

@@ -9,7 +9,7 @@ namespace Genzai.EfCore.Repository;
 /// <typeparam name="TKey">Enity key</typeparam>
 /// <typeparam name="TEntitySearch">Entity search</typeparam>
 /// <typeparam name="TEntitySearchResult">Entity search result</typeparam>
-public interface IPartialSearchRepository<TEntity, TKey, TEntitySearch, TEntitySearchResult> : IRepository<TEntity, TKey>
+public interface IPartialSearchRepository<TEntity, TKey, TEntitySearch, TEntitySearchResult> : IAuditableRepository<TEntity, TKey>
     where TEntity : class, IEntity<TKey>
     where TKey : IEquatable<TKey>
     where TEntitySearch : EntitySearch

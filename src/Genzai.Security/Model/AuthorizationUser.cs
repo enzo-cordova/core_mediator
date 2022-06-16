@@ -6,16 +6,17 @@ namespace Genzai.Security.Model;
 /// </summary>
 public record AuthorizationUser
 {
-
     /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="permission"></param>
     /// <param name="listRole"></param>
-    /// <param name="listCenter"></param>
+    /// <param name="listCenter"></param> 
     public AuthorizationUser(long permission, IEnumerable<Role> listRole, IEnumerable<Center>? listCenter) => (Permission, ListRole, ListCenter) = (permission,listRole, listCenter);
+
+    
     /// <summary>
-    /// 
+    /// Sum of Permission
     /// </summary>
     public long Permission { get; set; }
 

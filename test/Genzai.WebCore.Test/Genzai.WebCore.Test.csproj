@@ -41,7 +41,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\Genzai.Core\Genzai.Core.csproj" />
 		<ProjectReference Include="..\..\src\Genzai.EfCore\Genzai.EfCore.csproj" />
-		<ProjectReference Include="..\..\src\Genzai.WebCore\Genzai.WebCore.csproj" />
 	</ItemGroup>
 
 </Project>

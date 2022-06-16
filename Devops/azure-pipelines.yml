@@ -9,28 +9,6 @@ trigger:
       - bugfix/*
 
 pr: none
-
-parameters:
-  - name: isManualArtifacts
-    displayName: Build Artifacts?
-    type: boolean
-    default: false
-
-
-resources:
-  repositories:
-    - repository: pipelinesTemplates
-      type: github
-      name:  enzo-cordova/support-innovation-gedge-pipelines-templates
-      endpoint: github.com_enzo-cordova
-      ref: 'main'
-
-
-
-variables:
-  repositoryName: 'gedge-nuget-snapshot-local'
-  generateArtifacts: $[eq(variables['Build.SourceBranch'], 'refs/heads/develop')]
-
 stages:
   - stage: BuildProject
     pool:
@@ -38,33 +16,47 @@ stages:
     jobs:
       - job: BuildProject
         displayName: Compilar y ejecutar sonar
-        steps:
-          - template: templates/buildDotnetWithSonarVersion.yml@pipelinesTemplates
-            parameters:
-              sonarQubeConnectionName: 'Sonar-Cloud-DevOps-Service-Account'
-              sonarQubeProyectKey: 'gedge-core'
+        steps :
+          - task: UseDotNet@2
+            displayName: 'Descarga e instala el SDK'
+            inputs:
+              packageType: 'sdk'
+              version: "6.0.100"
+              useGlobalJson: true
+              installationPath: $(Agent.ToolsDirectory)/dotnet
+
+          - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
 
 
-  - stage: BuildStage
-    condition: or(eq('${{ parameters.isManualArtifacts }}', 'true'), eq(variables.generateArtifacts, true))
-    pool:
-      vmImage: ubuntu-20.04
-    jobs:
-      - job: BuildStage
-        displayName: Construcción
-        pool:
-          vmImage: ubuntu-latest
-        steps:
-          - template: templates/veracodeNuget.yml@pipelinesTemplates
-            parameters:
-              veracodeService: 'Veracode-Gedge'
-              veracodeAppProfile: 'A40_GLOBAL'
-              veracodeSandboxName: 'Gedge-core'
-          - script: echo '##vso[task.setvariable variable=repositoryName]gedge-nuget-release-local'
-            displayName: 'Calculate artifactory to publish'
-            condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-          - template: templates/buildNugetVersion.yml@pipelinesTemplates
-            parameters:
-              nugetConnection: 'Jfrog Artifactory'
-              nugetRepo: ${{ variables.repositoryName }}
+          - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /config $(Build.SourcesDirectory)/GitVersion.yml'
+          # - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /updateassemblyinfo AssemblyInfo.cs /ensureassemblyinfo /config $(Build.SourcesDirectory)/GitVersion.yml'
 
+  
+          - task: DotNetCoreCLI@2
+            displayName: 'Realiza la compilación'
+            inputs:
+              command: 'build'
+
+          - task: DotNetCoreCLI@2
+            displayName: 'Ejecuta los tests generando un reporte de cobertura'
+            continueOnError: true
+            inputs:
+              command: test
+              arguments: ' --collect:"XPlat Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger "console;verbosity=detailed" '
+
+
+          - task: DotNetCoreCLI@2
+            displayName: 'Empaqueta en el formato NuGet'
+            inputs:
+              command: 'pack'
+              arguments: ' /p:PackageVersion=${{ parameters.projectVersion }} -o $(Build.ArtifactStagingDirectory)'
+              packagesToPack: '$(Build.Repository.LocalPath)/**/*.csproj'
+              versioningScheme: 'off'
+              versionEnvVar: GitVersion.SemVer
+
+          - task: DotNetCoreCLI@2 
+            displayName: 'dotnet nuget push' 
+            inputs: 
+              command: push 
+              publishVstsFeed: 'ff478692-09f4-406d-8d3e-4566cb81b0db' 
+              versioningScheme: byBuildNumber

@@ -246,6 +246,25 @@
             </summary>
             <param name="builder">Entity builder.</param>
         </member>
+        <member name="F:Genzai.EfCore.Repository.AuditableRepository`3.context">
+            <summary>
+            Database Context.
+            </summary>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.AuditableRepository`3.SaveAuditableAsync(System.Threading.CancellationToken)">
+            <summary>
+            Save auditable
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genzai.EfCore.Repository.IAuditableRepository`2.SaveAuditableAsync(System.Threading.CancellationToken)">
+            <summary>
+            Save auditable
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="T:Genzai.EfCore.Repository.IPartialSearchRepository`4">
             <summary>
             It controls partial searches

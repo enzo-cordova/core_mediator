@@ -54,13 +54,13 @@ public class RepositoryTests : IClassFixture<DatabaseFixture>
 
         fixture.RepositoryAuditable.Add(order);
 
-        var action = await fixture.Context.SaveAuditChangesAsync(new CancellationToken(false));
+        var action = await fixture.RepositoryAuditable.SaveAuditableAsync(new CancellationToken(false));
 
         order.CreatedBy.Should().NotBeNull();
         order.CreatedBy.Should().Contain("prosegur.com");
         order.CreatedAt.Day.Should().Be(DateTime.Now.Day);
         order.IsTransient().Should().BeFalse();
-        action.Should().BeGreaterThan(0);
+        action.Should().BeTrue();
     }
 
     /// <summary>
@@ -76,13 +76,13 @@ public class RepositoryTests : IClassFixture<DatabaseFixture>
 
         fixture.RepositoryAuditable.Update(order);
 
-        var action = await fixture.Context.SaveAuditChangesAsync(new CancellationToken(false));
+        var action = await fixture.RepositoryAuditable.SaveAuditableAsync(new CancellationToken(false));
 
         order.UpdatedAt.Should().NotBeNull();
         order.UpdatedBy.Should().Contain("prosegur.com");
         order.CreatedAt.Day.Should().Be(DateTime.Now.Day);
         order.IsTransient().Should().BeFalse();
-        action.Should().BeGreaterThan(0);
+        action.Should().BeTrue();
     }
 
     /// <summary>

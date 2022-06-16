@@ -45,6 +45,11 @@ namespace Genzai.WebCore.Test.Mock.Infrastructure.Data.Repositories
                 nameof(SampleSearchResult.Name)
             });
         }
+        public async Task<bool> SaveAuditableAsync(CancellationToken cancellationToken)
+        {
+
+            return await this.context.SaveAuditChangesAsync(cancellationToken).ConfigureAwait(false) > 0;
+        }
 
 
 

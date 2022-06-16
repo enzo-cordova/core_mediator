@@ -14,8 +14,12 @@ public class HasPermissionAttribute : TypeFilterAttribute
     /// Constructor
     /// </summary>
     /// <param name="permission"></param>
-    public HasPermissionAttribute(PermissionTypes permission) : base(typeof(HasPermissionFilter))
+    /// <param name="propertyName"></param>
+    public HasPermissionAttribute(PermissionTypes permission,string propertyName = "") : base(typeof(HasPermissionFilter))
     {
-        Arguments = new object[] { permission };
+        Arguments = new object[] { permission, propertyName };
     }
+
+
+
 }

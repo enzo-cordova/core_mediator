@@ -29,8 +29,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Genzai.Security\Genzai.Security.csproj" />
-  </ItemGroup>
-
 </Project>

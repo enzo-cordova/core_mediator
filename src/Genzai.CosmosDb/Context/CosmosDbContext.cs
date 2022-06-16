@@ -12,7 +12,7 @@ public class CosmosDbContext : ICosmosDbContext
     /// <summary>
     /// Cosmos Db Database.
     /// </summary>
-    public IMongoDatabase Database { get; set; }
+    public IMongoDatabase? Database { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CosmosDbContext"/> class.
@@ -29,12 +29,12 @@ public class CosmosDbContext : ICosmosDbContext
     /// </summary>
     /// <param name="client">Cosmos Client.</param>
     /// <param name="database">Cosmos Database.</param>
-    public CosmosDbContext(MongoClient client, IMongoDatabase database)
+    public CosmosDbContext(MongoClient client, IMongoDatabase database) : this(client)
     {
-        this.client = client;
         this.Database = database;
     }
 
+    /// <inheritdoc/>
     public async Task CreateMongoCollectionAsync(
             string databaseName,
             string collectionName,
@@ -42,35 +42,32 @@ public class CosmosDbContext : ICosmosDbContext
             CreateCollectionOptions CollectionOptions,
             CancellationToken cancellationToken = default)
     {
-        try
+        Guard.IsNotNullNorEmpty(
+           databaseName,
+           string.Format(CultureInfo.InvariantCulture, LocalStrings.ParameterIsNullOrEmpty, nameof(databaseName)));
+
+        Guard.IsNotNullNorEmpty(
+           databaseName,
+           string.Format(CultureInfo.InvariantCulture, LocalStrings.ParameterIsNullOrEmpty, nameof(collectionName)));
+
+        if (this.Database == null)
         {
-            if (this.Database == null)
-            {
-                await this.EnsureDatabaseCreatedAsync(databaseName, Databasesettings);
-            }
-            await this.Database.CreateCollectionAsync(collectionName, CollectionOptions, cancellationToken);
+            await this.EnsureDatabaseCreatedAsync(databaseName, Databasesettings);
         }
-        catch (ArgumentNullException err)
-        {
-            throw new ArgumentNullException("Error");
-        }
+        await this.Database!.CreateCollectionAsync(collectionName, CollectionOptions, cancellationToken);
+
     }
 
     ///<inheritdoc/>
-    public async void DeleteDatabaseAsync(CancellationToken cancellationToken = default)
+    public void DeleteDatabaseAsync(CancellationToken cancellationToken = default)
     {
         //await this.client.DropDatabaseAsync(null, cancellationToken);
 
         this.Database = null;
     }
 
-    /// <summary>
-    /// Create new Database if DB is null
-    /// </summary>
-    /// <param name="databaseName"></param>
-    /// <param name="Databasesettings"></param>
-    /// <returns></returns>
-    public async Task<IMongoDatabase> EnsureDatabaseCreatedAsync(
+    /// <inheritdoc/>
+    public Task<IMongoDatabase> EnsureDatabaseCreatedAsync(
         string databaseName, MongoDatabaseSettings Databasesettings = null)
     {
         Guard.IsNotNullNorEmpty(
@@ -81,7 +78,7 @@ public class CosmosDbContext : ICosmosDbContext
 
         this.Database = result;
 
-        return result;
+        return Task.FromResult(result);
     }
 
     ///<inheritdoc/>
@@ -94,12 +91,13 @@ public class CosmosDbContext : ICosmosDbContext
         return this.Database.GetCollection<BsonDocument>(collectionName);
     }
 
-    public IMongoCollection<CosmosEntityDomain> GetCollectionByName<T>(string collectionName)
+    ///<inheritdoc/>
+    public IMongoCollection<T> GetCollectionByName<T>(string collectionName) where T : CosmosEntityDomain
     {
         Guard.IsNotNullNorEmpty(
            collectionName,
            string.Format(CultureInfo.InvariantCulture, LocalStrings.ParameterIsNullOrEmpty, nameof(collectionName)));
 
-        return this.Database.GetCollection<CosmosEntityDomain>(collectionName);
+        return this.Database.GetCollection<T>(collectionName);
     }
 }

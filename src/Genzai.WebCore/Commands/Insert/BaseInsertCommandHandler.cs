@@ -24,7 +24,7 @@ namespace Genzai.WebCore.Commands.Insert;
 /// <typeparam name="TEntityResponse">Entity response</typeparam>
 public abstract class BaseInsertCommandHandler<TEntity, TRepository, TInsertCommand, TEntityInsertRequest, TEntityResponse> :
     IRequestHandler<TInsertCommand, TEntityResponse>
-    where TRepository : IRepository<TEntity, long>
+    where TRepository : IAuditableRepository<TEntity, long>
     where TEntity : class, IEntity<long>
     where TInsertCommand : BaseInsertCommand<TEntityInsertRequest, TEntityResponse>
     where TEntityInsertRequest : IEntityInsertRequest
@@ -80,7 +80,7 @@ public abstract class BaseInsertCommandHandler<TEntity, TRepository, TInsertComm
         }
         //Save
         await _repository.AddAsync(entity, cancellationToken);
-        var ret = await _repository.SaveAsync(cancellationToken);
+        var ret = await _repository.SaveAuditableAsync(cancellationToken);
         //Response
         var response = GetResponseFromEntity(entity);
         return ret
@@ -116,4 +116,5 @@ public abstract class BaseInsertCommandHandler<TEntity, TRepository, TInsertComm
     /// <param name="entity">Entity</param>
     /// <returns>Errors</returns>
     protected abstract IList<ApplicationError> PreSaveValidation(TEntity entity);
+
 }

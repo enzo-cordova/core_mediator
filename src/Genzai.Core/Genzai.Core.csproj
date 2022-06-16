@@ -5,8 +5,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <CodeAnalysisRuleSet>../../Genzai.ruleset</CodeAnalysisRuleSet>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageIcon>Genzai.png</PackageIcon>
-    <Version>1.0.11</Version>
+	  <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+	  <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+	  <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+    <Version>$(GenzaiCore)</Version>
+    <PackageIcon>Genzai.png</PackageIcon> 
     <Authors>Genzai Team</Authors>
     <Company>Genzai Team</Company>
     <Product>Genzai.Core Library</Product>

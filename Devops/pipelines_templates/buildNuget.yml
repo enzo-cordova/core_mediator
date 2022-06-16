@@ -1,0 +1,83 @@
+parameters:
+  - name: sonarQubeConnectionName
+    type: string
+  - name: sonarQubeProyectKey
+    type: string
+  - name: artifactoryConnectionName
+    type: string
+  - name: repositoryName
+    type: string
+
+steps :
+
+  - task: UseDotNet@2
+    displayName: 'Descarga e instala el SDK'
+    inputs:
+      packageType: 'sdk'
+      version: "6.0.100"
+      useGlobalJson: true
+      installationPath: $(Agent.ToolsDirectory)/dotnet
+
+  - task: SonarQubePrepare@5
+    displayName: 'Prepara el análisis de Sonar'
+    inputs:
+      SonarQube: ${{ parameters.sonarQubeConnectionName }}
+      scannerMode: 'MSBuild'
+      projectKey: ${{ parameters.sonarQubeProyectKey }}
+      projectName: ${{ parameters.sonarQubeProyectKey }}
+      extraProperties: |
+        sonar.exclusions=**/obj/**,**/*.dll
+        sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/**/coverage.opencover.xml
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Realiza la compilación'
+    inputs:
+      command: 'build'
+
+  - task: UseDotNet@2
+    displayName: 'Descarga e instala el SDK'
+    inputs:
+      packageType: 'sdk'
+      version: "6.0.100"
+      useGlobalJson: true
+      installationPath: $(Agent.ToolsDirectory)/dotnet
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Ejecuta los tests generando un reporte de cobertura'
+    continueOnError: true
+    inputs:
+      command: test
+      arguments: ' --collect:"XPlat Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger "console;verbosity=detailed" '
+
+
+  - task: SonarQubeAnalyze@5
+    displayName: 'Ejecuta la tarea de análisis'
+
+
+  - task: SonarQubePublish@5
+    displayName: 'Publica el resultado del análisis de Sonar'
+    inputs:
+      pollingTimeoutSec: '300'
+      
+  - task: DotNetCoreCLI@2
+    displayName: 'Create nuget package'
+    inputs:
+      command: 'pack'
+      packDirectory: 'packages'
+
+  - task: Veracode@3
+    inputs:
+      ConnectionDetailsSelection: 'Endpoint'
+      AnalysisService: 'Veracode-Gedge'
+      veracodeAppProfile: 'A40_GLOBAL'
+      version: '$(build.buildNumber)'
+      filepath: 'packages'
+      sandboxName: 'Gedge-core'
+      maximumWaitTime: '360'
+
+  - task: ArtifactoryNuGet@2
+    inputs:
+      command: 'push'
+      artifactoryService: ${{ parameters.artifactoryConnectionName }}
+      targetDeployRepo: ${{ parameters.repositoryName }}
+      pathToNupkg: 'packages/*.nupkg'

@@ -11,10 +11,10 @@ public interface ICosmosDbContext
     /// Method for create new container in CosmosDb database.
     /// Maintenance and testing purpose.
     /// </summary>
-    /// <param name="databaseId">Database Id or Name.</param>
-    /// <param name="containerId">Container Id or Name.</param>
-    /// <param name="partitionKey">Partition key.</param>
-    /// <param name="options">Request options.</param>
+    /// <param name="databaseName">Database Id or Name.</param>
+    /// <param name="collectionName">Container Id or Name.</param>
+    /// <param name="Databasesettings">Partition key.</param>
+    /// <param name="CollectionOptions">Collection options.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>CosmosDb container.</returns>
     Task CreateMongoCollectionAsync(
@@ -36,9 +36,8 @@ public interface ICosmosDbContext
     /// Method for create database in CosmosDb Service.
     /// Maintenance and testing purpose.
     /// </summary>
-    /// <param name="databaseId">Database Id or Name.</param>
-    /// <param name="options">Request options.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <param name="databaseName">Database Id or Name.</param>
+    /// <param name="Databasesettings">Request options.</param>
     /// <returns>Response</returns>
     Task<IMongoDatabase> EnsureDatabaseCreatedAsync(
         string databaseName, MongoDatabaseSettings Databasesettings = null);
@@ -46,9 +45,16 @@ public interface ICosmosDbContext
     /// <summary>
     /// Get cosmos container.
     /// </summary>
-    /// <param name="containerName"></param>
+    /// <param name="collectionName"></param>
     /// <returns>Cosmos container.</returns>
     IMongoCollection<BsonDocument> GetCollectionByName(string collectionName);
 
-    IMongoCollection<CosmosEntityDomain>? GetCollectionByName<T>(string collectionName);
+    /// <summary>
+    /// Return a collection by its name
+    /// </summary>
+    /// <typeparam name="TEntity">Type of the Entity</typeparam>
+    /// <param name="collectionName">Name of the collection</param>
+    /// <returns></returns>
+    IMongoCollection<TEntity>? GetCollectionByName<TEntity>(string collectionName)
+        where TEntity : CosmosEntityDomain;
 }

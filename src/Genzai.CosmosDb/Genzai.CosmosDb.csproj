@@ -10,7 +10,10 @@
     <Product>Genzai.CosmosDb Library</Product>
     <Description>Common library for Genzai projects. Contains helpers and base classes about Azure CosmosDb with MongoDb Api.</Description>
     <Copyright>Genzai Team</Copyright>
-    <Version>1.0.11</Version>
+	  <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+	  <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+	  <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+	  <Version>$(GenzaiCore)</Version>
     <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 

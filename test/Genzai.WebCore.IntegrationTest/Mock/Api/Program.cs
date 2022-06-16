@@ -27,6 +27,15 @@ IServiceCollection services = builder.Services;
 //Configure service
 SampleConfigurationManager.ConfigureServices(services, configuration);
 
+//Audit
+
+services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+services.AddScoped(provider => new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
+{
+    new("emails", "mock@email.fake"),
+    new(ClaimTypes.Name, "test@prosegur.com")
+}, "mock")));
+
 var app = builder.Build();
 IWebHostEnvironment env = app.Environment;
 

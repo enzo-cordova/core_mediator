@@ -6,6 +6,6 @@ namespace Genzai.WebCore.Test.Mock.Domain.Repositories
 {
     public interface ISampleRepository : IPartialSearchRepository<Sample, long, SampleSearch, SampleSearchResult>
     {
-
+        Task<bool> SaveAuditableAsync(CancellationToken cancellationToken);
     }
 }

@@ -381,11 +381,12 @@
             Filter
             </summary>
         </member>
-        <member name="M:Genzai.Security.Filters.HasPermissionAttribute.#ctor(Genzai.Security.Enums.PermissionTypes)">
+        <member name="M:Genzai.Security.Filters.HasPermissionAttribute.#ctor(Genzai.Security.Enums.PermissionTypes,System.String)">
             <summary>
             Constructor
             </summary>
             <param name="permission"></param>
+            <param name="propertyName"></param>
         </member>
         <member name="T:Genzai.Security.Filters.HasPermissionFilter">
             <summary>
@@ -397,13 +398,19 @@
             Value containing permissions set required
             </summary>
         </member>
-        <member name="M:Genzai.Security.Filters.HasPermissionFilter.#ctor(Genzai.Security.Enums.PermissionTypes,Microsoft.Extensions.Logging.ILogger{Genzai.Security.Filters.HasPermissionFilter},Genzai.Core.Caching.IResponseCacheService)">
+        <member name="P:Genzai.Security.Filters.HasPermissionFilter.Property">
+            <summary>
+            Property
+            </summary>
+        </member>
+        <member name="M:Genzai.Security.Filters.HasPermissionFilter.#ctor(Genzai.Security.Enums.PermissionTypes,Microsoft.Extensions.Logging.ILogger{Genzai.Security.Filters.HasPermissionFilter},Genzai.Core.Caching.IResponseCacheService,System.String)">
             <summary>
             Constructor
             </summary>
-            <param name="policies"></param> 
+            <param name="policies"></param>
             <param name="logger"></param>
             <param name="responseCacheService"></param>
+            <param name="propertyName"></param>
             <exception cref="T:System.ArgumentNullException"></exception>
         </member>
         <member name="M:Genzai.Security.Filters.HasPermissionFilter.OnAuthorizationAsync(Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext)">
@@ -462,6 +469,11 @@
             IsAdmin
             </summary>
         </member>
+        <member name="P:Genzai.Security.MiddleWares.GToken.ManageCenters">
+            <summary>
+            ManageCenters
+            </summary>
+        </member>
         <member name="P:Genzai.Security.MiddleWares.GToken.User">
             <summary>
             User name
@@ -504,11 +516,11 @@
             </summary>
             <param name="permission"></param>
             <param name="listRole"></param>
-            <param name="listCenter"></param>
+            <param name="listCenter"></param> 
         </member>
         <member name="P:Genzai.Security.Model.AuthorizationUser.Permission">
             <summary>
-            
+            Sum of Permission
             </summary>
         </member>
         <member name="P:Genzai.Security.Model.AuthorizationUser.ListRole">

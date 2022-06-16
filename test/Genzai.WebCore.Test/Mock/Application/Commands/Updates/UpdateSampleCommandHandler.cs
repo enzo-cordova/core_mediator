@@ -33,6 +33,6 @@ namespace Genzai.WebCore.Test.Mock.Application.Commands.Updates
               typeof(Sample).Name.ToLower(), "sample.submoduleid.incorrect", null));
             }
             return errors;
-        }
+        }  
     }
 }

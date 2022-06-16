@@ -6,7 +6,10 @@
     <Nullable>enable</Nullable>
     <CodeAnalysisRuleSet>../../Genzai.ruleset</CodeAnalysisRuleSet>
     <NeutralLanguage>en</NeutralLanguage>
-    <Version>1.0.11</Version>
+	  <Version>$(GenzaiCore)</Version>
+	  <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+	  <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+	  <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
     <Authors>Genzai Team</Authors>
     <Product>Genzai.EfCore Library</Product>
     <Description>Common library for Genzai projects. Contains helpers and base classes about Entity Framework Core.</Description>

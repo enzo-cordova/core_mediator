@@ -3,7 +3,7 @@
 /// <summary>
 /// Auditable Repository
 /// </summary>
-public class AuditableOrderRepository : Repository<FakeDomainContext, AuditableOrder, int>, IAuditableOrderRepository
+public class AuditableOrderRepository : AuditableRepository<FakeDomainContext, AuditableOrder, int>, IAuditableOrderRepository
 {
     /// <summary>
     /// Constructor
