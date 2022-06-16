@@ -35,7 +35,8 @@ stages:
           # - script: dotnet build -c Release /p:Version='$(GitVersion.NuGetVersion)'     
 
           - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch /config $(Build.SourcesDirectory)/GitVersion.yml'
-
+          - script: echo current version is $(GitVersion.SemVer)
+            displayName: 'Display calculated version'
 
           # - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /updateassemblyinfo AssemblyInfo.cs /ensureassemblyinfo /config $(Build.SourcesDirectory)/GitVersion.yml'
 
