@@ -29,7 +29,8 @@ stages:
 
 
           - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
-          - script: dotnet gitversion /output json /nofetch
+          - script: dotnet gitversion /showconfig    
+          - script: dotnet gitversion /config '$(Build.SourcesDirectory)/GitVersion.yml'
           - script: dotnet gitversion /output buildserver /nofetch      
           - script: dotnet build -c Release /p:Version='$(GitVersion.NuGetVersion)'     
 
