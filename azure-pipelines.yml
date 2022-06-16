@@ -29,6 +29,9 @@ stages:
 
 
           - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
+          - script: dotnet gitversion /output json /nofetch
+          - script: dotnet gitversion /output buildserver /nofetch      
+          - script: dotnet build ${{parameters.RestoreBuildProjects}} -c Release /p:Version='$(GitVersion.NuGetVersion)'     
 
           - powershell: Write-Host "##vso[build.updatebuildnumber]$(FullSemVer)"
             displayName: 'Update build number to $(FullSemVer)'
@@ -36,11 +39,11 @@ stages:
           - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /config $(Build.SourcesDirectory)/GitVersion.yml  /nofetch'
           # - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /updateassemblyinfo AssemblyInfo.cs /ensureassemblyinfo /config $(Build.SourcesDirectory)/GitVersion.yml'
 
-          - task: DotNetCoreCLI@2
-            displayName: Build
-            inputs:
-              projects: '$(Parameters.RestoreBuildProjects)'
-              arguments: '--configuration $(BuildConfiguration) /p:Version=$(FullSemVer)'
+          # - task: DotNetCoreCLI@2
+          #   displayName: Build
+          #   inputs:
+          #     projects: '$(Parameters.RestoreBuildProjects)'
+          #     arguments: '--configuration $(BuildConfiguration) /p:Version=$(FullSemVer)'
          
           - task: DotNetCoreCLI@2
             displayName: 'Ejecuta los tests generando un reporte de cobertura'
