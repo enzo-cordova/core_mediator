@@ -24,19 +24,32 @@ stages:
               version: "6.0.100"
               useGlobalJson: true
               installationPath: $(Agent.ToolsDirectory)/dotnet
+          - task: gitversion/setup@0
+            enabled: true
+            displayName: Install GitVersion
+            inputs:
+              versionSpec: '5.1.3'
+            
+          - task: gitversion/execute@0
+            enabled: true
+            displayName: 'Establish Version'
 
-          - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
+          - powershell: Write-Host "##vso[build.updatebuildnumber]$(FullSemVer)"
+            displayName: 'Update build number to $(FullSemVer)'
 
 
-          - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /config $(Build.SourcesDirectory)/GitVersion.yml'
+          #- script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
+
+
+          #- script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /config $(Build.SourcesDirectory)/GitVersion.yml'
           # - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /updateassemblyinfo AssemblyInfo.cs /ensureassemblyinfo /config $(Build.SourcesDirectory)/GitVersion.yml'
 
-  
           - task: DotNetCoreCLI@2
-            displayName: 'Realiza la compilación'
+            displayName: Build
             inputs:
-              command: 'build'
-
+              projects: '$(Parameters.RestoreBuildProjects)'
+              arguments: '--configuration $(BuildConfiguration) /p:Version=$(FullSemVer)'
+         
           - task: DotNetCoreCLI@2
             displayName: 'Ejecuta los tests generando un reporte de cobertura'
             continueOnError: true
