@@ -29,12 +29,14 @@ stages:
 
 
           - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
-          - script: dotnet-gitversion $(Build.SourcesDirectory) /showconfig         
-          - script: dotnet-gitversion $(Build.SourcesDirectory) /config '$(Build.SourcesDirectory)/GitVersion.yml'
-          - script: dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch      
-          - script: dotnet build -c Release /p:Version='$(GitVersion.NuGetVersion)'     
+          # - script: dotnet-gitversion $(Build.SourcesDirectory) /showconfig         
+          # - script: dotnet-gitversion $(Build.SourcesDirectory) /config '$(Build.SourcesDirectory)/GitVersion.yml'
+          # - script: dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch      
+          # - script: dotnet build -c Release /p:Version='$(GitVersion.NuGetVersion)'     
 
-#          - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /config $(Build.SourcesDirectory)/GitVersion.yml  /nofetch'
+          - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch /config $(Build.SourcesDirectory)/GitVersion.yml'
+
+
           # - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /updateassemblyinfo AssemblyInfo.cs /ensureassemblyinfo /config $(Build.SourcesDirectory)/GitVersion.yml'
 
           # - task: DotNetCoreCLI@2
