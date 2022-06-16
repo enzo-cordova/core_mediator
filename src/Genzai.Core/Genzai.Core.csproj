@@ -5,10 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <CodeAnalysisRuleSet>../../Genzai.ruleset</CodeAnalysisRuleSet>
     <NeutralLanguage>en</NeutralLanguage>
-	  <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
-	  <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
-	  <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
-    <Version>$(GenzaiCore)</Version>
+	     <AssemblyVersion>1.1.1.1</AssemblyVersion>
+    <FileVersion>2.2.2.2</FileVersion>
+       <Version>$(GenzaiCore)</Version>
     <PackageIcon>Genzai.png</PackageIcon> 
     <Authors>Genzai Team</Authors>
     <Company>Genzai Team</Company>
