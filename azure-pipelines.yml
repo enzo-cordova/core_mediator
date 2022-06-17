@@ -1,3 +1,4 @@
+name: $(GITVERSION_FullSemVer)
 
 trigger:
   branches:
@@ -7,7 +8,10 @@ trigger:
       - feature/*
       - hotfix/*
       - bugfix/*
-
+variables:
+  buildConfiguration: 'Release'
+  projects: 'Unai/Unai.csproj'
+  GitVersion.SemVer: ''
 pr: none
 stages:
   - stage: BuildProject
@@ -29,9 +33,8 @@ stages:
               versionSpec: '5.10.0'
           - task: gitversion/execute@0
             inputs:
-              targetPath: '$(Build.SourcesDirectory)'
-              useConfigFile: true
               configFilePath: 'GitVersion.yml'
+              updateAssemblyInfo: true
 
 
 
@@ -51,7 +54,7 @@ stages:
             displayName: Build
             inputs:
               projects: '$(Parameters.RestoreBuildProjects)'
-              arguments: '--configuration $(BuildConfiguration) /p:Version=$(FullSemVer)'
+              arguments: '--configuration $(BuildConfiguration) /p:Version=$(GitVersion.SemVer)'
          
           - task: DotNetCoreCLI@2
             displayName: 'Ejecuta los tests generando un reporte de cobertura'
