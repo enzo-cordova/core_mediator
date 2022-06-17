@@ -3,8 +3,6 @@ trigger:
 - release/*
 - feature/*
 - bugfix/*
-- hotfix/*
- -refs/tags/*
 
 pool:
   name: Default
@@ -13,12 +11,14 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: 'choco install gitversion.portable'
-- task: AzurePowerShell@5
+- task: gitversion/setup@0
   inputs:
-    ScriptType: 'InlineScript'
-    azurePowerShellVersion: 'LatestVersion'
-
+    versionSpec: '5.10.0'
+- task: gitversion/execute@0
+  inputs:
+    targetPath: '$(Build.SourcesDirectory)'
+    useConfigFile: true
+    configFilePath: 'GitVersion.yml'
 - script: echo %Action%%BuildVersion%
   displayName: 'Set build version'
   env:
