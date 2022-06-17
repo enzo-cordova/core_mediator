@@ -24,27 +24,34 @@ stages:
               version: "6.0.100"
               useGlobalJson: true
               installationPath: $(Agent.ToolsDirectory)/dotnet
+          - task: gitversion/setup@0
+            inputs:
+              versionSpec: '5.10.0'
+          - task: gitversion/execute@0
+            inputs:
+              targetPath: '$(Build.SourcesDirectory)'
+              useConfigFile: true
+              configFilePath: 'GitVersion.yml'
 
 
 
-
-          - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
+         # - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
           # - script: dotnet-gitversion $(Build.SourcesDirectory) /showconfig         
           # - script: dotnet-gitversion $(Build.SourcesDirectory) /config '$(Build.SourcesDirectory)/GitVersion.yml'
           # - script: dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch      
           # - script: dotnet build -c Release /p:Version='$(GitVersion.NuGetVersion)'     
-          - script: echo current version is $(GitVersion.SemVer)
-            displayName: 'Display calculated version'
-          - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch /config $(Build.SourcesDirectory)/GitVersion.yml'
+          #- script: echo current version is $(GitVersion.SemVer)
+           # displayName: 'Display calculated version'
+         # - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch /config $(Build.SourcesDirectory)/GitVersion.yml'
 
 
           # - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /updateassemblyinfo AssemblyInfo.cs /ensureassemblyinfo /config $(Build.SourcesDirectory)/GitVersion.yml'
 
-          # - task: DotNetCoreCLI@2
-          #   displayName: Build
-          #   inputs:
-          #     projects: '$(Parameters.RestoreBuildProjects)'
-          #     arguments: '--configuration $(BuildConfiguration) /p:Version=$(FullSemVer)'
+          - task: DotNetCoreCLI@2
+            displayName: Build
+            inputs:
+              projects: '$(Parameters.RestoreBuildProjects)'
+              arguments: '--configuration $(BuildConfiguration) /p:Version=$(FullSemVer)'
          
           - task: DotNetCoreCLI@2
             displayName: 'Ejecuta los tests generando un reporte de cobertura'
