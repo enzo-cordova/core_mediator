@@ -9,8 +9,7 @@ trigger:
       - hotfix/*
       - bugfix/*
 variables:
-  buildConfiguration: 'Release'
-  projects: 'Unai/Unai.csproj'
+  buildConfiguration: 'Release' 
   GitVersion.SemVer: ''
 pr: none
 stages:
