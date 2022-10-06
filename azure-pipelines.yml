@@ -13,23 +13,19 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: 'choco install gitversion.portable'
-- task: AzurePowerShell@5
+- task: gitversion/setup@0
   inputs:
-    ScriptType: 'InlineScript'
-    azurePowerShellVersion: 'LatestVersion'
-
-- script: echo %Action%%BuildVersion%
-  displayName: 'Set build version'
-  env:
-    Action: '##vso[build.updatebuildnumber]'
-    BuildVersion: $(GitVersion.SemVer)
+    versionSpec: '5.0.0'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
     command: 'restore'
-    projects: '**/*.csproj'
+    projects: '- task: gitversion/execute@0
+  inputs:
+    targetPath: '**/*.csproj'
+    updateAssemblyInfo: true
+    updateAssemblyInfoFilename: '**''
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build $(buildConfiguration)'
