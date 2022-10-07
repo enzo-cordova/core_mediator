@@ -1,18 +1,19 @@
-mode: Mainline
-next-version: 1.0.12 
+mode: ContinuousDelivery
+next-version: 1.0.12
 major-version-bump-message: '\+semver:\s?(breaking|major)'
 minor-version-bump-message: '\+semver:\s?(feature|minor)'
 patch-version-bump-message: '\+semver:\s?(fix|patch)'
 branches:
-  master:
+  master: 
   develop:
     source-branches:
     - master
   feature:
     mode: ContinuousDelivery
-    regex: ^features?[/-]
     tag: alpha
+    regex: ^features?[/-]
     source-branches:
     - develop
 ignore:
   sha: []
+merge-message-formats: {}
