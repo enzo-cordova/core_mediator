@@ -1,56 +1,80 @@
+name: $(GITVERSION_FullSemVer)
+
 trigger:
-- develop
-- release/*
-- feature/*
-- bugfix/*
-- hotfix/*
- -refs/tags/*
-
-pool:
-  name: Default
-
+  branches:
+    include:
+      - master
+      - develop
+      - feature/*
+      - hotfix/*
+      - bugfix/*
 variables:
-  buildConfiguration: 'Release'
+  buildConfiguration: 'Release' 
+  GitVersion.SemVer: ''
+pr: none
+stages:
+  - stage: BuildProject
+    pool:
+      vmImage: ubuntu-20.04
+    jobs:
+      - job: BuildProject
+        displayName: Compilar y ejecutar sonar
+        steps :
+          - task: UseDotNet@2
+            displayName: 'Descarga e instala el SDK'
+            inputs:
+              packageType: 'sdk'
+              version: "6.0.100"
+              useGlobalJson: true
+              installationPath: $(Agent.ToolsDirectory)/dotnet
+          - task: gitversion/setup@0
+            inputs:
+              versionSpec: '5.10.3'
+          - task: gitversion/execute@0
+            inputs:
+              configFilePath: 'GitVersion.yml'
+              updateAssemblyInfo: true
 
-steps:
-- task: gitversion/setup@0
-  inputs:
-    versionSpec: '5.0.0'
 
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet restore'
-  inputs:
-    command: 'restore'
-    projects: '- task: gitversion/execute@0
-  inputs:
-    targetPath: '**/*.csproj'
-    updateAssemblyInfo: true
-    updateAssemblyInfoFilename: '**''
 
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet build $(buildConfiguration)'
-  inputs:
-    command: 'build'
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+         # - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
+          # - script: dotnet-gitversion $(Build.SourcesDirectory) /showconfig         
+          # - script: dotnet-gitversion $(Build.SourcesDirectory) /config '$(Build.SourcesDirectory)/GitVersion.yml'
+          # - script: dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch      
+          # - script: dotnet build -c Release /p:Version='$(GitVersion.NuGetVersion)'     
+          #- script: echo current version is $(GitVersion.SemVer)
+           # displayName: 'Display calculated version'
+         # - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch /config $(Build.SourcesDirectory)/GitVersion.yml'
 
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet test $(buildConfiguration)'
-  inputs:
-    command: 'test'
-    projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
 
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet publish $(buildConfiguration)'
-  inputs:
-    command: 'publish'
-    publishWebProjects: false
-    arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
-    zipAfterPublish: True
+          # - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /updateassemblyinfo AssemblyInfo.cs /ensureassemblyinfo /config $(Build.SourcesDirectory)/GitVersion.yml'
 
-- task: CopyPublishBuildArtifacts@1
-  inputs:
-    Contents: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    ArtifactType: Container
+          - task: DotNetCoreCLI@2
+            displayName: Build
+            inputs:
+              projects: '$(Parameters.RestoreBuildProjects)'
+              arguments: '--configuration $(BuildConfiguration) /p:Version=$(GitVersion.SemVer)'
+         
+          - task: DotNetCoreCLI@2
+            displayName: 'Ejecuta los tests generando un reporte de cobertura'
+            continueOnError: true
+            inputs:
+              command: test
+              arguments: ' --collect:"XPlat Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger "console;verbosity=detailed" '
+
+
+          - task: DotNetCoreCLI@2
+            displayName: 'Empaqueta en el formato NuGet'
+            inputs:
+              command: 'pack'
+             # arguments: ' /p:PackageVersion=${{ parameters.projectVersion }} -o $(Build.ArtifactStagingDirectory)'
+              packagesToPack: '$(Build.Repository.LocalPath)/**/*.csproj'
+              versioningScheme: 'off'
+              versionEnvVar: GitVersion.SemVer
+
+          - task: DotNetCoreCLI@2 
+            displayName: 'dotnet nuget push' 
+            inputs: 
+              command: push 
+              publishVstsFeed: 'ff478692-09f4-406d-8d3e-4566cb81b0db' 
+              versioningScheme: byBuildNumber
