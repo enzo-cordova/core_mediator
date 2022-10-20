@@ -31,7 +31,7 @@ steps :
 
   - task: gitversion/execute@0
     inputs:
-      targetPath: '$(Build.SourcesDirectory)/**/*.csproj'
+      targetPath: '**/*.csproj'
       useConfigFile: true
       configFilePath: 'GitVersion.yml'
 
