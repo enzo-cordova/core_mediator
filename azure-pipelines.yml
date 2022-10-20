@@ -51,13 +51,11 @@ steps :
   # - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /updateassemblyinfo AssemblyInfo.cs /ensureassemblyinfo /config $(Build.SourcesDirectory)/GitVersion.yml'
 
   - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
     inputs:
-      command: 'restore'
-      feedsToUse: 'select'
-      projects: '**/*.csproj' 
-      vstsFeed: 'ff478692-09f4-406d-8d3e-4566cb81b0db'
-      includeNuGetOrg: false
-      versioningScheme: byBuildNumber
+      command: restore
+      projects: '**/*.csproj'
+
     
   - task: DotNetCoreCLI@2
     displayName: 'dotnet build $(buildConfiguration)'
