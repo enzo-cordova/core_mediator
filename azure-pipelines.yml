@@ -1,16 +1,30 @@
+name: $(GITVERSION_FullSemVer)
+
 trigger:
-- develop
-- release/*
-- feature/*
-- bugfix/*
+  branches:
+    include:
+      - master
+      - develop
+      - release/*
+      - feature/*
+      - bugfix/*
+  paths:
+    include:
+      - '*'
+    exclude:
+     - 'azure-pipelines.yml'
 
 pool:
-  name: Default
+  vmImage: 'windows-latest'
 
 variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'choco install dotnetcore-6.0-sdk'
 - task: gitversion/setup@0
   inputs:
     versionSpec: '5.10.0'
@@ -19,29 +33,22 @@ steps:
     targetPath: '$(Build.SourcesDirectory)'
     useConfigFile: true
     configFilePath: 'GitVersion.yml'
-- script: echo %Action%%BuildVersion%
-  displayName: 'Set build version'
-  env:
-    Action: '##vso[build.updatebuildnumber]'
-    BuildVersion: $(GitVersion.SemVer)
-    versionSpec: '5.0.0'
 
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet restore'
   inputs:
     command: 'restore'
-    projects: '- task: gitversion/execute@0
-  inputs:
-    targetPath: '**/*.csproj'
-    updateAssemblyInfo: true
-    updateAssemblyInfoFilename: '**''
-
+    feedsToUse: 'select'
+    projects: '**/*.csproj' 
+    vstsFeed: 'ff478692-09f4-406d-8d3e-4566cb81b0db'
+    includeNuGetOrg: false
+    versioningScheme: byBuildNumber
+    
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build $(buildConfiguration)'
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    arguments: '--configuration $(buildConfiguration) /p:Version=$(GitVersion.SemVer)'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test $(buildConfiguration)'
@@ -51,15 +58,17 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet publish $(buildConfiguration)'
-  inputs:
-    command: 'publish'
-    publishWebProjects: false
-    arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
-    zipAfterPublish: True
+  displayName: 'dotnet pack' 
+  inputs: 
+    command: pack
+    packagesToPack: '**/*.csproj' 
+    nobuild: true 
+    versioningScheme: byEnvVar 
+    versionEnvVar: GitVersion.SemVer
 
-- task: CopyPublishBuildArtifacts@1
-  inputs:
-    Contents: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    ArtifactType: Container
+- task: DotNetCoreCLI@2 
+  displayName: 'dotnet nuget push' 
+  inputs: 
+    command: push 
+    publishVstsFeed: 'ff478692-09f4-406d-8d3e-4566cb81b0db' 
+    versioningScheme: byBuildNumber
