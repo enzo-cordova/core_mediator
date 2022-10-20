@@ -35,14 +35,6 @@ steps :
       useConfigFile: true
       configFilePath: 'GitVersion.yml'
 
-  - task: GitVersion@5
-    inputs:
-      runtime: 'core'
-      configFilePath: 'GitVersion.yml'
-      updateAssemblyInfo: true
-
-
-
   # - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
   # - script: dotnet-gitversion $(Build.SourcesDirectory) /showconfig         
   # - script: dotnet-gitversion $(Build.SourcesDirectory) /config '$(Build.SourcesDirectory)/GitVersion.yml'
