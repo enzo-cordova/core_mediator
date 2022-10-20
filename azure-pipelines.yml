@@ -91,5 +91,5 @@ steps :
     displayName: 'dotnet nuget push' 
     inputs: 
       command: push 
-      publishVstsFeed: 'ff478692-09f4-406d-8d3e-4566cb81b0db' 
+      publishVstsFeed: 'testFeed'
       versioningScheme: byBuildNumber
