@@ -31,7 +31,7 @@ steps :
 
   - task: gitversion/execute@0
     inputs:
-      targetPath: '**/*.csproj'
+      targetPath: '$(Build.SourcesDirectory)\src\Genzai.Core\*.csproj'
       useConfigFile: true
       configFilePath: 'GitVersion.yml'
 
@@ -64,7 +64,7 @@ steps :
     displayName: 'dotnet pack' 
     inputs: 
       command: pack
-      packagesToPack: '**/*.csproj' 
+      packagesToPack: '$(Build.SourcesDirectory)\src\Genzai.Core\*.csproj' 
       nobuild: true 
       versioningScheme: byEnvVar 
       versionEnvVar: GitVersion.SemVer
