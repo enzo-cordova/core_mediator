@@ -31,7 +31,7 @@ steps :
 
   - task: gitversion/execute@0
     inputs:
-      targetPath: '$(Build.SourcesDirectory)'
+      targetPath: '**/*.csproj'
       useConfigFile: true
       configFilePath: 'GitVersion.yml'
 
@@ -51,7 +51,7 @@ steps :
     displayName: Build
     inputs:
       projects: '$(Parameters.RestoreBuildProjects)'
-      arguments: '--configuration $(BuildConfiguration) /p:Version=$(GitVersion.SemVer)'
+      arguments: '--configuration **/*.csproj /p:Version=$(GitVersion.SemVer)'
   
   - task: DotNetCoreCLI@2
     displayName: 'Ejecuta los tests generando un reporte de cobertura'
@@ -64,7 +64,7 @@ steps :
     displayName: 'dotnet pack' 
     inputs: 
       command: pack
-      packagesToPack: '$(projects)' 
+      packagesToPack: '**/*.csproj' 
       nobuild: true 
       versioningScheme: byEnvVar 
       versionEnvVar: GitVersion.SemVer
