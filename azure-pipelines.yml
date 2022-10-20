@@ -29,11 +29,11 @@ steps :
     inputs:
       versionSpec: '5.10.0'
 
-  - task: gitversion/execute@0
-    inputs:
-      targetPath: '$(Build.SourcesDirectory)\src\Genzai.Core\*.csproj'
-      useConfigFile: true
-      configFilePath: 'GitVersion.yml'
+  - task: UseGitVersion@5
+    displayName: gitversion
+    inputs: 
+      versionSpec: '5.10.0'
+      enabled: true
 
   # - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
   # - script: dotnet-gitversion $(Build.SourcesDirectory) /showconfig         
@@ -64,7 +64,7 @@ steps :
     displayName: 'dotnet pack' 
     inputs: 
       command: pack
-      packagesToPack: '$(Build.SourcesDirectory)\src\Genzai.Core\*.csproj' 
+      packagesToPack: '$(Build.SourcesDirectory)' 
       nobuild: true 
       versioningScheme: byEnvVar 
       versionEnvVar: GitVersion.SemVer
