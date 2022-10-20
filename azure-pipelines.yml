@@ -51,10 +51,27 @@ steps :
   # - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /updateassemblyinfo AssemblyInfo.cs /ensureassemblyinfo /config $(Build.SourcesDirectory)/GitVersion.yml'
 
   - task: DotNetCoreCLI@2
-    displayName: Build
     inputs:
-      projects: '$(Parameters.RestoreBuildProjects)'
-      arguments: '--configuration $(BuildConfiguration) /p:Version=$(GitVersion.SemVer)'
+      command: 'restore'
+      feedsToUse: 'select'
+      projects: '**/*.csproj' 
+      vstsFeed: 'ff478692-09f4-406d-8d3e-4566cb81b0db'
+      includeNuGetOrg: false
+      versioningScheme: byBuildNumber
+    
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build $(buildConfiguration)'
+    inputs:
+      command: 'build'
+      projects: '**/*.csproj'
+      arguments: '--configuration $(buildConfiguration) /p:Version=$(GitVersion.SemVer)'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet test $(buildConfiguration)'
+    inputs:
+      command: 'test'
+      projects: '**/*Tests/*.csproj'
+      arguments: '--configuration $(buildConfiguration)'
   
   - task: DotNetCoreCLI@2
     displayName: 'Ejecuta los tests generando un reporte de cobertura'
