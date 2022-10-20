@@ -24,6 +24,17 @@ steps :
       version: "6.0.100"
       useGlobalJson: true
       installationPath: $(Agent.ToolsDirectory)/dotnet
+
+  - task: gitversion/setup@0
+  inputs:
+    versionSpec: '5.10.0'
+    
+  - task: gitversion/execute@0
+    inputs:
+      targetPath: '$(Build.SourcesDirectory)'
+      useConfigFile: true
+      configFilePath: 'GitVersion.yml'
+
   - task: GitVersion@5
     inputs:
       runtime: 'core'
