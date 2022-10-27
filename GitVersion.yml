@@ -1,9 +1,34 @@
-mode: Mainline
-next-version: 1.0.0
+assembly-versioning-scheme: Major
+assembly-file-versioning-scheme: MajorMinorPatchTag
+mode: ContinuousDeployment
+next-version: 3.0.0
 branches:
   master:
-    tag: ''
+    regex: ^main
+    mode: ContinuousDeployment
+    tag: rc
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    is-release-branch: true
   feature:
     tag: alpha
+  develop:
+    mode: ContinuousDeployment
+    tag: alpha
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: true
+  pull-request:
+    mode: ContinuousDelivery
 ignore:
   sha: []
+
+
+# mode: Mainline
+# next-version: 1.0.0
+# branches:
+#   master:
+#     tag: ''
+#   feature:
+#     tag: alpha
+# ignore:
+#   sha: []
