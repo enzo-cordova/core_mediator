@@ -64,8 +64,8 @@ steps :
  #     command: 'build'
  #     projects: '**/*.csproj'
  #     arguments: '--configuration $(buildConfiguration) /p:Version=$(GitVersion.SemVer)'
-  - script: dotnet build -c Release /p:Version='$(GITVERSION_FullSemVer)'   
-  
+  - script: dotnet build -c Release /p:Version='$(GitVersion.SemVer)'   
+
   - task: DotNetCoreCLI@2
     displayName: 'dotnet test $(buildConfiguration)'
     inputs:
