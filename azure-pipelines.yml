@@ -28,8 +28,8 @@ steps :
       installationPath: $(Agent.ToolsDirectory)/dotnet
 
  
-  - script: 'brew install gitversion' #script: 'choco install gitversion.portable'
-    displayName: 'choco install'
+  #- script: 'brew install gitversion' #script: 'choco install gitversion.portable'
+   # displayName: 'choco install'
   - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3  --configfile nuget.config'
     displayName: 'install gitversion'
   # - task: gitversion/setup@0
