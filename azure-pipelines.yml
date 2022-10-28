@@ -11,7 +11,7 @@ trigger:
     exclude:
      - 'azure-pipelines.yml'
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 variables:
   buildConfiguration: 'Release' 
@@ -26,6 +26,9 @@ steps :
       version: "6.0.100"
       useGlobalJson: true
       installationPath: $(Agent.ToolsDirectory)/dotnet
+
+  - script: dotnet restore --interactive
+    displayName: 'restaurar'
   - script: 'choco install gitversion.portable'
     displayName: 'choco install'
   - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3  --configfile nuget.config'
