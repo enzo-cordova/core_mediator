@@ -87,7 +87,7 @@ steps :
     displayName: 'dotnet pack' 
     inputs: 
       command: pack
-      packagesToPack: '$(Build.ArtifactStagingDirectory)' 
+      packagesToPack: '$(Build.SourcesDirectory)' 
       nobuild: true 
       versioningScheme: byEnvVar 
       versionEnvVar: GitVersion.SemVer
