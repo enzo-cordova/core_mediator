@@ -87,7 +87,7 @@ steps :
     displayName: 'dotnet pack' 
     inputs: 
       command: pack
-      packagesToPack: '$(Build.SourcesDirectory)' 
+      packagesToPack: '$(Build.ArtifactStagingDirectory)' 
       nobuild: true 
       versioningScheme: byEnvVar 
       versionEnvVar: GitVersion.SemVer
@@ -96,4 +96,5 @@ steps :
     displayName: 'dotnet nuget push' 
     inputs: 
       command: push 
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
       feedPublish: 'testFeed' 
