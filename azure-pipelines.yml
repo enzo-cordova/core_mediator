@@ -27,8 +27,7 @@ steps :
       useGlobalJson: true
       installationPath: $(Agent.ToolsDirectory)/dotnet
 
-  - script: dotnet restore --interactive
-    displayName: 'restaurar'
+ 
   - script: 'choco install gitversion.portable'
     displayName: 'choco install'
   - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3  --configfile nuget.config'
