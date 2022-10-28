@@ -92,9 +92,11 @@ steps :
       versioningScheme: byEnvVar 
       versionEnvVar: GitVersion.SemVer
 
-  - task: DotNetCoreCLI@2 
-    displayName: 'dotnet nuget push' 
-    inputs: 
-      command: push 
+
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'push'
       packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-      feedPublish: 'testFeed' 
+      nuGetFeedType: 'internal'
+      publishVstsFeed: '735d0d07-1a9a-4ff3-b76b-70adb3407038/5a2ed88e-1093-44ec-9c99-eb04b125b27c'
+
