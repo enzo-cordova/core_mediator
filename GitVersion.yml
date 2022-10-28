@@ -7,10 +7,13 @@ branches:
     prevent-increment-of-merged-branch-version: true # When release-2.0.0 is merged into main, we want main to build 2.0.0. If release-2.0.0 is merged into develop we want it to build 2.1.0, this option prevents incrementing after a versioned branch is merged
     track-merge-target: false # Strategy which will look for tagged merge commits directly off the current branch. For example develop → release/1.0.0 → merge into main and tag 1.0.0. The tag is not on develop, but develop should be version 1.0.0 now.
   develop:
+    regex: feature(s)?[/-] 
     tag: ''
-    increment: Patch
-    prevent-increment-of-merged-branch-version: true # When release-2.0.0 is merged into main, we want main to build 2.0.0. If release-2.0.0 is merged into develop we want it to build 2.1.0, this option prevents incrementing after a versioned branch is merged
-    track-merge-target: false # Strategy which will look for tagged merge commits directly off the current branch. For example develop → release/1.0.0 → merge into main and tag 1.0.0. The tag is not on develop, but develop should be version 1.0.0 now.
+    increment: Inherit
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: false
+    tracks-release-branches: false
+    is-release-branch: false  
   feature:
     tag: alpha
 ignore: 
