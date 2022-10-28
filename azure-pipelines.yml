@@ -30,8 +30,6 @@ steps :
     inputs:
       command: 'restore'
       restoreSolution: '**/*.sln'
-      feedsToUse: 'config'
-      nugetConfigPath: '<add key="testFeed" value="https://pkgs.dev.azure.com/enzocordova/Authorization_CQRS/_packaging/testFeed/nuget/v3/index.json" />'
   - task: DotNetCoreCLI@2
     displayName: 'dotnet restore'
     inputs:
@@ -41,7 +39,7 @@ steps :
       nuGetFeedType: 'internal'
       publishVstsFeed: '735d0d07-1a9a-4ff3-b76b-70adb3407038/5a2ed88e-1093-44ec-9c99-eb04b125b27c'
       includeNuGetOrg: true   
- 
+
 
   #- script: 'brew install gitversion' #script: 'choco install gitversion.portable'
    # displayName: 'choco install'
