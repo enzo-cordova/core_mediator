@@ -27,7 +27,9 @@ steps :
       useGlobalJson: true
       installationPath: $(Agent.ToolsDirectory)/dotnet
   - script: 'choco install gitversion.portable'
+    displayName: 'choco install'
   - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
+    displayName: 'install gitversion'
   # - task: gitversion/setup@0
   #   inputs:
   #     versionSpec: '5.10.0'
@@ -40,7 +42,8 @@ steps :
   #     updateAssemblyInfo: true
 
   # - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
-  - script: dotnet-gitversion $(Build.SourcesDirectory) /showconfig         
+  - script: dotnet-gitversion $(Build.SourcesDirectory) /showconfig     
+    displayName: 'gitversion showconfig'    
   #- script: dotnet-gitversion $(Build.SourcesDirectory) /config '$(Build.SourcesDirectory)/GitVersion.yml'
   # - script: dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch      
   # - script: dotnet build -c Release /p:Version='$(GitVersion.NuGetVersion)'     
@@ -50,7 +53,7 @@ steps :
 
 
   - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /updateassemblyinfo AssemblyInfo.cs /ensureassemblyinfo /config $(Build.SourcesDirectory)/GitVersion.yml'
-
+    displayName: 'gitversion get gitversion file'    
   - task: DotNetCoreCLI@2
     displayName: 'dotnet restore'
     inputs:
