@@ -21,13 +21,3 @@ patch-version-bump-message: '\+(bump|semver):\s?(fix|patch)'
 no-bump-message: '\+(bump|semver):\s?(none|skip)'
 merge-message-formats: {}
 
-
-# mode: Mainline
-# next-version: 1.0.0
-# branches:
-#   master:
-#     tag: ''
-#   feature:
-#     tag: alpha
-# ignore:
-#   sha: []
