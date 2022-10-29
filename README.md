@@ -1,3 +1,5 @@
+https://learn.microsoft.com/en-us/answers/questions/723164/granting-read-privileges-to-azure-artifact-feed.html
+
 # ![alt text](GENZAI.png "Genzai Logo") 
 
 Common libraries for Genzai projects.
