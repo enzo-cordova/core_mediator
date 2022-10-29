@@ -1,53 +1,27 @@
-next-version: 1.2.0
+mode: Mainline
+next-version: 1.3.0
 branches:
-  master:
-    regex: master
-    mode: ContinuousDelivery
+  main:
     tag: ''
-    increment: Minor
-    prevent-increment-of-merged-branch-version: true
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch: false
-  release:
-    regex: release(s)?[/-]
-    mode: ContinuousDelivery
-    tag: beta
-    increment: Minor
-    prevent-increment-of-merged-branch-version: true
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch: true
-  feature:
-    regex: feature(s)?[/-]
-    mode: ContinuousDelivery
-    tag: alpha.{BranchName}
-    increment: Inherit
-    prevent-increment-of-merged-branch-version: false
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch: false
-  pull-request:
-    regex: (pull|pull\-requests|pr)[/-]
-    mode: ContinuousDelivery
-    tag: PullRequest
-    increment: Inherit
-    prevent-increment-of-merged-branch-version: false
-    tag-number-pattern: '[/-](?<number>\d+)[-/]'
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch: false
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true # When release-2.0.0 is merged into main, we want main to build 2.0.0. If release-2.0.0 is merged into develop we want it to build 2.1.0, this option prevents incrementing after a versioned branch is merged
+    track-merge-target: false # Strategy which will look for tagged merge commits directly off the current branch. For example develop → release/1.0.0 → merge into main and tag 1.0.0. The tag is not on develop, but develop should be version 1.0.0 now.
   develop:
-    regex: dev(elop)?(ment)?$
-    mode: ContinuousDeployment
+    tag: ''
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true # When release-2.0.0 is merged into main, we want main to build 2.0.0. If release-2.0.0 is merged into develop we want it to build 2.1.0, this option prevents incrementing after a versioned branch is merged
+    track-merge-target: false # Strategy which will look for tagged merge commits directly off the current branch. For example develop → release/1.0.0 → merge into main and tag 1.0.0. The tag is not on develop, but develop should be version 1.0.0 now.
+  feature:
     tag: alpha
-    increment: Minor
-    prevent-increment-of-merged-branch-version: false
-    track-merge-target: true
-    tracks-release-branches: true
-    is-release-branch: false
 ignore: 
-  sha: [] 
+  sha: []
+major-version-bump-message: '\+(bump|semver):\s?(breaking|major)'
+minor-version-bump-message: '\+(bump|semver):\s?(feature|minor)'
+patch-version-bump-message: '\+(bump|semver):\s?(fix|patch)'
+no-bump-message: '\+(bump|semver):\s?(none|skip)'
+merge-message-formats: {}
+
+
 # mode: Mainline
 # next-version: 1.0.0
 # branches:

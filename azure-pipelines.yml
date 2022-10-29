@@ -26,7 +26,6 @@ steps :
       version: "6.0.100"
       useGlobalJson: true
       installationPath: $(Agent.ToolsDirectory)/dotnet
-
   - task: DownloadPackage@1
     inputs:
       packageType: 'nuget'
@@ -34,8 +33,18 @@ steps :
       view: 'b25f2c94-5cc3-4927-8a02-8228dc08b469'
       definition: '7a67a5db-abab-4282-bd15-6696da5b5c5b'
       version: '5.10.3'
-      downloadPath: '$(System.ArtifactsDirectory)'
- 
+      downloadPath: '$(Agent.ToolsDirectory)'
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: restore
+      projects: '**/*.csproj'
+      feedsToUse: 'select'                  ## Options: select, config
+      nuGetFeedType: 'internal'
+      publishVstsFeed: '735d0d07-1a9a-4ff3-b76b-70adb3407038/5a2ed88e-1093-44ec-9c99-eb04b125b27c'
+      includeNuGetOrg: true   
+
+
   #- script: 'brew install gitversion' #script: 'choco install gitversion.portable'
    # displayName: 'choco install'
   - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3  --configfile nuget.config'
@@ -64,11 +73,7 @@ steps :
 
   - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /updateassemblyinfo AssemblyInfo.cs /ensureassemblyinfo /config $(Build.SourcesDirectory)/GitVersion.yml'
     displayName: 'gitversion get gitversion file'    
-  - task: DotNetCoreCLI@2
-    displayName: 'dotnet restore'
-    inputs:
-      command: restore
-      projects: '**/*.csproj'
+
 
     
  # - task: DotNetCoreCLI@2
