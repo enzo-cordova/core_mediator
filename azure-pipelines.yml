@@ -27,6 +27,14 @@ steps :
       useGlobalJson: true
       installationPath: $(Agent.ToolsDirectory)/dotnet
 
+  - task: DownloadPackage@1
+    inputs:
+      packageType: 'nuget'
+      feed: '735d0d07-1a9a-4ff3-b76b-70adb3407038/5a2ed88e-1093-44ec-9c99-eb04b125b27c'
+      view: 'b25f2c94-5cc3-4927-8a02-8228dc08b469'
+      definition: '7a67a5db-abab-4282-bd15-6696da5b5c5b'
+      version: '5.10.3'
+      downloadPath: '$(System.ArtifactsDirectory)'
  
   #- script: 'brew install gitversion' #script: 'choco install gitversion.portable'
    # displayName: 'choco install'
