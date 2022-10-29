@@ -1,49 +1,14 @@
-next-version: 1.3.0
+next-version: 1.5.0
+mode: Mainline
 branches:
-  main:
-    regex: main
-    mode: ContinuousDelivery
-    tag: ''
-    increment: Minor
-    prevent-increment-of-merged-branch-version: true
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch: false
-  feature:
-    regex: feature(s)?[/-]
-    mode: ContinuousDelivery
-    tag: alpha.{BranchName}
-    increment: Inherit
-    prevent-increment-of-merged-branch-version: false
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch: false
-  pull-request:
-    regex: (pull|pull\-requests|pr)[/-]
-    mode: ContinuousDelivery
-    tag: PullRequest
-    increment: Inherit
-    prevent-increment-of-merged-branch-version: false
-    tag-number-pattern: '[/-](?<number>\d+)[-/]'
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch: false
   develop:
-    mode: ContinuousDeployment
-    tag: ''
+    regex: develop$
+    is-mainline: true
     increment: Minor
-    prevent-increment-of-merged-branch-version: false
-    track-merge-target: true
-    regex: ^dev(elop)?(ment)?$
-    source-branches: []
-    tracks-release-branches: true
-    is-release-branch: false
-    is-mainline: false
-    pre-release-weight: 0
-    # prevent-increment-of-merged-branch-version: false
-    # track-merge-target: true
-    # tracks-release-branches: true
-    # is-release-branch: false
+  feature:
+    regex: ^feature?[/-]
+    tag: useBranchName
+    increment: Inherit
 ignore: 
   sha: []
 major-version-bump-message: '\+(bump|semver):\s?(breaking|major)'
