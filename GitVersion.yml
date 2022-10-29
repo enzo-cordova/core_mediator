@@ -9,15 +9,6 @@ branches:
     track-merge-target: false
     tracks-release-branches: false
     is-release-branch: false
-  release:
-    regex: release(s)?[/-]
-    mode: ContinuousDelivery
-    tag: beta
-    increment: Minor
-    prevent-increment-of-merged-branch-version: true
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch: true
   feature:
     regex: feature(s)?[/-]
     mode: ContinuousDelivery
@@ -39,7 +30,7 @@ branches:
     is-release-branch: false
   develop:
     regex: dev(elop)?(ment)?$
-    mode: ContinuousDeployment
+    mode: ContinuousDelivery
     tag: ''
     increment: Minor
     prevent-increment-of-merged-branch-version: true
