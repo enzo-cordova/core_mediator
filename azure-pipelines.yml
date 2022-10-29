@@ -33,7 +33,7 @@ steps :
       view: 'b25f2c94-5cc3-4927-8a02-8228dc08b469'
       definition: '7a67a5db-abab-4282-bd15-6696da5b5c5b'
       version: '5.10.3'
-      downloadPath: '$(System.ArtifactsDirectory)'
+      downloadPath: '$(Agent.ToolsDirectory)'
   - task: DotNetCoreCLI@2
     displayName: 'dotnet restore'
     inputs:
