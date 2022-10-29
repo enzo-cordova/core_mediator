@@ -29,7 +29,7 @@ branches:
     tracks-release-branches: false
     is-release-branch: false
   develop:
-    mode: ContinuousDeployment
+    mode: ContinuousDelivery
     tag: ''
     increment: Minor
     prevent-increment-of-merged-branch-version: false
