@@ -26,10 +26,14 @@ steps :
       version: "6.0.100"
       useGlobalJson: true
       installationPath: $(Agent.ToolsDirectory)/dotnet
-  - task: NuGetCommand@2
+  - task: DownloadPackage@1
     inputs:
-      command: 'restore'
-      restoreSolution: '**/*.sln'
+      packageType: 'nuget'
+      feed: '735d0d07-1a9a-4ff3-b76b-70adb3407038/5a2ed88e-1093-44ec-9c99-eb04b125b27c'
+      view: 'b25f2c94-5cc3-4927-8a02-8228dc08b469'
+      definition: '7a67a5db-abab-4282-bd15-6696da5b5c5b'
+      version: '5.10.3'
+      downloadPath: '$(System.ArtifactsDirectory)'
   - task: DotNetCoreCLI@2
     displayName: 'dotnet restore'
     inputs:
