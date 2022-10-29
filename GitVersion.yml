@@ -29,14 +29,17 @@ branches:
     tracks-release-branches: false
     is-release-branch: false
   develop:
-    regex: dev(elop)?(ment)?$
-    mode: ContinuousDelivery
+    mode: ContinuousDeployment
     tag: ''
     increment: Minor
-    prevent-increment-of-merged-branch-version: true
-    track-merge-target: false
-    tracks-release-branches: false
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: true
+    regex: ^dev(elop)?(ment)?$
+    source-branches: []
+    tracks-release-branches: true
     is-release-branch: false
+    is-mainline: false
+    pre-release-weight: 0
     # prevent-increment-of-merged-branch-version: false
     # track-merge-target: true
     # tracks-release-branches: true
