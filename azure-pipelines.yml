@@ -3,7 +3,7 @@ name: $(GITVERSION_FullSemVer)
 trigger:
   branches:
     include:
-      - master
+      - main
       - feature/*
       - develop/*
   paths:
