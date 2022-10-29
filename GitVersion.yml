@@ -8,7 +8,7 @@ branches:
   feature:
     regex: ^feature?[/-]
     tag: useBranchName
-    increment: inherint
+    increment: Inherit
 ignore: 
   sha: []
 major-version-bump-message: '\+(bump|semver):\s?(breaking|major)'
