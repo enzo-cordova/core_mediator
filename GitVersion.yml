@@ -42,10 +42,14 @@ branches:
     mode: ContinuousDeployment
     tag: ''
     increment: Minor
-    prevent-increment-of-merged-branch-version: false
-    track-merge-target: true
-    tracks-release-branches: true
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    tracks-release-branches: false
     is-release-branch: false
+    # prevent-increment-of-merged-branch-version: false
+    # track-merge-target: true
+    # tracks-release-branches: true
+    # is-release-branch: false
 ignore: 
   sha: []
 major-version-bump-message: '\+(bump|semver):\s?(breaking|major)'
@@ -53,14 +57,3 @@ minor-version-bump-message: '\+(bump|semver):\s?(feature|minor)'
 patch-version-bump-message: '\+(bump|semver):\s?(fix|patch)'
 no-bump-message: '\+(bump|semver):\s?(none|skip)'
 merge-message-formats: {}
-
-
-# mode: Mainline
-# next-version: 1.0.0
-# branches:
-#   master:
-#     tag: ''
-#   feature:
-#     tag: alpha
-# ignore:
-#   sha: []
