@@ -1,19 +1,54 @@
 next-version: 1.5.0
 mode: Mainline
+tag-prefix: '[vV]'
 branches:
-  main:
-    regex: (^main$)
-    tag: ""
+  master:
+    regex: (^main$) 
+    tag: s
     increment: Patch
-    is-release-branch: true
-  develop:
-    regex: develop$
-    is-mainline: true
-    increment: Minor
-  feature:
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+  feature: 
     regex: ^feature?[/-]
     tag: useBranchName
-    increment: Inherit
+    increment: Minor
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: false
+  pull-request: 
+      tag: pr
+      increment: Inherit
+      prevent-increment-of-merged-branch-version: false
+      tag-number-pattern: '[/-](?<number>\d+)'
+      track-merge-target: false
+      regex: ^(pull|pull\-requests|pr)[/-]
+      source-branches:
+      - develop
+      - main 
+      - feature 
+      tracks-release-branches: false
+      is-release-branch: false
+      is-mainline: false
+      pre-release-weight: 30000
+  develop: 
+    regex: develop$
+    tag: b
+    increment: Minor
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: true
+# branches:
+#   master:
+#     regex: (^main$)
+#     tag: ""
+#     increment: Patch
+#     is-release-branch: true
+#   develop:
+#     regex: develop$
+#     is-mainline: true
+#     increment: Minor
+#   feature:
+#     regex: ^feature?[/-]
+#     tag: useBranchName
+#     increment: Inherit
 ignore: 
   sha: []
 major-version-bump-message: '\+(bump|semver):\s?(breaking|major)'
