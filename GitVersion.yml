@@ -8,7 +8,7 @@ branches:
     increment: Patch
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
-  features?[/-]: 
+  feature: 
     regex: ^feature?[/-]
     tag: useBranchName
     increment: Minor
