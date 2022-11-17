@@ -8,11 +8,6 @@ branches:
     increment: Patch
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
-  releases?[/-]: 
-    tag: rc
-    increment: Patch
-    prevent-increment-of-merged-branch-version: true
-    track-merge-target: false
   features?[/-]: 
     regex: ^feature?[/-]
     tag: useBranchName
