@@ -11,6 +11,10 @@ trigger:
       - '*'
     exclude:
      - 'azure-pipelines.yml'
+pr:
+  - main
+  - develop
+
 pool:
   vmImage: 'ubuntu-latest'
 

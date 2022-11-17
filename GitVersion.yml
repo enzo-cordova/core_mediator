@@ -1,6 +1,11 @@
 next-version: 1.5.0
 mode: Mainline
 branches:
+  master:
+    regex: (^main$)
+    tag: ""
+    increment: Patch
+    is-release-branch: true
   develop:
     regex: develop$
     is-mainline: true
