@@ -5,7 +5,7 @@ branches:
   main:
     regex: (^main$) 
     tag: s
-    increment: Patch
+    increment: Minor
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
   feature: 
