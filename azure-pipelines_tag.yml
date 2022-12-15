@@ -30,7 +30,7 @@ variables:
   GitVersion.SemVer: ''
 steps :
   - checkout: self
-    #persistCredentials: true
+    persistCredentials: true
     fetchDepth: 0
   - task: ShellScript@2
     condition: and(succeeded(), eq('${{ parameters.generateTag }}', 'true'))

@@ -50,8 +50,8 @@ NEEDS_TAG=`git describe --contains $GIT_COMMIT`
 
 #only tag if no tag already (would be better if the git describe command above could have a silent option)
 if [ -z "$NEEDS_TAG" ]; then
-    git config --global user.email "enzo.cordova@hotmail.com"
-    git config --global user.name "enzocordova"
+    #git config --global user.email "enzo.cordova@hotmail.com"
+    #git config --global user.name "enzocordova"
     echo "Tagged with $NEW_TAG (Ignoring fatal:cannot describe - this means commit is untagged) "
     git tag $NEW_TAG
     git push --tags
