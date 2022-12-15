@@ -21,6 +21,9 @@ parameters:
   - name: generateTag
     type: boolean
     default: false
+  - name: commentTag
+    type: string
+    default: 'change version'
 
 variables:
   buildConfiguration: 'Release' 
@@ -33,3 +36,4 @@ steps :
     condition: and(succeeded(), eq('${{ parameters.generateTag }}', 'true'))
     inputs:
       scriptPath: 'git_taging.sh'
+      args: ${{ parameters.commentTag }}
