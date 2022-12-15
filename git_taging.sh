@@ -1,10 +1,7 @@
 #!/bin/bashmajor_max=1;
 #get highest tag number
-VERSION=`git describe --abbrev=0 --tags`
-
-VERSION2= git describe --tags 'git rev-list --tags --max-count=1'
- echo "VERSION" $VERSION
-  echo "VERSION2" $VERSION2
+VERSION=`git describe --abbrev=0 --tags` 
+ echo "VERSION" $VERSION 
 #replace . with space so can split into an array
 VERSION_BITS=(${VERSION//./ })
  echo "VERSION_BITS" $VERSION_BITS
@@ -34,7 +31,7 @@ fi
 
 
 #create new tag
-NEW_TAG="v$VNUM1.$VNUM2.$VNUM3"
+NEW_TAG="$VNUM1.$VNUM2.$VNUM3"
 
 echo "Updating $VERSION to $NEW_TAG"
 
