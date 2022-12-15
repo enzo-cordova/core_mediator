@@ -30,11 +30,10 @@ variables:
   GitVersion.SemVer: ''
 steps :
   - checkout: self
-    persistCredentials: true
+    #persistCredentials: true
     fetchDepth: 0
   - task: ShellScript@2
     condition: and(succeeded(), eq('${{ parameters.generateTag }}', 'true'))
     inputs:
       scriptPath: 'git_taging.sh'      
-      args: >
-        -commentTag ${{ parameters.commentTag }}
+      #args: -commentTag ${{ parameters.commentTag }}
