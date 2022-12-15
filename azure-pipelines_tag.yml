@@ -23,7 +23,6 @@ parameters:
     default: false
   - name: commentTag
     type: string
-    default: 'change version'
 
 variables:
   buildConfiguration: 'Release' 
