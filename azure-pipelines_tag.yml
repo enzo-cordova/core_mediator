@@ -1,0 +1,34 @@
+name: $(GITVERSION_FullSemVer)
+
+trigger:
+  branches:
+    include:
+      - main
+      - feature/*
+      - develop/*
+  paths:
+    include:
+      - '*'
+    exclude:
+     - 'azure-pipelines.yml'
+pr:
+  - main
+  - develop
+  - feature/* 
+pool:
+  vmImage: 'ubuntu-latest'
+parameters:
+  - name: generateTag
+    type: boolean
+    default: false
+
+variables:
+  buildConfiguration: 'Release' 
+  GitVersion.SemVer: ''
+steps :
+  - checkout: self
+    fetchDepth: 0
+  - task: ShellScript@2
+    condition: and(succeeded(), eq('${{ parameters.generateTag }}', 'true'))
+    inputs:
+      scriptPath: 'git_taging.sh'
