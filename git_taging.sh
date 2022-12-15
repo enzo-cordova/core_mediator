@@ -2,7 +2,7 @@
 #get highest tag number
 VERSION=`git describe --abbrev=0 --tags` 
  echo "VERSION" $VERSION 
-echo $1 $2
+echo $1
 echo "comment 1: " $1
 
 #replace . with space so can split into an array
@@ -53,7 +53,7 @@ if [ -z "$NEEDS_TAG" ]; then
     #git config --global user.email "enzo.cordova@hotmail.com"
     #git config --global user.name "enzocordova"
     echo "Tagged with $NEW_TAG (Ignoring fatal:cannot describe - this means commit is untagged) "
-    git tag $NEW_TAG -m $1 
+    git tag -a $NEW_TAG -m $1 
     git push --tags
 else
     echo "Already a tag on this commit"
