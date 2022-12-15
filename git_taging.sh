@@ -2,7 +2,7 @@
 #get highest tag number
 VERSION=`git describe --abbrev=0 --tags` 
  echo "VERSION" $VERSION 
-
+echo $1 $2
 echo "comment" $commentTag
 
 #replace . with space so can split into an array
