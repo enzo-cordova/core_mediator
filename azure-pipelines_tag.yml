@@ -36,4 +36,4 @@ steps :
     condition: and(succeeded(), eq('${{ parameters.generateTag }}', 'true'))
     inputs:   
       filePath: 'git_taging.sh'      
-      arguments: commentTag=${{ parameters.commentTag }}
+      arguments: "${{ parameters.commentTag }}"
