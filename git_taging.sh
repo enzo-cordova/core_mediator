@@ -53,7 +53,7 @@ if [ -z "$NEEDS_TAG" ]; then
     #git config --global user.email "enzo.cordova@hotmail.com"
     #git config --global user.name "enzocordova"
     echo "Tagged with $NEW_TAG (Ignoring fatal:cannot describe - this means commit is untagged) "
-    git tag -a $NEW_TAG -m $1 
+    git tag $NEW_TAG
     git push --tags
 else
     echo "Already a tag on this commit"
