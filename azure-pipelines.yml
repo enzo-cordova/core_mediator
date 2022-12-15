@@ -17,6 +17,10 @@ pr:
   - feature/* 
 pool:
   vmImage: 'ubuntu-latest'
+parameters:
+  - name: generateTag
+    type: boolean
+    default: false
 
 variables:
   buildConfiguration: 'Release' 
@@ -125,3 +129,7 @@ steps :
       nuGetFeedType: 'internal'
       publishVstsFeed: '735d0d07-1a9a-4ff3-b76b-70adb3407038/5a2ed88e-1093-44ec-9c99-eb04b125b27c'
 
+  - task: ShellScript@2
+    condition: and(succeeded(), eq('${{ parameters.generateTag }}', 'true'))
+    inputs:
+      scriptPath: 'git_taging.sh'
