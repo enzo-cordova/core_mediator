@@ -41,6 +41,7 @@ NEEDS_TAG=`git describe --contains $GIT_COMMIT`
 
 #only tag if no tag already (would be better if the git describe command above could have a silent option)
 if [ -z "$NEEDS_TAG" ]; then
+    git config --global --add url."git@github.com:".insteadOf "https://github.com/"
     echo "Tagged with $NEW_TAG (Ignoring fatal:cannot describe - this means commit is untagged) "
     git tag $NEW_TAG
     git push --tags
