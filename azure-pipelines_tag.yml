@@ -32,8 +32,8 @@ steps :
   - checkout: self
     persistCredentials: true
     fetchDepth: 0
-  - task: ShellScript@2
+  - task: Bash@3
     condition: and(succeeded(), eq('${{ parameters.generateTag }}', 'true'))
-    inputs:
-      scriptPath: 'git_taging.sh'      
-      args: -commentTag '${{ parameters.commentTag }}'
+    inputs:   
+      filePath: 'git_taging.sh'      
+      arguments: -commentTag '${{ parameters.commentTag }}'
