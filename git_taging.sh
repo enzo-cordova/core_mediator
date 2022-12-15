@@ -3,7 +3,7 @@
 VERSION=`git describe --abbrev=0 --tags` 
  echo "VERSION" $VERSION 
 
-#echo "commentTag" $commentTag
+echo "comment" $commentTag
 
 #replace . with space so can split into an array
 VERSION_BITS=(${VERSION//./ })
