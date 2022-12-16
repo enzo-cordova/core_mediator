@@ -23,7 +23,7 @@ parameters:
     default: false
   - name: commentTag
     type: string
-    default: 'update version'
+    default: 'update version X.Y.Z'
 variables:
   buildConfiguration: 'Release' 
   GitVersion.SemVer: ''
