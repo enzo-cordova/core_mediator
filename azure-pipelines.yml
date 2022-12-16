@@ -26,110 +26,115 @@ variables:
   buildConfiguration: 'Release' 
   GitVersion.SemVer: ''
 steps :
-  - checkout: self
-    fetchDepth: 0
-  - task: UseDotNet@2
-    displayName: 'Descarga e instala el SDK'
-    inputs:
-      packageType: 'sdk'
-      version: "6.0.100"
-      useGlobalJson: true
-      installationPath: $(Agent.ToolsDirectory)/dotnet
-  - task: DownloadPackage@1
-    inputs:
-      packageType: 'nuget'
-      feed: '735d0d07-1a9a-4ff3-b76b-70adb3407038/5a2ed88e-1093-44ec-9c99-eb04b125b27c'
-      view: 'b25f2c94-5cc3-4927-8a02-8228dc08b469'
-      definition: '7a67a5db-abab-4282-bd15-6696da5b5c5b'
-      version: '5.10.3'
-      downloadPath: '$(Agent.ToolsDirectory)'
-  
-  
-  - task: DotNetCoreCLI@2
-    displayName: 'dotnet restore'
-    inputs:
-      command: restore
-      projects: '**/*.csproj'
-      feedsToUse: 'select'                  ## Options: select, config
-      nuGetFeedType: 'internal'
-      publishVstsFeed: '735d0d07-1a9a-4ff3-b76b-70adb3407038/5a2ed88e-1093-44ec-9c99-eb04b125b27c'
-      includeNuGetOrg: true   
-
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: 'custom'
-      packDirectory: '$(Agent.ToolsDirectory)'
-      custom: 'tool'
-      arguments: 'install --global GitVersion.Tool --version  5.10.3 --ignore-failed-sources'
-  #- script: 'brew install gitversion' #script: 'choco install gitversion.portable'
-   # displayName: 'choco install'
-  #- script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3  --configfile nuget.config'
-   # displayName: 'install gitversion'
-  # - task: gitversion/setup@0
-  #   inputs:
-  #     versionSpec: '5.10.0'
-
-  # - task: gitversion/execute@0
-  #   displayName: 'Execute GitVersion'
-  #   inputs:
-  #     useConfigFile: true
-  #     configFilePath: 'GitVersion.yml'
-  #     updateAssemblyInfo: true
-
-  # - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
-  - script: dotnet-gitversion $(Build.SourcesDirectory) /showconfig     
-    displayName: 'gitversion showconfig'    
-  #- script: dotnet-gitversion $(Build.SourcesDirectory) /config '$(Build.SourcesDirectory)/GitVersion.yml'
-  # - script: dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch      
-  # - script: dotnet build -c Release /p:Version='$(GitVersion.NuGetVersion)'     
-  #- script: echo current version is $(GitVersion.SemVer)
-    # displayName: 'Display calculated version'
-  # - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch /config $(Build.SourcesDirectory)/GitVersion.yml'
-
-
-  - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /updateassemblyinfo AssemblyInfo.cs /ensureassemblyinfo /config $(Build.SourcesDirectory)/GitVersion.yml'
-    displayName: 'gitversion get gitversion file'    
-
-
+  - ${{ if eq('${{ parameters.generateTag }}', 'true') }}:
+    - checkout: self
+      persistCredentials: true
+      fetchDepth: 0
+    - task: Bash@3
+      condition: and(succeeded(), eq('${{ parameters.generateTag }}', 'true'))
+      inputs:   
+        filePath: 'git_taging.sh'      
+        arguments: "'${{ parameters.commentTag }}'"
+  - ${{ else }}:
+    - checkout: self
+      fetchDepth: 0
+    - task: UseDotNet@2
+      displayName: 'Descarga e instala el SDK'
+      inputs:
+        packageType: 'sdk'
+        version: "6.0.100"
+        useGlobalJson: true
+        installationPath: $(Agent.ToolsDirectory)/dotnet
+    - task: DownloadPackage@1
+      inputs:
+        packageType: 'nuget'
+        feed: '735d0d07-1a9a-4ff3-b76b-70adb3407038/5a2ed88e-1093-44ec-9c99-eb04b125b27c'
+        view: 'b25f2c94-5cc3-4927-8a02-8228dc08b469'
+        definition: '7a67a5db-abab-4282-bd15-6696da5b5c5b'
+        version: '5.10.3'
+        downloadPath: '$(Agent.ToolsDirectory)'
     
- # - task: DotNetCoreCLI@2
- #   displayName: 'dotnet build $(buildConfiguration)'
- #   inputs:
- #     command: 'build'
- #     projects: '**/*.csproj'
- #     arguments: '--configuration $(buildConfiguration) /p:Version=$(GitVersion.SemVer)'
-  - script: dotnet build -c Release /p:Version=$(GitVersion.SemVer)   
+    
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet restore'
+      inputs:
+        command: restore
+        projects: '**/*.csproj'
+        feedsToUse: 'select'                  ## Options: select, config
+        nuGetFeedType: 'internal'
+        publishVstsFeed: '735d0d07-1a9a-4ff3-b76b-70adb3407038/5a2ed88e-1093-44ec-9c99-eb04b125b27c'
+        includeNuGetOrg: true   
 
-  - task: DotNetCoreCLI@2
-    displayName: 'dotnet test $(buildConfiguration)'
-    inputs:
-      command: 'test'
-      projects: '**/*Tests/*.csproj'
-      arguments: '--configuration $(buildConfiguration)'
-  
-  - task: DotNetCoreCLI@2
-    displayName: 'Ejecuta los tests generando un reporte de cobertura'
-    continueOnError: true
-    inputs:
-      command: test
-      arguments: ' --collect:"XPlat Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger "console;verbosity=detailed" '
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'custom'
+        packDirectory: '$(Agent.ToolsDirectory)'
+        custom: 'tool'
+        arguments: 'install --global GitVersion.Tool --version  5.10.3 --ignore-failed-sources'
+    #- script: 'brew install gitversion' #script: 'choco install gitversion.portable'
+    # displayName: 'choco install'
+    #- script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3  --configfile nuget.config'
+    # displayName: 'install gitversion'
+    # - task: gitversion/setup@0
+    #   inputs:
+    #     versionSpec: '5.10.0'
 
-  - task: DotNetCoreCLI@2
-    displayName: 'dotnet pack' 
-    inputs: 
-      command: pack
-      packagesToPack: '$(Build.SourcesDirectory)' 
-      nobuild: true 
-      versioningScheme: byEnvVar 
-      versionEnvVar: GitVersion.SemVer
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: 'push'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-      nuGetFeedType: 'internal'
-      publishVstsFeed: '735d0d07-1a9a-4ff3-b76b-70adb3407038/5a2ed88e-1093-44ec-9c99-eb04b125b27c'
+    # - task: gitversion/execute@0
+    #   displayName: 'Execute GitVersion'
+    #   inputs:
+    #     useConfigFile: true
+    #     configFilePath: 'GitVersion.yml'
+    #     updateAssemblyInfo: true
 
-  - task: ShellScript@2
-    condition: and(succeeded(), eq('${{ parameters.generateTag }}', 'true'))
-    inputs:
-      scriptPath: 'git_taging.sh'
+    # - script: 'dotnet tool install --global GitVersion.Tool --version  5.10.3'
+    - script: dotnet-gitversion $(Build.SourcesDirectory) /showconfig     
+      displayName: 'gitversion showconfig'    
+    #- script: dotnet-gitversion $(Build.SourcesDirectory) /config '$(Build.SourcesDirectory)/GitVersion.yml'
+    # - script: dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch      
+    # - script: dotnet build -c Release /p:Version='$(GitVersion.NuGetVersion)'     
+    #- script: echo current version is $(GitVersion.SemVer)
+      # displayName: 'Display calculated version'
+    # - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output buildserver /nofetch /config $(Build.SourcesDirectory)/GitVersion.yml'
+
+
+    - script: 'dotnet-gitversion $(Build.SourcesDirectory) /output json /output buildserver /nocache /updateassemblyinfo AssemblyInfo.cs /ensureassemblyinfo /config $(Build.SourcesDirectory)/GitVersion.yml'
+      displayName: 'gitversion get gitversion file'    
+
+
+      
+  # - task: DotNetCoreCLI@2
+  #   displayName: 'dotnet build $(buildConfiguration)'
+  #   inputs:
+  #     command: 'build'
+  #     projects: '**/*.csproj'
+  #     arguments: '--configuration $(buildConfiguration) /p:Version=$(GitVersion.SemVer)'
+    - script: dotnet build -c Release /p:Version=$(GitVersion.SemVer)   
+
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet test $(buildConfiguration)'
+      inputs:
+        command: 'test'
+        projects: '**/*Tests/*.csproj'
+        arguments: '--configuration $(buildConfiguration)'
+    
+    - task: DotNetCoreCLI@2
+      displayName: 'Ejecuta los tests generando un reporte de cobertura'
+      continueOnError: true
+      inputs:
+        command: test
+        arguments: ' --collect:"XPlat Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger "console;verbosity=detailed" '
+
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet pack' 
+      inputs: 
+        command: pack
+        packagesToPack: '$(Build.SourcesDirectory)' 
+        nobuild: true 
+        versioningScheme: byEnvVar 
+        versionEnvVar: GitVersion.SemVer
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'push'
+        packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+        nuGetFeedType: 'internal'
+        publishVstsFeed: '735d0d07-1a9a-4ff3-b76b-70adb3407038/5a2ed88e-1093-44ec-9c99-eb04b125b27c'
