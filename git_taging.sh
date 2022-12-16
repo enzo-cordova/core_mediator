@@ -34,10 +34,11 @@ else
         echo "Update patch version"
         VNUM3=$((VNUM3+1))
     fi
+        #create new tag
+    NEW_TAG="$VNUM1.$VNUM2.$VNUM3"
+    echo "Updating $VERSION to $NEW_TAG"
 fi
-#create new tag
-NEW_TAG="$VNUM1.$VNUM2.$VNUM3"
-echo "Updating $VERSION to $NEW_TAG"
+
 
 #get current hash and see if it already has a tag
 GIT_COMMIT=`git rev-parse HEAD`
