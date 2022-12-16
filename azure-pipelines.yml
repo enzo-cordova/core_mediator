@@ -28,7 +28,7 @@ variables:
   buildConfiguration: 'Release' 
   GitVersion.SemVer: ''
 steps :
-  - ${{ if eq('${{ parameters.generateTag }}', 'true') }}:
+  - ${{ if eq(parameters.generateTag,true) }}:
     - checkout: self
       persistCredentials: true
       fetchDepth: 0
@@ -37,7 +37,7 @@ steps :
       inputs:   
         filePath: 'git_taging.sh'      
         arguments: "'${{ parameters.commentTag }}'"
-  - ${{ if eq('${{ parameters.generateTag }}', 'false') }}:
+  - ${{ if eq(parameters.generateTag,false) }}:
     - checkout: self
       fetchDepth: 0
     - task: UseDotNet@2
