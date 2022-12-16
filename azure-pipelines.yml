@@ -21,7 +21,9 @@ parameters:
   - name: generateTag
     type: boolean
     default: false
-
+  - name: commentTag
+    type: string
+    default: 'update version'
 variables:
   buildConfiguration: 'Release' 
   GitVersion.SemVer: ''
@@ -35,7 +37,7 @@ steps :
       inputs:   
         filePath: 'git_taging.sh'      
         arguments: "'${{ parameters.commentTag }}'"
-  - ${{ else }}:
+  - ${{ if eq('${{ parameters.generateTag }}', 'false') }}:
     - checkout: self
       fetchDepth: 0
     - task: UseDotNet@2
